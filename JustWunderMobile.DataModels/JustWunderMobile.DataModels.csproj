@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B3385E0F-0F9E-48D2-84BA-E751ECED13D7}</ProjectGuid>
+    <ProjectGuid>{4A2BBEC5-40CE-4185-9A2D-0DA75BC3BED2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JustWunderMobile.Interfaces</RootNamespace>
-    <AssemblyName>JustWunderMobile.Interfaces</AssemblyName>
+    <RootNamespace>JustWunderMobile.DataModels</RootNamespace>
+    <AssemblyName>JustWunderMobile.DataModels</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile4</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>

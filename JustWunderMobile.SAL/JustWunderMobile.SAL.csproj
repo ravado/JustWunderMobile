@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FFF246E3-AE0E-4DA4-ACF0-A4CCBE87119B}</ProjectGuid>
+    <ProjectGuid>{79D55B71-4F76-4DB4-8ACE-E11BF3E45EFA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JustWunderMobile.Common</RootNamespace>
-    <AssemblyName>JustWunderMobile.Common</AssemblyName>
+    <RootNamespace>JustWunderMobile.SAL</RootNamespace>
+    <AssemblyName>JustWunderMobile.SAL</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile4</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -34,10 +34,13 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IService.cs" />
+    <Compile Include="Interfaces\IApiInboxJoke.cs" />
+    <Compile Include="Interfaces\IApiReleaseJoke.cs" />
+    <Compile Include="Interfaces\IApiService.cs" />
+    <Compile Include="Models\ApiInboxJoke.cs" />
+    <Compile Include="Models\ApiReleaseJoke.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
