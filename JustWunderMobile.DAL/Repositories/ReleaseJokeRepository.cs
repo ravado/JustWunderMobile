@@ -4,7 +4,7 @@ using OpenNETCF.ORM;
 
 namespace JustWunderMobile.DAL.Repositories
 {
-    public class ReleaseJokeRepository : BaseRepository<ReleaseJoke>, IRepository<ReleaseJoke>
+    public class ReleaseJokeRepository : BaseRepository<ReleaseJoke>
     {
         public ReleaseJokeRepository(SQLStoreBase<SqlEntityInfo> store) : base(store)
         {
