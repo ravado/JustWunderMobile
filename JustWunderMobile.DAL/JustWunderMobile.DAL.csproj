@@ -35,11 +35,21 @@
   <ItemGroup>
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Interfaces\IReleaseJokeRepository.cs" />
+    <Compile Include="Models\NewJoke.cs" />
     <Compile Include="Models\ReleaseJoke.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Libs\OpenNETCF.ORM.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="OpenNETCF.ORM, Version=1.0.13284.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\OpenNETCF.ORM.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

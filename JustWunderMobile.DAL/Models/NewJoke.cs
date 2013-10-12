@@ -4,22 +4,20 @@ using OpenNETCF.ORM;
 namespace JustWunderMobile.DAL.Models
 {
     /// <summary>
-    /// Entity model of jokes stored on local device
+    /// Entity model of new jokes stored on local device
     /// </summary>
-    [Entity(KeyScheme = KeyScheme.None)]
-    public class ReleaseJoke
+    [Entity(KeyScheme = KeyScheme.Identity)]
+    public class NewJoke
     {
         [Field(IsPrimaryKey = true)]
         public int Id { get; set; }
         [Field]
-        public DateTime PublishDate { get; set; }
+        public DateTime DateAdded{ get; set; }
+        [Field(DefaultValue = false)]
+        public bool IsSent { get; set; }
         [Field]
         public string TextJoke { get; set; }
         [Field]
         public string UserEmail { get; set; }
-        [Field]
-        public int Rating { get; set; }
-        [Field]
-        public bool Censorship { get; set; }
     }
 }
