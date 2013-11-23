@@ -1,11 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustWunderMobile.DAL", "JustWunderMobile.DAL\JustWunderMobile.DAL.csproj", "{A7A12E75-E04F-460D-8619-13BEDA50AED2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustWunderMobile.Common", "JustWunderMobile.Common\JustWunderMobile.Common.csproj", "{FFF246E3-AE0E-4DA4-ACF0-A4CCBE87119B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustWunderMobile.DataModels", "JustWunderMobile.DataModels\JustWunderMobile.DataModels.csproj", "{4A2BBEC5-40CE-4185-9A2D-0DA75BC3BED2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustWunderMobile.SAL", "JustWunderMobile.SAL\JustWunderMobile.SAL.csproj", "{79D55B71-4F76-4DB4-8ACE-E11BF3E45EFA}"
 EndProject
@@ -15,18 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A7A12E75-E04F-460D-8619-13BEDA50AED2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A7A12E75-E04F-460D-8619-13BEDA50AED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A7A12E75-E04F-460D-8619-13BEDA50AED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A7A12E75-E04F-460D-8619-13BEDA50AED2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FFF246E3-AE0E-4DA4-ACF0-A4CCBE87119B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FFF246E3-AE0E-4DA4-ACF0-A4CCBE87119B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFF246E3-AE0E-4DA4-ACF0-A4CCBE87119B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFF246E3-AE0E-4DA4-ACF0-A4CCBE87119B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4A2BBEC5-40CE-4185-9A2D-0DA75BC3BED2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A2BBEC5-40CE-4185-9A2D-0DA75BC3BED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A2BBEC5-40CE-4185-9A2D-0DA75BC3BED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A2BBEC5-40CE-4185-9A2D-0DA75BC3BED2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{79D55B71-4F76-4DB4-8ACE-E11BF3E45EFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{79D55B71-4F76-4DB4-8ACE-E11BF3E45EFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79D55B71-4F76-4DB4-8ACE-E11BF3E45EFA}.Release|Any CPU.ActiveCfg = Release|Any CPU

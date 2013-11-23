@@ -1,5 +1,6 @@
-﻿using JustWunderMobile.DAL.Models;
-using JustWunderMobile.DataModels;
+﻿
+using JustWunderMobile.Common.DAL.Entities;
+using JustWunderMobile.Common.DataModels;
 
 namespace JustWunderMobile.Common
 {

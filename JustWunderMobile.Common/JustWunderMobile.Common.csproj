@@ -11,7 +11,7 @@
     <RootNamespace>JustWunderMobile.Common</RootNamespace>
     <AssemblyName>JustWunderMobile.Common</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Profile4</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Profile104</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
@@ -33,24 +33,49 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-    <ProjectReference Include="..\JustWunderMobile.DAL\JustWunderMobile.DAL.csproj">
-      <Project>{a7a12e75-e04f-460d-8619-13beda50aed2}</Project>
-      <Name>JustWunderMobile.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\JustWunderMobile.DataModels\JustWunderMobile.DataModels.csproj">
-      <Project>{4a2bbec5-40ce-4185-9a2d-0da75bc3bed2}</Project>
-      <Name>JustWunderMobile.DataModels</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="App.cs" />
+    <Compile Include="DAL\Contracts\IRepository.cs" />
+    <Compile Include="DAL\Interfaces\INewJokeRepository.cs" />
+    <Compile Include="DAL\Interfaces\IReleaseJokeRepository.cs" />
+    <Compile Include="DAL\Entities\NewJoke.cs" />
+    <Compile Include="DAL\Entities\ReleaseJoke.cs" />
+    <Compile Include="DAL\Repositories\BaseRepository.cs" />
+    <Compile Include="DAL\Repositories\NewJokeRepository.cs" />
+    <Compile Include="DAL\Repositories\ReleaseJokeRepository.cs" />
+    <Compile Include="DataModels\NewJokeDataModel.cs" />
+    <Compile Include="DataModels\ReleaseJokeDataModel.cs" />
     <Compile Include="EntityExtensions.cs" />
-    <Compile Include="Interfaces\IService.cs" />
+    <Compile Include="Interfaces\INewJokeService.cs" />
+    <Compile Include="Interfaces\IReleasedJokeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\NewJokesService.cs" />
     <Compile Include="Services\ReleaseJokesService.cs" />
+    <Compile Include="ViewModels\FirstViewModel.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Cirrious.CrossCore">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.0.14\lib\portable-win+net45+MonoAndroid+MonoTouch+sl40+wp71\Cirrious.CrossCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross">
+      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.0.14\lib\portable-win+net45+MonoAndroid+MonoTouch+sl40+wp71\Cirrious.MvvmCross.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Localization">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.0.14\lib\portable-win+net45+MonoAndroid+MonoTouch+sl40+wp71\Cirrious.MvvmCross.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.Sqlite">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Sqlite.3.0.14\lib\portable-win+net45+MonoAndroid+MonoTouch+sl40+wp71\Cirrious.MvvmCross.Plugins.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="JustWunderMobile.DAL">
+      <HintPath>..\JustWunderMobile.DAL\bin\Debug\JustWunderMobile.DAL.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ToDo-MvvmCross\_ Core.txt" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
