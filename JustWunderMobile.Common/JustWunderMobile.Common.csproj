@@ -44,7 +44,7 @@
     <Compile Include="DAL\Repositories\ReleaseJokeRepository.cs" />
     <Compile Include="DataModels\NewJokeDataModel.cs" />
     <Compile Include="DataModels\ReleaseJokeDataModel.cs" />
-    <Compile Include="EntityExtensions.cs" />
+    <Compile Include="Mapping\MappingExtensions.cs" />
     <Compile Include="Interfaces\INewJokeService.cs" />
     <Compile Include="Interfaces\IReleasedJokeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,9 +65,6 @@
     <Reference Include="Cirrious.MvvmCross.Plugins.Sqlite">
       <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Sqlite.3.0.14\lib\portable-win+net45+MonoAndroid+MonoTouch+sl40+wp71\Cirrious.MvvmCross.Plugins.Sqlite.dll</HintPath>
     </Reference>
-    <Reference Include="JustWunderMobile.DAL">
-      <HintPath>..\JustWunderMobile.DAL\bin\Debug\JustWunderMobile.DAL.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -75,7 +72,12 @@
   <ItemGroup>
     <Content Include="ToDo-MvvmCross\_ Core.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\JustWunderMobile.SAL\JustWunderMobile.SAL.csproj">
+      <Project>{79d55b71-4f76-4db4-8ace-e11bf3e45efa}</Project>
+      <Name>JustWunderMobile.SAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

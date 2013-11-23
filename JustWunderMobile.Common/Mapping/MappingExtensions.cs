@@ -1,13 +1,12 @@
-﻿
-using JustWunderMobile.Common.DAL.Entities;
+﻿using JustWunderMobile.Common.DAL.Entities;
 using JustWunderMobile.Common.DataModels;
 
-namespace JustWunderMobile.Common
+namespace JustWunderMobile.Common.Mapping
 {
     /// <summary>
-    /// Class-converter Entity->Model and Model->Entity
+    /// Class-converter Entity->DataModel, DataModel->Entity, DTO->Entity and Entity->DTO
     /// </summary>
-    public static class EntityExtensions
+    public static class MappingExtensions
     {
         #region ReleaseJoke
         /// <summary>
@@ -45,6 +44,45 @@ namespace JustWunderMobile.Common
 
             return entity;
         }
+
+        #region DTO Mapping
+        /// <summary>
+        /// Maps ReleaseJokeDTO to ReleaseJoke entity.
+        /// </summary>
+        /// <param name="dto">ReleaseJokeDTO</param>
+        /// <returns>ReleaseJoke entity</returns>
+        public static ReleaseJoke GetEntity(this SAL.Interfaces.IApiReleaseJoke dto)
+        {
+            var entity = new ReleaseJoke();
+            entity.Id = dto.Id;
+            entity.PublishDate = dto.PublishDate;
+            entity.Rating = dto.Rating;
+            entity.TextJoke = dto.TextJoke;
+            entity.UserEmail = dto.UserEmail;
+            entity.Censorship = dto.Censorship;
+
+            return entity;
+        }
+
+        /// <summary>
+        /// Maps ReleaseJoke entity to ReleaseJokeDTO.
+        /// </summary>
+        /// <param name="entity">ReleaseJoke entity</param>
+        /// <returns>ReleaseJoke DTO</returns>
+        public static SAL.Interfaces.IApiReleaseJoke GetDTO(this ReleaseJoke entity)
+        {
+            var dto = new SAL.DTO.ReleaseJoke();
+            dto.Id = entity.Id;
+            dto.PublishDate = entity.PublishDate;
+            dto.Rating = entity.Rating;
+            dto.TextJoke = entity.TextJoke;
+            dto.UserEmail = entity.UserEmail;
+            dto.Censorship = entity.Censorship;
+
+            return dto;
+        }
+        #endregion
+
         #endregion
 
         #region NewJoke
@@ -81,6 +119,25 @@ namespace JustWunderMobile.Common
 
             return entity;
         }
+
+        #region DTO Mapping
+
+        /// <summary>
+        /// Maps NewJoke entity to NewJoke DTO.
+        /// </summary>
+        /// <param name="entity">NewJoke entity</param>
+        /// <returns>NewJoke DTO</returns>
+        public static SAL.Interfaces.IApiInboxJoke GetDTO(this NewJoke entity)
+        {
+            var dto = new SAL.DTO.InboxJoke();
+            dto.Id = entity.Id;
+            dto.TextJoke = entity.TextJoke;
+            dto.UserEmail = entity.UserEmail;
+
+            return dto;
+        }
+        #endregion
+
         #endregion
     }
 }
