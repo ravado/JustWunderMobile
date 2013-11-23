@@ -2,6 +2,9 @@
 
 namespace JustWunderMobile.Common.DataModels
 {
+    /// <summary>
+    /// Data representation for new joke
+    /// </summary>
     public class NewJokeDataModel
     {
         public int Id { get; set; }

@@ -8,6 +8,18 @@ namespace JustWunderMobile.SAL.Services
     /// </summary>
     public class JustWunderApiService : IApiService
     {
+        #region Properties
+        public string ApiUrl { get; set; }
+        #endregion
+
+        #region Constructors
+        public JustWunderApiService(string apiUrl)
+        {
+            ApiUrl = apiUrl;
+        }
+        #endregion
+
+        #region IApiService implementation
         public IEnumerable<IApiReleaseJoke> GetAllReleasedJokes()
         {
             throw new System.NotImplementedException();
@@ -18,9 +30,10 @@ namespace JustWunderMobile.SAL.Services
             throw new System.NotImplementedException();
         }
 
-        public void PostNewJoke(IApiInboxJoke newJoke)
+        public bool PostNewJoke(IApiInboxJoke newJoke)
         {
             throw new System.NotImplementedException();
         }
+        #endregion
     }
 }
