@@ -3,7 +3,7 @@ using JustWunderMobile.Common.DAL.Entities;
 
 namespace JustWunderMobile.Common.DAL.Interfaces
 {
-    public interface INewJokeRepository : IRepository<ReleaseJoke>
+    public interface INewJokeRepository : IRepository<NewJoke>
     {
     }
 }

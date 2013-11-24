@@ -27,5 +27,7 @@ namespace JustWunderMobile.SAL.Interfaces
         /// <param name="newJoke">Joke object</param>
         /// <returns>true if posted, otherwise false</returns>
         bool PostNewJoke(IApiInboxJoke newJoke);
+
+        void VoteJokes(IApiJokeVoteContainer voteJokesContainer);
     }
 }

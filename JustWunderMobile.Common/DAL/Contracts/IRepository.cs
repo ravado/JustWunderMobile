@@ -7,11 +7,8 @@ namespace JustWunderMobile.Common.DAL.Contracts
         void Insert(T entity);
         void Update(T entity);
         void Delete(T entity);
-
-        IEnumerable<T> GetAll(bool withReferences);
-
+        IEnumerable<T> GetAll();
         T GetById(int id);
-
         void DeleteAll();
     }
 }

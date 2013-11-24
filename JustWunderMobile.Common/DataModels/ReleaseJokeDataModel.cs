@@ -13,5 +13,6 @@ namespace JustWunderMobile.Common.DataModels
         public string UserEmail { get; set; }
         public int Rating { get; set; }
         public bool Censorship { get; set; }
+        public int Vote { get; set; }
     }
 }

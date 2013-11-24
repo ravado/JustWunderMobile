@@ -23,6 +23,7 @@ namespace JustWunderMobile.Common.Mapping
             model.TextJoke = entity.TextJoke;
             model.UserEmail = entity.UserEmail;
             model.Censorship = entity.Censorship;
+            model.Vote = entity.Vote;
 
             return model;
         }
@@ -41,6 +42,7 @@ namespace JustWunderMobile.Common.Mapping
             entity.TextJoke = model.TextJoke;
             entity.UserEmail = model.UserEmail;
             entity.Censorship = model.Censorship;
+            entity.Vote = model.Vote;
 
             return entity;
         }

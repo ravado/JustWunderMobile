@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DTO\JokesVoteContainer.cs" />
+    <Compile Include="DTO\JokeVote.cs" />
+    <Compile Include="Interfaces\IApiJokeVoteContainer.cs" />
+    <Compile Include="Interfaces\IApiVote.cs" />
     <Compile Include="Interfaces\IApiInboxJoke.cs" />
     <Compile Include="Interfaces\IApiReleaseJoke.cs" />
     <Compile Include="Interfaces\IApiService.cs" />

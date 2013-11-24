@@ -34,6 +34,13 @@ namespace JustWunderMobile.SAL.Services
         {
             throw new System.NotImplementedException();
         }
+
+        public void VoteJokes(IApiJokeVoteContainer voteJokesContainer)
+        {
+            throw new System.NotImplementedException();
+        }
         #endregion
+
+
     }
 }

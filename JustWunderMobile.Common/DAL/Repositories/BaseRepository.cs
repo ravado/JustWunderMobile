@@ -41,7 +41,7 @@ namespace JustWunderMobile.Common.DAL.Repositories
             Store.Delete(entity);
         }
 
-        public IEnumerable<T> GetAll(bool withReferences)
+        public IEnumerable<T> GetAll()
         {
             return Store.Table<T>().AsEnumerable();
         }
