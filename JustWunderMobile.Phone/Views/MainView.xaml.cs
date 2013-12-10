@@ -16,6 +16,12 @@ namespace JustWunderMobile.Phone.Views
         public MainView()
         {
             InitializeComponent();
+            Loaded  += OnLoaded;
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
+        {
+            NavigationService.RemoveBackEntry();
         }
     }
 }
