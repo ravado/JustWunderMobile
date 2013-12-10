@@ -11,7 +11,7 @@
     <RootNamespace>JustWunderMobile.Common</RootNamespace>
     <AssemblyName>JustWunderMobile.Common</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Profile104</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Profile158</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
@@ -52,6 +52,21 @@
     <Compile Include="Services\ReleaseJokesService.cs" />
     <Compile Include="Services\SyncService.cs" />
     <Compile Include="ViewModels\FirstViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\SplashViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JustWunderMobile.SAL\JustWunderMobile.SAL.csproj">
+      <Project>{79d55b71-4f76-4db4-8ace-e11bf3e45efa}</Project>
+      <Name>JustWunderMobile.SAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JustWunderModile.FakeData\JustWunderMobile.FakeData.csproj">
+      <Project>{b5208244-5731-4c83-808c-8f483f5b8ce3}</Project>
+      <Name>JustWunderMobile.FakeData</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
@@ -68,20 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="ToDo-MvvmCross\_ Core.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\JustWunderMobile.SAL\JustWunderMobile.SAL.csproj">
-      <Project>{79d55b71-4f76-4db4-8ace-e11bf3e45efa}</Project>
-      <Name>JustWunderMobile.SAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\JustWunderModile.FakeData\JustWunderMobile.FakeData.csproj">
-      <Project>{b5208244-5731-4c83-808c-8f483f5b8ce3}</Project>
-      <Name>JustWunderMobile.FakeData</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

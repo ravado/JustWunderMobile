@@ -21,5 +21,11 @@ namespace JustWunderMobile.FakeData
 
             return rand;
         }
+
+
+        public void VoteJokes(IApiJokeVoteContainer voteJokesContainer)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
