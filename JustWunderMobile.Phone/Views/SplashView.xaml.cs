@@ -25,16 +25,14 @@ namespace JustWunderMobile.Phone.Views
         {
             base.OnNavigatedTo(e);
 
-            Task.Run(() =>
+            Task.Run(() => Thread.Sleep(3000)).ContinueWith(x =>
             {
-                Thread.Sleep(5000);
-
-            }).ContinueWith(x =>
-            {
-                Dispatcher.BeginInvoke(() => (ViewModel as SplashViewModel).ShowMainViewCommand.Execute(null));
+                Dispatcher.BeginInvoke(() =>
+                {
+                    var vm = (ViewModel as SplashViewModel);
+                    if (vm != null) vm.ShowMainViewCommand.Execute(null);
+                });
             });
-            
-            
         }
     }
 }

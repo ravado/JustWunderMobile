@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
+﻿using System.Windows.Controls;
 using Cirrious.MvvmCross.WindowsPhone.Views;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
+using System.Windows;
+using System.Windows.Navigation;
 
 namespace JustWunderMobile.Phone.Views
 {
@@ -22,6 +16,8 @@ namespace JustWunderMobile.Phone.Views
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
         {
             NavigationService.RemoveBackEntry();
+
+            Grid
         }
     }
 }

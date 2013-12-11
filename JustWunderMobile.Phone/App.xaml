@@ -8,6 +8,13 @@
     <!--Application Resources-->
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:JustWunderMobile.Phone" x:Key="LocalizedStrings"/>
+
+        <!-- Main Color Scheme -->
+        <Color x:Key="MainRedColor" >#F46554</Color>
+        <SolidColorBrush x:Key="MainRedColorBrush" Color="{StaticResource MainRedColor}"/>
+        
+        
+        
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
