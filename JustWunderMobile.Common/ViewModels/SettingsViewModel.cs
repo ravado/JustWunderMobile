@@ -7,7 +7,7 @@ using Cirrious.MvvmCross.ViewModels;
 
 namespace JustWunderMobile.Common.ViewModels
 {
-    public class MainViewModel : MvxViewModel
+    public class SettingsViewModel : MvxViewModel
     {
         // commands
         private MvxCommand _refreshCommand;
@@ -33,7 +33,7 @@ namespace JustWunderMobile.Common.ViewModels
 
         private void ShowSettings()
         {
-            ShowViewModel<SettingsViewModel>();
+            System.Diagnostics.Debug.WriteLine("SETTINGS...");
         }
 
         private void Refresh()
