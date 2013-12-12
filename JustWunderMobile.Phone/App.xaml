@@ -3,7 +3,9 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone">
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone"
+    xmlns:interop="clr-namespace:System.Windows.Interop;assembly=System.Windows">
 
     <!--Application Resources-->
     <Application.Resources>
@@ -12,9 +14,73 @@
         <!-- Main Color Scheme -->
         <Color x:Key="MainRedColor" >#F46554</Color>
         <SolidColorBrush x:Key="MainRedColorBrush" Color="{StaticResource MainRedColor}"/>
+
+        <Color x:Key="MainWhiteColor" >#FFFFFF</Color>
+        <SolidColorBrush x:Key="MainWhiteColorBrush" Color="{StaticResource MainWhiteColor}"/>
+
+        <!-- Font Color -->
+        <Color x:Key="MainFontColor">#000000</Color>
+        <Color x:Key="SecondaryFontColor">#FFFFFF</Color>
+        <SolidColorBrush x:Key="MainFontColorBrush" Color="{StaticResource MainFontColor}"/>
+        <SolidColorBrush x:Key="SecondaryFontColorBrush" Color="{StaticResource SecondaryFontColor}"/>
         
-        
-        
+        <!--  -->
+        <Style x:Key="MainPivot" TargetType="phone:Pivot">
+            <Setter Property="Background" Value="{StaticResource MainWhiteColor}"></Setter>
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Grid Background="Transparent" Margin="0">
+                            <TextBlock FontSize="60" Text="{Binding}"></TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="TitleTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Grid Background="Transparent" Margin="0">
+                            <TextBlock FontSize="22" Foreground="{StaticResource SecondaryFontColorBrush}" Text="{Binding}"></TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <Grid/>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="phone:Pivot">
+                        <Grid HorizontalAlignment="{TemplateBinding HorizontalAlignment}" 
+                              VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Background="{StaticResource MainRedColorBrush}" CacheMode="BitmapCache" Grid.RowSpan="2" />
+                            <Grid Background="{TemplateBinding Background}" CacheMode="BitmapCache" Grid.Row="2" />
+                            <ContentPresenter ContentTemplate="{TemplateBinding TitleTemplate}"
+                                              Content="{TemplateBinding Title}" Margin="24,17,0,-7">
+                            </ContentPresenter>
+                            
+                            <primitives:PivotHeadersControl x:Name="HeadersListElement" Grid.Row="1" Margin="0 0 0 5" Foreground="{StaticResource SecondaryFontColorBrush}"/>
+                            <ItemsPresenter x:Name="PivotItemPresenter"
+                                            Margin="{TemplateBinding Padding}" Grid.Row="2"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="MainPivotItem" TargetType="phone:PivotItem">
+            <Setter Property="Background" Value="{StaticResource MainWhiteColorBrush}"></Setter>
+            <Setter Property="Margin" Value=" 0 0 0 0"></Setter>
+        </Style>
+
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

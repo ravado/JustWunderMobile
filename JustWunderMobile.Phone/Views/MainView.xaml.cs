@@ -17,7 +17,6 @@ namespace JustWunderMobile.Phone.Views
         {
             NavigationService.RemoveBackEntry();
 
-            Grid
         }
     }
 }

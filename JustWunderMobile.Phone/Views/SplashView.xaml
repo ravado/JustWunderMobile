@@ -27,7 +27,8 @@
             <TextBlock
                 FontSize="55" FontWeight="Bold"
                 VerticalAlignment="Center" HorizontalAlignment="Center"
-                Text="Just Wunder"></TextBlock>
+                Text="Just Wunder"
+                Foreground="{StaticResource SecondaryFontColorBrush}"></TextBlock>
         </Grid>
     </Grid>
 
