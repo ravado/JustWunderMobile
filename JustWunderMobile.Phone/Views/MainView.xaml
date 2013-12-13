@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ec="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
     xmlns:views="clr-namespace:Cirrious.MvvmCross.WindowsPhone.Views;assembly=Cirrious.MvvmCross.WindowsPhone"
     xmlns:appBarUtils="clr-namespace:AppBarUtils;assembly=AppBarUtils"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
@@ -42,13 +43,19 @@
                         <appBarUtils:AppBar Id="0" Opacity="1" BackgroundColor="{StaticResource MainRedColor}">
                             <appBarUtils:AppBarButton 
                                 IconUri="/Assets/AppBar/refresh.png"
-                                Text="Refresh"
+                                Text="Обновить"
                                 Command="{Binding RefreshCommand}"
                                 />
                             <appBarUtils:AppBarButton 
                                 IconUri="/Assets/AppBar/feature.settings.png"
-                                Text="Settings"
+                                Text="Настройки"
                                 Command="{Binding ShowSettingsCommand}"/>
+
+                            <appBarUtils:AppBar.MenuItems>
+                                <appBarUtils:AppBarMenuItem 
+                                    Text="О программе" 
+                                    Command="{Binding ShowAboutCommand}"/>
+                            </appBarUtils:AppBar.MenuItems>
                         </appBarUtils:AppBar>
                     </appBarUtils:SwitchAppBarAction>
                 </appBarUtils:SelectedPivotItemChangedTrigger>

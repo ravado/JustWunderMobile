@@ -51,6 +51,7 @@
     <Compile Include="Services\NewJokesService.cs" />
     <Compile Include="Services\ReleaseJokesService.cs" />
     <Compile Include="Services\SyncService.cs" />
+    <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\FirstViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

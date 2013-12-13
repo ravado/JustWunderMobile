@@ -11,7 +11,8 @@ namespace JustWunderMobile.Common.ViewModels
     {
         // commands
         private MvxCommand _refreshCommand;
-        private MvxCommand showSettingsCommand;
+        private MvxCommand _showSettingsCommand;
+        private MvxCommand _showAboutCommand;
 
         // commands
         public ICommand RefreshCommand
@@ -26,9 +27,23 @@ namespace JustWunderMobile.Common.ViewModels
         {
             get
             {
-                showSettingsCommand = showSettingsCommand ?? new MvxCommand(ShowSettings);
-                return showSettingsCommand;
+                _showSettingsCommand = _showSettingsCommand ?? new MvxCommand(ShowSettings);
+                return _showSettingsCommand;
             }
+        }
+
+        public ICommand ShowAboutCommand
+        {
+            get
+            {
+                _showAboutCommand = _showAboutCommand ?? new MvxCommand(ShowAbout);
+                return _showAboutCommand;
+            }
+        }
+
+        private void ShowAbout()
+        {
+            ShowViewModel<AboutViewModel>();
         }
 
         private void ShowSettings()
