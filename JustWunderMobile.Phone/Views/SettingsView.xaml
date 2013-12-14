@@ -28,6 +28,11 @@
                 FontSize="60"
                 VerticalAlignment="Center">Settings</TextBlock>
         </Grid>
-        <Grid Row="1" Background="{StaticResource MainWhiteColorBrush}"></Grid>
+        <Grid Row="1" Background="{StaticResource MainWhiteColorBrush}">
+            <Button Content="Back" 
+                    Background="Teal"
+                    Command="{Binding BackCommand}"
+                    HorizontalAlignment="Left" Margin="305,539,0,0" VerticalAlignment="Top"/>
+        </Grid>
     </Grid>
 </views:MvxPhonePage>
