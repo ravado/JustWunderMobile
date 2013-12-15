@@ -18,7 +18,7 @@
     shell:SystemTray.IsVisible="False">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Style="{StaticResource MainGrid}">
 
         <phone:Pivot Name="MainPivot"
                      Style="{StaticResource MainPivot}"
@@ -27,12 +27,6 @@
             <phone:PivotItem Header="топ" Style="{StaticResource MainPivotItem}" />
             <phone:PivotItem Header="избранные" Style="{StaticResource MainPivotItem}" />
 
-            <!--<i:Interaction.Behaviors>
-                <appBarUtils:AppBarPropertyBinder
-                    ForegroundColor="{StaticResource MainFontColor}"
-                    BackgroundColor="{StaticResource MainRedColor}"/>
-
-            </i:Interaction.Behaviors>-->
             <i:Interaction.Triggers>
                 <appBarUtils:SelectedPivotItemChangedTrigger>
                     <appBarUtils:SelectedPivotItemChangedTrigger.SelectionMappings>

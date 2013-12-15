@@ -17,22 +17,19 @@
     shell:SystemTray.IsVisible="False">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="{StaticResource MainRedColorBrush}">
+    <Grid x:Name="LayoutRoot" Style="{StaticResource MainGrid}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="150"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid Row="0">
-            <TextBlock
-                Margin="20"
-                FontSize="60"
-                VerticalAlignment="Center">Settings</TextBlock>
+            <Grid Style="{StaticResource HeaderBox}">
+                <TextBlock
+                    Style="{StaticResource HeaderTitle}"
+                    Text="НАСТРОЙКИ" />
+            </Grid>
+            
         </Grid>
-        <Grid Row="1" Background="{StaticResource MainWhiteColorBrush}">
-            <Button Content="Back" 
-                    Background="Teal"
-                    Command="{Binding BackCommand}"
-                    HorizontalAlignment="Left" Margin="305,539,0,0" VerticalAlignment="Top"/>
-        </Grid>
+        <Grid Row="1" />
     </Grid>
 </views:MvxPhonePage>

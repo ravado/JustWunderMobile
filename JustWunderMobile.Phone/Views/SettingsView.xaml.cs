@@ -1,9 +1,4 @@
-﻿using System.ComponentModel;
-using System.Windows.Controls;
-using Cirrious.MvvmCross.WindowsPhone.Views;
-using System.Windows;
-using System.Windows.Navigation;
-using JustWunderMobile.Common.ViewModels;
+﻿using Cirrious.MvvmCross.WindowsPhone.Views;
 
 namespace JustWunderMobile.Phone.Views
 {
@@ -13,6 +8,5 @@ namespace JustWunderMobile.Phone.Views
         {
             InitializeComponent();
         }
-
     }
 }

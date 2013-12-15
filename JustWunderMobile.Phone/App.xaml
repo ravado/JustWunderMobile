@@ -11,7 +11,7 @@
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:JustWunderMobile.Phone" x:Key="LocalizedStrings"/>
 
-        
+
         <!-- Main Color Scheme -->
         <Color x:Key="MainRedColor" >#F46554</Color>
         <SolidColorBrush x:Key="MainRedColorBrush" Color="{StaticResource MainRedColor}"/>
@@ -24,15 +24,37 @@
         <Color x:Key="SecondaryFontColor">#FFFFFF</Color>
         <SolidColorBrush x:Key="MainFontColorBrush" Color="{StaticResource MainFontColor}"/>
         <SolidColorBrush x:Key="SecondaryFontColorBrush" Color="{StaticResource SecondaryFontColor}"/>
-        
-        <!--  -->
+
+        <!-- Grids -->
+        <Style x:Key="MainGrid" TargetType="Grid">
+            <Setter Property="Background" Value="{StaticResource MainWhiteColorBrush}"></Setter>
+        </Style>
+
+        <!-- Header Box -->
+        <Style x:Key="HeaderBox" TargetType="Panel">
+            <Setter Property="Background" Value="{StaticResource MainRedColorBrush}" />
+            <Setter Property="Height" Value="125"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />            
+        </Style>
+
+        <!-- Header Title -->
+        <Style x:Key="HeaderTitle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontFamily" Value="Segoe WP" />
+            <Setter Property="Margin" Value="25" />
+        </Style>
+
+        <!-- Pivots -->
         <Style x:Key="MainPivot" TargetType="phone:Pivot">
             <Setter Property="Background" Value="{StaticResource MainWhiteColor}"></Setter>
             <Setter Property="HeaderTemplate">
                 <Setter.Value>
                     <DataTemplate>
                         <Grid Background="Transparent" Margin="0">
-                            <TextBlock FontSize="60" Text="{Binding}"></TextBlock>
+                            <TextBlock FontSize="60" Text="{Binding}" ></TextBlock>
                         </Grid>
                     </DataTemplate>
                 </Setter.Value>
@@ -40,7 +62,7 @@
             <Setter Property="TitleTemplate">
                 <Setter.Value>
                     <DataTemplate>
-                        <Grid Background="Transparent" Margin="0">
+                        <Grid Background="Transparent" Margin="0" Height="30" >
                             <TextBlock FontSize="22" Foreground="{StaticResource SecondaryFontColorBrush}" Text="{Binding}"></TextBlock>
                         </Grid>
                     </DataTemplate>
@@ -68,7 +90,7 @@
                             <ContentPresenter ContentTemplate="{TemplateBinding TitleTemplate}"
                                               Content="{TemplateBinding Title}" Margin="24,17,0,-7">
                             </ContentPresenter>
-                            
+
                             <primitives:PivotHeadersControl x:Name="HeadersListElement" Grid.Row="1" Margin="0 0 0 5" Foreground="{StaticResource SecondaryFontColorBrush}"/>
                             <ItemsPresenter x:Name="PivotItemPresenter"
                                             Margin="{TemplateBinding Padding}" Grid.Row="2"/>
