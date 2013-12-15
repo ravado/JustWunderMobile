@@ -25,9 +25,9 @@
         <phone:Pivot Name="MainPivot"
                      Style="{StaticResource MainPivot}"
                      Title="{Binding AppName}">
-            <phone:PivotItem Header="{Binding NewJokesLabel}" Style="{StaticResource MainPivotItem}" />
-            <phone:PivotItem Header="{Binding TopJokesLabel}" Style="{StaticResource MainPivotItem}" />
-            <phone:PivotItem Header="{Binding FavoriteJokesLabel}" Style="{StaticResource MainPivotItem}" />
+            <phone:PivotItem Header="{Binding NewJokesLabel, Converter={StaticResource LowercaseConverter}}" Style="{StaticResource MainPivotItem}" />
+            <phone:PivotItem Header="{Binding TopJokesLabel, Converter={StaticResource LowercaseConverter}}" Style="{StaticResource MainPivotItem}" />
+            <phone:PivotItem Header="{Binding FavoriteJokesLabel, Converter={StaticResource LowercaseConverter}}" Style="{StaticResource MainPivotItem}" />
 
             <i:Interaction.Triggers>
                 <appBarUtils:SelectedPivotItemChangedTrigger>

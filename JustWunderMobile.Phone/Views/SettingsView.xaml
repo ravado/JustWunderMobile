@@ -27,7 +27,7 @@
             <Grid Style="{StaticResource HeaderBox}">
                 <TextBlock
                     Style="{StaticResource HeaderTitle}"
-                    Text="{Binding PageName}" />
+                    Text="{Binding PageName, Converter={StaticResource UppercaseConverter}}" />
             </Grid>
 
         </Grid>

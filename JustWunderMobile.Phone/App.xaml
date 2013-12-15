@@ -5,11 +5,15 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone"
-    xmlns:interop="clr-namespace:System.Windows.Interop;assembly=System.Windows"
+    xmlns:converters="clr-namespace:JustWunderMobile.Phone.Classes.Converters"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
 
     <!--Application Resources-->
     <Application.Resources>
+
+        <converters:LowercaseConverter x:Key="LowercaseConverter"/>
+        <converters:UppercaseConverter x:Key="UppercaseConverter"/>
+
         <local:LocalizedStrings xmlns:local="clr-namespace:JustWunderMobile.Phone" x:Key="LocalizedStrings"/>
 
 
