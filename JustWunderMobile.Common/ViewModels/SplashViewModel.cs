@@ -1,20 +1,26 @@
 using System.Threading;
 using System.Windows.Input;
 using Cirrious.MvvmCross.ViewModels;
+using JustWunderMobile.Common.Resources;
 
 namespace JustWunderMobile.Common.ViewModels
 {
-    public class SplashViewModel 
-		: MvxViewModel
+    public class SplashViewModel : BaseViewModel
     {
         #region Fields
 
-        // commands
+        #region Commands
         private MvxCommand _showMainViewCommand;
         #endregion
 
+        #endregion
 
         #region Properties
+
+        public override string PageName
+        {
+            get { return UILabels.SplashScreen_Name; }
+        }
 
         #region Commands
 
@@ -48,16 +54,5 @@ namespace JustWunderMobile.Common.ViewModels
 
         #endregion
 
-
-
-
-
-        //example of props
-        private string _hello = "Hello MvvmCross";
-        public string Hello
-		{ 
-			get { return _hello; }
-			set { _hello = value; RaisePropertyChanged(() => Hello); }
-		}
     }
 }

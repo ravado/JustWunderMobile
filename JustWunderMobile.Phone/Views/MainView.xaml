@@ -24,10 +24,10 @@
 
         <phone:Pivot Name="MainPivot"
                      Style="{StaticResource MainPivot}"
-                     Title="Just Wunder">
-            <phone:PivotItem Header="новые" Style="{StaticResource MainPivotItem}" />
-            <phone:PivotItem Header="топ" Style="{StaticResource MainPivotItem}" />
-            <phone:PivotItem Header="избранные" Style="{StaticResource MainPivotItem}" />
+                     Title="{Binding AppName}">
+            <phone:PivotItem Header="{Binding NewJokesLabel}" Style="{StaticResource MainPivotItem}" />
+            <phone:PivotItem Header="{Binding TopJokesLabel}" Style="{StaticResource MainPivotItem}" />
+            <phone:PivotItem Header="{Binding FavoriteJokesLabel}" Style="{StaticResource MainPivotItem}" />
 
             <i:Interaction.Triggers>
                 <appBarUtils:SelectedPivotItemChangedTrigger>
@@ -39,17 +39,17 @@
                         <appBarUtils:AppBar Id="0" Opacity="1" BackgroundColor="{StaticResource MainRedColor}">
                             <appBarUtils:AppBarButton 
                                 IconUri="/Assets/AppBar/refresh.png"
-                                Text="Обновить"
+                                Text="{Binding MenuRefreshLabel}"
                                 Command="{Binding RefreshCommand}"
                                 />
                             <appBarUtils:AppBarButton 
                                 IconUri="/Assets/AppBar/feature.settings.png"
-                                Text="Настройки"
+                                Text="{Binding MenuSettingsLabel}"
                                 Command="{Binding ShowSettingsCommand}"/>
 
                             <appBarUtils:AppBar.MenuItems>
                                 <appBarUtils:AppBarMenuItem 
-                                    Text="О программе" 
+                                    Text="{Binding MenuAboutLabel}" 
                                     Command="{Binding ShowAboutCommand}"/>
                             </appBarUtils:AppBar.MenuItems>
                         </appBarUtils:AppBar>

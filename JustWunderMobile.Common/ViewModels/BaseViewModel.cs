@@ -4,11 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Cirrious.MvvmCross.ViewModels;
+using JustWunderMobile.Common.Resources;
 
 namespace JustWunderMobile.Common.ViewModels
 {
     public class BaseViewModel : MvxViewModel
     {
+
+        public string AppName
+        {
+            get
+            {
+                return UILabels.App_Name;
+            }
+        }
+        public virtual string PageName
+        {
+            get
+            {
+                return String.Empty;
+            }
+        }
+
         private ICommand _backCommand;
 
         // commands

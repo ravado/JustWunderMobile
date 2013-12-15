@@ -28,7 +28,7 @@
             <Grid Style="{StaticResource HeaderBox}">
                 <TextBlock
                 Style="{StaticResource HeaderTitle}"
-                Text="О ПРОГРАММЕ"/>
+                Text="{Binding PageName}"/>
             </Grid>
         </Grid>
         <Grid Row="1" Background="{StaticResource MainWhiteColorBrush}"></Grid>
@@ -42,7 +42,7 @@
     <!--Usage samples-->
     <i:Interaction.Behaviors>
         <appBarUtils:AppBarItemCommand 
-            Id="back" Text="назад"
+            Id="back" Text="{Binding MenuBackLabel}"
             IconUri="/Assets/AppBar/back.png"
             Command="{Binding BackCommand}"/>
     </i:Interaction.Behaviors>

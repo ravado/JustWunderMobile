@@ -1,45 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Input;
-using Cirrious.MvvmCross.ViewModels;
+﻿using JustWunderMobile.Common.Resources;
 
 namespace JustWunderMobile.Common.ViewModels
 {
     public class SettingsViewModel : BaseViewModel
     {
-        // commands
-        private MvxCommand _refreshCommand;
-        private MvxCommand showSettingsCommand;
+        #region Fields
 
+        #region Commands
+        #endregion
 
+        #endregion
 
-        public ICommand RefreshCommand
+        #region Properties
+
+        public override string PageName
         {
-            get
-            {
-                _refreshCommand = _refreshCommand ?? new MvxCommand(Refresh);
-                return _refreshCommand;
-            }
+            get { return UILabels.SettingsPage_Name; }
         }
-        public ICommand ShowSettingsCommand
+        public string MenuBackLabel
         {
-            get
-            {
-                showSettingsCommand = showSettingsCommand ?? new MvxCommand(ShowSettings);
-                return showSettingsCommand;
-            }
+            get { return UILabels.SettingsPage_Menu_Back; }
         }
 
-        private void ShowSettings()
-        {
-            System.Diagnostics.Debug.WriteLine("SETTINGS...");
-        }
+        #region Commands
+        
+        #endregion
 
-        private void Refresh()
-        {
-            System.Diagnostics.Debug.WriteLine("REFRESHING...");
-        }
+        #endregion
     }
 }
