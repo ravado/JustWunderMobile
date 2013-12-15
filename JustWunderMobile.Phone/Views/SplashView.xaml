@@ -24,11 +24,25 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock
-                FontSize="55" FontWeight="Bold"
-                VerticalAlignment="Center" HorizontalAlignment="Center"
-                Text="Just Wunder"
-                Foreground="{StaticResource SecondaryFontColorBrush}"></TextBlock>
+            <Grid Width="250" Height="250">
+                <Border
+                    Background="{StaticResource MainDarkColorBrush}"
+                    CornerRadius="200">
+                    <TextBlock 
+                        FontSize="40"
+                        FontWeight="Bold"
+                        Text="Just Wunder"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontFamily="{StaticResource BilboSwash}"
+                        CharacterSpacing="25"/>
+                        <!--FontFamily="Assets/Fonts/BilboSwashCaps-Regular.ttf#Bilbo Swash Caps"-->
+                        
+                    
+                </Border>
+            </Grid>
+
+
         </Grid>
     </Grid>
 

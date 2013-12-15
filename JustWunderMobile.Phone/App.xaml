@@ -17,6 +17,9 @@
         <Color x:Key="MainRedColor" >#F46554</Color>
         <SolidColorBrush x:Key="MainRedColorBrush" Color="{StaticResource MainRedColor}"/>
 
+        <Color x:Key="MainDarkColor" >#4C5365</Color>
+        <SolidColorBrush x:Key="MainDarkColorBrush" Color="{StaticResource MainDarkColor}"/>
+
         <Color x:Key="MainWhiteColor" >#FFFFFF</Color>
         <SolidColorBrush x:Key="MainWhiteColorBrush" Color="{StaticResource MainWhiteColor}"/>
 
@@ -26,6 +29,9 @@
         <SolidColorBrush x:Key="MainFontColorBrush" Color="{StaticResource MainFontColor}"/>
         <SolidColorBrush x:Key="SecondaryFontColorBrush" Color="{StaticResource SecondaryFontColor}"/>
 
+        <Style x:Key="SplashLogoStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value=".\Assets\Fonts\BilboSwashCaps-Regular.ttf#Bilbo Swash Caps"/>
+        </Style>
         
         <!-- Grids -->
         <Style x:Key="MainGrid" TargetType="Grid">
@@ -133,6 +139,9 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+
+        <FontFamily x:Key="BilboSwash">/Assets/Fonts/BilboSwashCaps-Regular.ttf#Bilbo Swash Caps</FontFamily>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
