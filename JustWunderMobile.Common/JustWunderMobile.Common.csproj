@@ -91,9 +91,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ToDo-MvvmCross\_ Core.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\UILabels.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>UILabels.Designer.cs</LastGenOutput>
