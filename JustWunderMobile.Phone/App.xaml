@@ -5,7 +5,8 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone"
-    xmlns:interop="clr-namespace:System.Windows.Interop;assembly=System.Windows">
+    xmlns:interop="clr-namespace:System.Windows.Interop;assembly=System.Windows"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
 
     <!--Application Resources-->
     <Application.Resources>
@@ -25,6 +26,7 @@
         <SolidColorBrush x:Key="MainFontColorBrush" Color="{StaticResource MainFontColor}"/>
         <SolidColorBrush x:Key="SecondaryFontColorBrush" Color="{StaticResource SecondaryFontColor}"/>
 
+        
         <!-- Grids -->
         <Style x:Key="MainGrid" TargetType="Grid">
             <Setter Property="Background" Value="{StaticResource MainWhiteColorBrush}"></Setter>
@@ -104,6 +106,33 @@
             <Setter Property="Margin" Value=" 0 0 0 0"></Setter>
         </Style>
 
+        <!-- Page Animation -->
+        <Style x:Key="NavigationAnimation" TargetType="phone:PhoneApplicationPage">
+            <Setter Property="toolkit:TransitionService.NavigationInTransition">
+                <Setter.Value>
+                    <toolkit:NavigationInTransition>
+                        <toolkit:NavigationInTransition.Backward>
+                            <toolkit:TurnstileTransition Mode="BackwardIn"/>
+                        </toolkit:NavigationInTransition.Backward>
+                        <toolkit:NavigationInTransition.Forward>
+                            <toolkit:TurnstileTransition Mode="ForwardIn"/>
+                        </toolkit:NavigationInTransition.Forward>
+                    </toolkit:NavigationInTransition>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="toolkit:TransitionService.NavigationOutTransition">
+                <Setter.Value>
+                    <toolkit:NavigationOutTransition>
+                        <toolkit:NavigationOutTransition.Backward>
+                            <toolkit:TurnstileTransition Mode="BackwardOut"/>
+                        </toolkit:NavigationOutTransition.Backward>
+                        <toolkit:NavigationOutTransition.Forward>
+                            <toolkit:TurnstileTransition Mode="ForwardOut"/>
+                        </toolkit:NavigationOutTransition.Forward>
+                    </toolkit:NavigationOutTransition>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

@@ -7,8 +7,9 @@ using Cirrious.MvvmCross.ViewModels;
 
 namespace JustWunderMobile.Common.ViewModels
 {
-    public class AboutViewModel : MvxViewModel
+    public class AboutViewModel : BaseViewModel
     {
         
+
     }
 }

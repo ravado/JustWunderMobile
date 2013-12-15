@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Cirrious.MvvmCross.ViewModels;
 using System.Windows.Input;
-using Cirrious.MvvmCross.ViewModels;
 
 namespace JustWunderMobile.Common.ViewModels
 {
-    public class MainViewModel : MvxViewModel
+    public class MainViewModel : BaseViewModel
     {
         // commands
         private MvxCommand _refreshCommand;

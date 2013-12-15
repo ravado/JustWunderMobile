@@ -9,11 +9,13 @@
     xmlns:views="clr-namespace:Cirrious.MvvmCross.WindowsPhone.Views;assembly=Cirrious.MvvmCross.WindowsPhone"
     xmlns:appBarUtils="clr-namespace:AppBarUtils;assembly=AppBarUtils"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:ec="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
+    Style="{StaticResource NavigationAnimation}"
     shell:SystemTray.IsVisible="False">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -31,4 +33,19 @@
         </Grid>
         <Grid Row="1" Background="{StaticResource MainWhiteColorBrush}"></Grid>
     </Grid>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar BackgroundColor="{StaticResource MainRedColor}">
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/back.png" Text="back"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <!--Usage samples-->
+    <i:Interaction.Behaviors>
+        <appBarUtils:AppBarItemCommand 
+            Id="back" Text="назад"
+            IconUri="/Assets/AppBar/back.png"
+            Command="{Binding BackCommand}"/>
+    </i:Interaction.Behaviors>
+
+
 </views:MvxPhonePage>
