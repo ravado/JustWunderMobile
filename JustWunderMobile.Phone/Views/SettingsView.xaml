@@ -18,7 +18,7 @@
     shell:SystemTray.IsVisible="False">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Style="{StaticResource MainGrid}">
+    <Grid x:Name="LayoutRoot" Style="{StaticResource MainGrid}" d:DataContext="{d:DesignData /SampleData/SettingsViewModelSampleData.xaml, Instance={x:Null}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
@@ -31,7 +31,7 @@
             </Grid>
 
         </Grid>
-        <Grid Row="1" />
+        <Grid Row="1" DataContext="{Binding}" />
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>

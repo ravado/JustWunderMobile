@@ -15,7 +15,7 @@
     shell:SystemTray.IsVisible="False">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="{StaticResource MainRedColorBrush}">
+    <Grid x:Name="LayoutRoot" Background="{StaticResource MainRedColorBrush}" d:DataContext="{d:DesignData /SampleData/SplashViewModelSampleData.xaml, Instance={x:Null}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -23,7 +23,7 @@
 
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0" DataContext="{Binding}">
             <Grid Width="250" Height="250">
                 <Border
                     Background="{StaticResource MainDarkColorBrush}"

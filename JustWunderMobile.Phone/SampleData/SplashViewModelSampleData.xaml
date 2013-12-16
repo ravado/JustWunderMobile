@@ -1,0 +1,6 @@
+﻿<ViewModels:SplashViewModel 
+	xmlns:ViewModels="clr-namespace:JustWunderMobile.Common.ViewModels;assembly=JustWunderMobile.Common" 
+	AppName="Just Wunder"
+	PageName="Splash">
+	
+</ViewModels:SplashViewModel>

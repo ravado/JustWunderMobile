@@ -1,0 +1,17 @@
+﻿<ViewModels:MainViewModel 
+	xmlns:ViewModels="clr-namespace:JustWunderMobile.Common.ViewModels;assembly=JustWunderMobile.Common" 
+	xmlns:ViewModels1="clr-namespace:Cirrious.MvvmCross.ViewModels;assembly=Cirrious.MvvmCross" 
+
+	AppName="Just Wunder" 
+	FavoriteJokesLabel="Favorite" 
+	MenuSettingsLabel="Settings"
+	MenuAboutLabel="About"
+	MenuRefreshLabel="Refresh" 
+	NewJokesLabel="New"
+	PageName="Main" 
+	TopJokesLabel="Top">
+	
+	<!--<ViewModels:MainViewModel.RequestedBy>
+		<ViewModels1:MvxRequestedBy AdditionalInfo="Vestibulum vestibulum" Type="AutomatedService"/>
+	</ViewModels:MainViewModel.RequestedBy>-->
+</ViewModels:MainViewModel>

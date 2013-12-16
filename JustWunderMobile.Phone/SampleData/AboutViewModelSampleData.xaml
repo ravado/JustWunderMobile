@@ -1,0 +1,7 @@
+﻿<ViewModels:AboutViewModel 
+    xmlns:ViewModels="clr-namespace:JustWunderMobile.Common.ViewModels;assembly=JustWunderMobile.Common"
+
+    AppName="Just Wunder"
+    MenuBackLabel="Back" 
+    PageName="About">
+</ViewModels:AboutViewModel>
