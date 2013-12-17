@@ -1,17 +1,64 @@
 ﻿<ViewModels:MainViewModel 
-	xmlns:ViewModels="clr-namespace:JustWunderMobile.Common.ViewModels;assembly=JustWunderMobile.Common" 
-	xmlns:ViewModels1="clr-namespace:Cirrious.MvvmCross.ViewModels;assembly=Cirrious.MvvmCross" 
-
-	AppName="Just Wunder" 
-	FavoriteJokesLabel="Favorite" 
-	MenuSettingsLabel="Settings"
-	MenuAboutLabel="About"
-	MenuRefreshLabel="Refresh" 
-	NewJokesLabel="New"
-	PageName="Main" 
-	TopJokesLabel="Top">
-	
-	<!--<ViewModels:MainViewModel.RequestedBy>
-		<ViewModels1:MvxRequestedBy AdditionalInfo="Vestibulum vestibulum" Type="AutomatedService"/>
-	</ViewModels:MainViewModel.RequestedBy>-->
+    xmlns:ViewModels="clr-namespace:JustWunderMobile.Common.ViewModels;assembly=JustWunderMobile.Common" 
+    xmlns:DataModels="clr-namespace:JustWunderMobile.Common.DataModels;assembly=JustWunderMobile.Common" 
+    xmlns:ViewModels1="clr-namespace:Cirrious.MvvmCross.ViewModels;assembly=Cirrious.MvvmCross" 
+    
+    AppName="Just Wunder"
+    FavoriteJokesLabel="Favorites"
+    MenuSettingsLabel="Settings"
+    MenuAboutLabel="About" 
+    MenuRefreshLabel="REfresh" 
+    NewJokesLabel="New" 
+    PageName="Main"
+    TopJokesLabel="Top">
+    
+	<ViewModels:MainViewModel.FavoriteJokes>
+		<DataModels:ReleaseJokeDataModel Censorship="True" Id="36" PublishDate="12/17/2013 22:15:30" Rating="48" 
+		TextJoke="Vestibulum aenean class" UserEmail="Adipiscing parturient mauris" Vote="42"/>
+		<DataModels:ReleaseJokeDataModel Censorship="False" Id="63" PublishDate="12/17/2013 22:15:30" Rating="35" 
+		TextJoke="Vestibulum curae curabitur" UserEmail="Maecenas cras vestibulum aliquam" Vote="72"/>
+		<DataModels:ReleaseJokeDataModel Censorship="True" Id="92" PublishDate="12/17/2013 22:15:30" Rating="50" 
+		TextJoke="Nam phasellus integer" UserEmail="Praesent donec accumsan adipiscing" Vote="73"/>
+		<DataModels:ReleaseJokeDataModel Censorship="False" Id="37" PublishDate="12/17/2013 22:15:30" Rating="69" 
+		TextJoke="Duis bibendum consequat etiam convallis" UserEmail="Nunc dignissim dictumst" Vote="28"/>
+		<DataModels:ReleaseJokeDataModel Censorship="True" Id="91" PublishDate="12/17/2013 22:15:30" Rating="18" 
+		TextJoke="Amet parturient ante arcu" UserEmail="Diam vestibulum fusce" Vote="51"/>
+		<DataModels:ReleaseJokeDataModel Censorship="False" Id="97" PublishDate="12/17/2013 22:15:30" Rating="17" 
+		TextJoke="Eget nullam sed elementum" UserEmail="Quisque vivamus" Vote="90"/>
+		<DataModels:ReleaseJokeDataModel Censorship="True" Id="91" PublishDate="12/17/2013 22:15:30" Rating="87" 
+		TextJoke="Elit lorem enim eleifend erat" UserEmail="Vestibulum morbi" Vote="76"/>
+		<DataModels:ReleaseJokeDataModel Censorship="False" Id="48" PublishDate="12/17/2013 22:15:30" Rating="32" 
+		TextJoke="Facilisis eros facilisi" UserEmail="Aliquam adipiscing aliquet fermentum nulla" Vote="72"/>
+		<DataModels:ReleaseJokeDataModel Censorship="True" Id="47" PublishDate="12/17/2013 22:15:30" Rating="25" 
+		TextJoke="Blandit dis" UserEmail="Nibh fringilla faucibus proin est" Vote="48"/>
+		<DataModels:ReleaseJokeDataModel Censorship="False" Id="31" PublishDate="12/17/2013 22:15:30" Rating="78"
+		 TextJoke="Parturient commodo vestibulum habitant inceptos" UserEmail="Interdum lobortis nisi conubia aptent" Vote="89"/>
+	</ViewModels:MainViewModel.FavoriteJokes>
+	<ViewModels:MainViewModel.NewJokes>
+		<DataModels:ReleaseJokeDataModel Censorship="True" Id="64" PublishDate="12/17/2013 22:15:30" Rating="28" TextJoke="Egestas mus vestibulum" UserEmail="Euismod ipsum" Vote="27"/>
+		<DataModels:ReleaseJokeDataModel Censorship="False" Id="48" PublishDate="12/17/2013 22:15:30" Rating="24" TextJoke="Adipiscing nec hendrerit" UserEmail="Justo non" Vote="59"/>
+		<DataModels:ReleaseJokeDataModel Censorship="True" Id="46" PublishDate="12/17/2013 22:15:30" Rating="39" TextJoke="Congue placerat himenaeos cursus odio" UserEmail="Feugiat orci parturient per sed" Vote="65"/>
+		<DataModels:ReleaseJokeDataModel Censorship="False" Id="22" PublishDate="12/17/2013 22:15:30" Rating="63" TextJoke="Pulvinar lacus imperdiet sem" UserEmail="Sit gravida" Vote="43"/>
+		<DataModels:ReleaseJokeDataModel Censorship="True" Id="27" PublishDate="12/17/2013 22:15:30" Rating="59" TextJoke="Dictum iaculis" UserEmail="Pede lectus vestibulum" Vote="80"/>
+		<DataModels:ReleaseJokeDataModel Censorship="False" Id="97" PublishDate="12/17/2013 22:15:30" Rating="85" TextJoke="Lacinia malesuada" UserEmail="Laoreet vel natoque sagittis" Vote="53"/>
+		<DataModels:ReleaseJokeDataModel Censorship="True" Id="62" PublishDate="12/17/2013 22:15:30" Rating="56" TextJoke="Quam penatibus posuere" UserEmail="Lorem magna nam" Vote="45"/>
+		<DataModels:ReleaseJokeDataModel Censorship="False" Id="18" PublishDate="12/17/2013 22:15:30" Rating="16" TextJoke="Vestibulum adipiscing porttitor senectus" UserEmail="Massa parturient" Vote="84"/>
+		<DataModels:ReleaseJokeDataModel Censorship="True" Id="46" PublishDate="12/17/2013 22:15:30" Rating="88" TextJoke="Vestibulum sociosqu sed quis" UserEmail="Potenti pretium metus" Vote="25"/>
+		<DataModels:ReleaseJokeDataModel Censorship="False" Id="69" PublishDate="12/17/2013 22:15:30" Rating="25" TextJoke="Morbi vestibulum" UserEmail="Libero tincidunt ligula rhoncus" Vote="19"/>
+	</ViewModels:MainViewModel.NewJokes>
+	<ViewModels:MainViewModel.RequestedBy>
+		<ViewModels1:MvxRequestedBy AdditionalInfo="Adipiscing mauris parturient fermentum vestibulum" Type="Unknown"/>
+	</ViewModels:MainViewModel.RequestedBy>
+	<ViewModels:MainViewModel.TopJokes>
+		<DataModels:ReleaseJokeDataModel Censorship="True" Id="34" PublishDate="12/17/2013 22:15:30" Rating="71" TextJoke="Cras sodales ultrices netus duis" UserEmail="Vulputate hac nunc" Vote="72"/>
+		<DataModels:ReleaseJokeDataModel Censorship="False" Id="84" PublishDate="12/17/2013 22:15:30" Rating="73" TextJoke="Curabitur amet viverra nulla" UserEmail="Phasellus parturient litora ante" Vote="51"/>
+		<DataModels:ReleaseJokeDataModel Censorship="True" Id="10" PublishDate="12/17/2013 22:15:30" Rating="52" TextJoke="Vestibulum vehicula arcu" UserEmail="Consequat volutpat" Vote="94"/>
+		<DataModels:ReleaseJokeDataModel Censorship="False" Id="91" PublishDate="12/17/2013 22:15:30" Rating="61" TextJoke="Leo mus" UserEmail="Convallis maecenas diam dignissim eget" Vote="78"/>
+		<DataModels:ReleaseJokeDataModel Censorship="True" Id="35" PublishDate="12/17/2013 22:15:30" Rating="78" TextJoke="Vestibulum aliquam adipiscing" UserEmail="Porta nec integer parturient quisque" Vote="34"/>
+		<DataModels:ReleaseJokeDataModel Censorship="False" Id="43" PublishDate="12/17/2013 22:15:30" Rating="31" TextJoke="Vestibulum purus" UserEmail="Elit vivamus vestibulum enim" Vote="72"/>
+		<DataModels:ReleaseJokeDataModel Censorship="True" Id="92" PublishDate="12/17/2013 22:15:30" Rating="50" TextJoke="Non risus" UserEmail="Adipiscing velit" Vote="40"/>
+		<DataModels:ReleaseJokeDataModel Censorship="False" Id="95" PublishDate="12/17/2013 22:15:30" Rating="68" TextJoke="Per erat vitae" UserEmail="Praesent eros aliquam luctus" Vote="32"/>
+		<DataModels:ReleaseJokeDataModel Censorship="True" Id="53" PublishDate="12/17/2013 22:15:30" Rating="55" TextJoke="Sed magnis nibh mattis" UserEmail="Elementum aliquet parturient sem vestibulum" Vote="22"/>
+		<DataModels:ReleaseJokeDataModel Censorship="False" Id="43" PublishDate="12/17/2013 22:15:30" Rating="12" TextJoke="Class nisi curae donec" UserEmail="Etiam nisl vestibulum" Vote="35"/>
+	</ViewModels:MainViewModel.TopJokes>
 </ViewModels:MainViewModel>

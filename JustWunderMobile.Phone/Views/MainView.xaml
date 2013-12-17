@@ -18,17 +18,54 @@
     mc:Ignorable="d"
     Style="{StaticResource NavigationAnimation}"
     shell:SystemTray.IsVisible="False">
-    
+
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Style="{StaticResource MainGrid}" 
+    <Grid x:Name="LayoutRoot" 
+          Style="{StaticResource MainGrid}"
           d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml, Instance={x:Null}}">
 
         <phone:Pivot Name="MainPivot"
                      Style="{StaticResource MainPivot}"
-                     Title="{Binding AppName}">
-            <phone:PivotItem Header="{Binding NewJokesLabel, Converter={StaticResource LowercaseConverter}}" Style="{StaticResource MainPivotItem}" Content="{Binding AppName}" />
-            <phone:PivotItem Header="{Binding TopJokesLabel, Converter={StaticResource LowercaseConverter}}" Style="{StaticResource MainPivotItem}" />
-            <phone:PivotItem Header="{Binding FavoriteJokesLabel, Converter={StaticResource LowercaseConverter}}" Style="{StaticResource MainPivotItem}" />
+                     Title="{Binding AppName}" DataContext="{Binding}" d:DataContext="{Binding}">
+            <phone:PivotItem 
+                Header="{Binding NewJokesLabel, Converter={StaticResource LowercaseConverter}}" 
+                Style="{StaticResource MainPivotItem}">
+                <Grid>
+                    <toolkit:LongListMultiSelector
+                        ItemsSource="{Binding NewJokes}"
+                        LayoutMode="List"
+                        EnforceIsSelectionEnabled="False"
+                        ItemTemplate="{StaticResource NewJokeItemTemplate}"
+                        ItemInfoTemplate="{StaticResource NewJokeItemInfoTemplate}"/>
+                </Grid>
+            </phone:PivotItem>
+
+            <phone:PivotItem 
+                Header="{Binding TopJokesLabel, Converter={StaticResource LowercaseConverter}}"
+                Style="{StaticResource MainPivotItem}"
+                >
+                <Grid Margin="10" Background="SteelBlue">
+                    <toolkit:LongListMultiSelector
+                        Foreground="White"
+                        ItemsSource="{Binding TopJokes}"
+                        LayoutMode="List"
+                        EnforceIsSelectionEnabled="False"
+                        ItemTemplate="{StaticResource NewJokeItemTemplate}"
+                        ItemInfoTemplate="{StaticResource NewJokeItemInfoTemplate}"/>
+                </Grid>
+            </phone:PivotItem>
+            <phone:PivotItem
+                Header="{Binding FavoriteJokesLabel, Converter={StaticResource LowercaseConverter}}"
+                Style="{StaticResource MainPivotItem}" >
+                <Grid>
+                    <toolkit:LongListMultiSelector
+                        ItemsSource="{Binding FavoriteJokes}"
+                        LayoutMode="List"
+                        EnforceIsSelectionEnabled="False"
+                        ItemTemplate="{StaticResource NewJokeItemTemplate}"
+                        ItemInfoTemplate="{StaticResource NewJokeItemInfoTemplate}"/>
+                </Grid>
+            </phone:PivotItem>
 
             <i:Interaction.Triggers>
                 <appBarUtils:SelectedPivotItemChangedTrigger>
@@ -57,9 +94,9 @@
                     </appBarUtils:SwitchAppBarAction>
                 </appBarUtils:SelectedPivotItemChangedTrigger>
             </i:Interaction.Triggers>
-            
+
         </phone:Pivot>
-        
+
     </Grid>
     <!--<phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar BackgroundColor="Teal">

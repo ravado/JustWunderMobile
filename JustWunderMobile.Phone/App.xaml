@@ -28,7 +28,7 @@
         <SolidColorBrush x:Key="MainWhiteColorBrush" Color="{StaticResource MainWhiteColor}"/>
 
         <!-- Font Color -->
-        <Color x:Key="MainFontColor">#000000</Color>
+        <Color x:Key="MainFontColor">#4c5365</Color>
         <Color x:Key="SecondaryFontColor">#FFFFFF</Color>
         <SolidColorBrush x:Key="MainFontColorBrush" Color="{StaticResource MainFontColor}"/>
         <SolidColorBrush x:Key="SecondaryFontColorBrush" Color="{StaticResource SecondaryFontColor}"/>
@@ -144,6 +144,34 @@
             </Setter>
         </Style>
 
+        
+        <!-- Multiply Selectors Template -->
+        <DataTemplate x:Key="NewJokeItemTemplate">
+            <Grid Margin="0 10">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border 
+                    Height="20"
+                    HorizontalAlignment="Center" 
+                    Width="20"
+                    Background="Transparent"
+                    Grid.Row="0"/>
+                <TextBlock Grid.Row="1"
+                    TextWrapping="Wrap"
+                    Text="{Binding TextJoke}"
+                    Foreground="{StaticResource MainFontColorBrush}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="NewJokeItemInfoTemplate">
+            <Border 
+                Width="0" 
+                Height="0"
+                Margin="0" 
+                Background="Transparent"/>
+        </DataTemplate>
 
         <FontFamily x:Key="BilboSwash">/Assets/Fonts/BilboSwashCaps-Regular.ttf#Bilbo Swash Caps</FontFamily>
     </Application.Resources>
