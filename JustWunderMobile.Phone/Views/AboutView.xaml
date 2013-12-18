@@ -36,7 +36,7 @@
     </Grid>
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar BackgroundColor="{StaticResource MainRedColor}">
-            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/back.png" Text="back"/>
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/feature.alarm.png" Text="back"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 

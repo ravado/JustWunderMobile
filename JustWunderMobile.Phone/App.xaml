@@ -147,22 +147,62 @@
         
         <!-- Multiply Selectors Template -->
         <DataTemplate x:Key="NewJokeItemTemplate">
-            <Grid Margin="0 10">
+            <Grid Margin="0 10" Background="Transparent">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Border 
-                    Height="20"
-                    HorizontalAlignment="Center" 
-                    Width="20"
-                    Background="Transparent"
-                    Grid.Row="0"/>
-                <TextBlock Grid.Row="1"
+                <TextBlock Grid.Row="0"
                     TextWrapping="Wrap"
                     Text="{Binding TextJoke}"
                     Foreground="{StaticResource MainFontColorBrush}"
-                    FontSize="{StaticResource PhoneFontSizeNormal}"/>
+                    FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                
+                
+                <Grid Grid.Row="1" Background="Transparent"
+                      Margin="0 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel
+                        Grid.Column="0"
+                        Orientation="Horizontal"
+                        Background="Transparent">
+                        <Rectangle Width="24" 
+                                   Height="24"
+                                   Fill="{StaticResource MainRedColorBrush}">
+                            <Rectangle.OpacityMask>
+                                <ImageBrush Stretch="Fill" ImageSource="/Assets/AppBar/alarm_clock-32.png"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <TextBlock 
+                            FontSize="{StaticResource PhoneFontSizeSmall}"
+                            VerticalAlignment="Center"
+                            Margin="10 0 0 0"
+                            Foreground="{StaticResource MainRedColorBrush}"
+                            Text="{Binding PublishDate}"/>
+                    </StackPanel>
+                    <StackPanel 
+                        Width="100"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal"
+                        Background="Transparent">
+                        <Rectangle Width="24" Height="24" Fill="{StaticResource MainRedColorBrush}">
+                            <Rectangle.OpacityMask>
+                                <ImageBrush ImageSource="/Assets/AppBar/outline_star-32.png"></ImageBrush>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <TextBlock 
+                            FontSize="{StaticResource PhoneFontSizeSmall}"
+                            Margin="10 0 0 0"
+                            VerticalAlignment="Center"
+                            Foreground="{StaticResource MainRedColorBrush}"
+                            Text="{Binding Rating}"/>
+                    </StackPanel>
+                </Grid>
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="NewJokeItemInfoTemplate">

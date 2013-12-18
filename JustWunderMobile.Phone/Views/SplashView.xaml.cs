@@ -25,7 +25,7 @@ namespace JustWunderMobile.Phone.Views
         {
             base.OnNavigatedTo(e);
 
-            Task.Run(() => Thread.Sleep(2500)).ContinueWith(x =>
+            Task.Run(() => Thread.Sleep(500)).ContinueWith(x =>
             {
                 Dispatcher.BeginInvoke(() =>
                 {
