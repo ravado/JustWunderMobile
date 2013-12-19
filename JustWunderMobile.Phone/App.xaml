@@ -10,7 +10,7 @@
 
     <!--Application Resources-->
     <Application.Resources>
-
+        <converters:RelativeTimeConverter x:Key="RelativeTimeConverter"/>
         <converters:LowercaseConverter x:Key="LowercaseConverter"/>
         <converters:UppercaseConverter x:Key="UppercaseConverter"/>
 
@@ -186,7 +186,7 @@
                             VerticalAlignment="Center"
                             Margin="5 0 0 0"
                             Foreground="{StaticResource MainRedColorBrush}"
-                            Text="{Binding PublishDate}"/>
+                            Text="{Binding PublishDate, Converter={StaticResource RelativeTimeConverter}}"/>
                     </StackPanel>
                     <StackPanel 
                         Width="100"

@@ -44,7 +44,7 @@
                 Header="{Binding TopJokesLabel, Converter={StaticResource LowercaseConverter}}"
                 Style="{StaticResource MainPivotItem}"
                 >
-                <Grid Margin="10" Background="SteelBlue">
+                <Grid Margin="10">
                     <toolkit:LongListMultiSelector
                         Foreground="White"
                         ItemsSource="{Binding TopJokes}"

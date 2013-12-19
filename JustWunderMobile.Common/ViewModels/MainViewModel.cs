@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using Cirrious.MvvmCross.ViewModels;
 using System.Windows.Input;
 using JustWunderMobile.Common.DataModels;
@@ -9,6 +10,8 @@ namespace JustWunderMobile.Common.ViewModels
     public class MainViewModel : BaseViewModel
     {
         #region Fields
+
+        private Random _random;
 
         #region Commands
         private MvxCommand _refreshCommand;
@@ -268,7 +271,50 @@ namespace JustWunderMobile.Common.ViewModels
                 TextJoke = "Маша любила петь... eё рекорд был 40 Петь в месяц."
             });
             #endregion
+
+            RandomizeValues();
         }
+
+        private void RandomizeValues()
+        {
+            foreach (var newJoke in NewJokes)
+            {
+                newJoke.Rating = GetRandom();
+                newJoke.PublishDate = RandomDay();
+            }
+            NewJokes[0].PublishDate = DateTime.Now.AddSeconds(-1.0);
+
+            foreach (var topJoke in TopJokes)
+            {
+                topJoke.Rating = GetRandom();
+                topJoke.PublishDate = RandomDay();
+            }
+            foreach (var favJoke in FavoriteJokes)
+            {
+                favJoke.Rating = GetRandom();
+                favJoke.PublishDate = RandomDay();
+            }
+        }
+
+        private int GetRandom()
+        {
+            if(_random == null)   
+                _random = new Random(2000);
+
+            return _random.Next(0, 5000);
+        }
+        private DateTime RandomDay()
+        {
+            DateTime start = new DateTime(2010, 1, 1);
+            
+            int range = (DateTime.Today - start).Days;
+            var val = start.AddDays(_random.Next(range));
+            val = val.AddHours(_random.Next(24));
+            val = val.AddMinutes(_random.Next(60));
+            val = val.AddSeconds(_random.Next(60));
+            return val;
+        }
+
         #endregion
     }
 }
