@@ -14,7 +14,7 @@
     
 	<ViewModels:MainViewModel.FavoriteJokes>
 		<DataModels:ReleaseJokeDataModel Censorship="True" Id="36" PublishDate="12/17/2013 22:15:30" Rating="48" 
-		TextJoke="Vestibulum aenean class" UserEmail="Adipiscing parturient mauris" Vote="42"/>
+		TextJoke="Умер изобретатель пульта для телевизора. Соседи говорят, что не видели изобретателя неделю, а потом нашли его тело за диваном." UserEmail="Adipiscing parturient mauris" Vote="42"/>
 		<DataModels:ReleaseJokeDataModel Censorship="False" Id="63" PublishDate="12/17/2013 22:15:30" Rating="35" 
 		TextJoke="Vestibulum curae curabitur" UserEmail="Maecenas cras vestibulum aliquam" Vote="72"/>
 		<DataModels:ReleaseJokeDataModel Censorship="True" Id="92" PublishDate="12/17/2013 22:15:30" Rating="50" 
@@ -35,7 +35,7 @@
 		 TextJoke="Parturient commodo vestibulum habitant inceptos" UserEmail="Interdum lobortis nisi conubia aptent" Vote="89"/>
 	</ViewModels:MainViewModel.FavoriteJokes>
 	<ViewModels:MainViewModel.NewJokes>
-		<DataModels:ReleaseJokeDataModel Censorship="True" Id="64" PublishDate="12/17/2013 22:15:30" Rating="28" TextJoke="Egestas mus vestibulum" UserEmail="Euismod ipsum" Vote="27"/>
+        <DataModels:ReleaseJokeDataModel Censorship="True" Id="64" PublishDate="12/17/2013 22:15:30" Rating="28" TextJoke="Умер изобретатель пульта для телевизора. Соседи говорят, что не видели изобретателя неделю, а потом нашли его тело за диваном." UserEmail="Euismod ipsum" Vote="27"/>
 		<DataModels:ReleaseJokeDataModel Censorship="False" Id="48" PublishDate="12/17/2013 22:15:30" Rating="24" TextJoke="Adipiscing nec hendrerit" UserEmail="Justo non" Vote="59"/>
 		<DataModels:ReleaseJokeDataModel Censorship="True" Id="46" PublishDate="12/17/2013 22:15:30" Rating="39" TextJoke="Congue placerat himenaeos cursus odio" UserEmail="Feugiat orci parturient per sed" Vote="65"/>
 		<DataModels:ReleaseJokeDataModel Censorship="False" Id="22" PublishDate="12/17/2013 22:15:30" Rating="63" TextJoke="Pulvinar lacus imperdiet sem" UserEmail="Sit gravida" Vote="43"/>

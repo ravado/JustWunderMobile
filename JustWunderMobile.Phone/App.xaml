@@ -147,19 +147,23 @@
         
         <!-- Multiply Selectors Template -->
         <DataTemplate x:Key="NewJokeItemTemplate">
-            <Grid Margin="0 10" Background="Transparent">
+            <Grid Margin="0 10">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0"
+                <StackPanel 
+                    Grid.Row="0"
+                    Margin="0 0 25 0">
+                <TextBlock 
                     TextWrapping="Wrap"
+                    TextAlignment="Left"
                     Text="{Binding TextJoke}"
                     Foreground="{StaticResource MainFontColorBrush}"
                     FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                
-                
-                <Grid Grid.Row="1" Background="Transparent"
+                </StackPanel>
+
+                <Grid Grid.Row="1"
                       Margin="0 10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -180,7 +184,7 @@
                         <TextBlock 
                             FontSize="{StaticResource PhoneFontSizeSmall}"
                             VerticalAlignment="Center"
-                            Margin="10 0 0 0"
+                            Margin="5 0 0 0"
                             Foreground="{StaticResource MainRedColorBrush}"
                             Text="{Binding PublishDate}"/>
                     </StackPanel>
@@ -197,7 +201,7 @@
                         </Rectangle>
                         <TextBlock 
                             FontSize="{StaticResource PhoneFontSizeSmall}"
-                            Margin="10 0 0 0"
+                            Margin="5 0 0 0"
                             VerticalAlignment="Center"
                             Foreground="{StaticResource MainRedColorBrush}"
                             Text="{Binding Rating}"/>
