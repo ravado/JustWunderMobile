@@ -26,7 +26,7 @@ namespace JustWunderMobile.Phone.Classes.Converters
             {Day * 60,  t => "в прошлом месяце"},
             {Year,  t => String.Format("{0} месяцев назад", (int)t.TotalDays / 30)},
             {Year * 2,  t => "в прошлом году"},
-            {Int64.MaxValue,  t => String.Format("{0} лет назад", (int)t.TotalDays / 365)}
+            {Int64.MaxValue,  t => String.Format("{0} лет назад" + j(), (int)t.TotalDays / 365)}
         };
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -36,7 +36,10 @@ namespace JustWunderMobile.Phone.Classes.Converters
 
             return thresholds.First(t => difference.TotalSeconds < t.Key).Value(difference);
         }
-
+        public static string j()
+        {
+            return "";
+        }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotSupportedException();

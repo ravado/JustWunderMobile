@@ -1,7 +1,7 @@
 ﻿<ViewModels:MainViewModel 
     xmlns:ViewModels="clr-namespace:JustWunderMobile.Common.ViewModels;assembly=JustWunderMobile.Common" 
     xmlns:DataModels="clr-namespace:JustWunderMobile.Common.DataModels;assembly=JustWunderMobile.Common" 
-    xmlns:ViewModels1="clr-namespace:Cirrious.MvvmCross.ViewModels;assembly=Cirrious.MvvmCross" 
+    
     
     AppName="Just Wunder"
     FavoriteJokesLabel="Favorites"
@@ -46,9 +46,6 @@
 		<DataModels:ReleaseJokeDataModel Censorship="True" Id="46" PublishDate="12/17/2013 22:15:30" Rating="88" TextJoke="Vestibulum sociosqu sed quis" UserEmail="Potenti pretium metus" Vote="25"/>
 		<DataModels:ReleaseJokeDataModel Censorship="False" Id="69" PublishDate="12/17/2013 22:15:30" Rating="25" TextJoke="Morbi vestibulum" UserEmail="Libero tincidunt ligula rhoncus" Vote="19"/>
 	</ViewModels:MainViewModel.NewJokes>
-	<ViewModels:MainViewModel.RequestedBy>
-		<ViewModels1:MvxRequestedBy AdditionalInfo="Adipiscing mauris parturient fermentum vestibulum" Type="Unknown"/>
-	</ViewModels:MainViewModel.RequestedBy>
 	<ViewModels:MainViewModel.TopJokes>
 		<DataModels:ReleaseJokeDataModel Censorship="True" Id="34" PublishDate="12/17/2013 22:15:30" Rating="71" TextJoke="Cras sodales ultrices netus duis" UserEmail="Vulputate hac nunc" Vote="72"/>
 		<DataModels:ReleaseJokeDataModel Censorship="False" Id="84" PublishDate="12/17/2013 22:15:30" Rating="73" TextJoke="Curabitur amet viverra nulla" UserEmail="Phasellus parturient litora ante" Vote="51"/>

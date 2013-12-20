@@ -9,6 +9,7 @@
     xmlns:views="clr-namespace:Cirrious.MvvmCross.WindowsPhone.Views;assembly=Cirrious.MvvmCross.WindowsPhone"
     xmlns:appBarUtils="clr-namespace:AppBarUtils;assembly=AppBarUtils"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -31,7 +32,17 @@
             </Grid>
 
         </Grid>
-        <Grid Row="1" DataContext="{Binding}" />
+        <Grid Row="1" DataContext="{Binding}" >
+            <StackPanel>
+                <TextBlock/>
+                <toolkit:ToggleSwitch
+                    Content="Синхронизировать при старте"
+                    FontSize="25"
+                    VerticalAlignment="Bottom"
+                    Foreground="{StaticResource MainDarkColorBrush}"
+                    Background="{StaticResource MainRedColorBrush}"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>
