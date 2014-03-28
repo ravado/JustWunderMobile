@@ -73,7 +73,7 @@ namespace JustWunderMobile.Common.Mapping
         /// <returns>ReleaseJoke DTO</returns>
         public static SAL.Interfaces.IApiReleaseJoke GetDTO(this ReleaseJoke entity)
         {
-            var dto = new SAL.DTO.ReleaseJoke();
+            var dto = new SAL.DTO.ReleaseJokeDto();
             dto.Id = entity.Id;
             dto.PublishDate = entity.PublishDate;
             dto.Rating = entity.Rating;
@@ -131,7 +131,7 @@ namespace JustWunderMobile.Common.Mapping
         /// <returns>NewJoke DTO</returns>
         public static SAL.Interfaces.IApiInboxJoke GetDTO(this NewJoke entity)
         {
-            var dto = new SAL.DTO.InboxJoke();
+            var dto = new SAL.DTO.InboxJokeDto();
             dto.Id = entity.Id;
             dto.TextJoke = entity.TextJoke;
             dto.UserEmail = entity.UserEmail;

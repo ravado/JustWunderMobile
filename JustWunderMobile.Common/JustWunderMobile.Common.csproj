@@ -35,8 +35,6 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="DAL\Contracts\IRepository.cs" />
-    <Compile Include="DAL\Interfaces\INewJokeRepository.cs" />
-    <Compile Include="DAL\Interfaces\IReleaseJokeRepository.cs" />
     <Compile Include="DAL\Entities\NewJoke.cs" />
     <Compile Include="DAL\Entities\ReleaseJoke.cs" />
     <Compile Include="DAL\Repositories\BaseRepository.cs" />
@@ -44,6 +42,9 @@
     <Compile Include="DAL\Repositories\ReleaseJokeRepository.cs" />
     <Compile Include="DataModels\NewJokeDataModel.cs" />
     <Compile Include="DataModels\ReleaseJokeDataModel.cs" />
+    <Compile Include="Extentions.cs" />
+    <Compile Include="Interfaces\ISettingsStoredge.cs" />
+    <Compile Include="Interfaces\ISyncService.cs" />
     <Compile Include="Mapping\MappingExtensions.cs" />
     <Compile Include="Interfaces\INewJokeService.cs" />
     <Compile Include="Interfaces\IReleasedJokeService.cs" />
@@ -56,8 +57,10 @@
     <Compile Include="Services\NewJokesService.cs" />
     <Compile Include="Services\ReleaseJokesService.cs" />
     <Compile Include="Services\SyncService.cs" />
+    <Compile Include="swp8\Bootstrap\CommunitySqlitePluginBootstrap.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\FirstViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SplashViewModel.cs" />
@@ -77,16 +80,16 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
-      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.0.14\lib\portable-win+net45+MonoAndroid+MonoTouch+sl40+wp71\Cirrious.CrossCore.dll</HintPath>
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\portable-win+net45+sl50+wp8+MonoAndroid+MonoTouch\Cirrious.CrossCore.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross">
-      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.0.14\lib\portable-win+net45+MonoAndroid+MonoTouch+sl40+wp71\Cirrious.MvvmCross.dll</HintPath>
+      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\portable-win+net45+sl50+wp8+MonoAndroid+MonoTouch\Cirrious.MvvmCross.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Localization">
-      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.0.14\lib\portable-win+net45+MonoAndroid+MonoTouch+sl40+wp71\Cirrious.MvvmCross.Localization.dll</HintPath>
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\portable-win+net45+sl50+wp8+MonoAndroid+MonoTouch\Cirrious.MvvmCross.Localization.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Sqlite">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Sqlite.3.0.14\lib\portable-win+net45+MonoAndroid+MonoTouch+sl40+wp71\Cirrious.MvvmCross.Plugins.Sqlite.dll</HintPath>
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Sqlite.3.1.1\lib\portable-win+net45+sl50+wp8+MonoAndroid+MonoTouch\Cirrious.MvvmCross.Plugins.Sqlite.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +97,12 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>UILabels.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DAL\Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ToDo-MvvmCross\_ Core.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

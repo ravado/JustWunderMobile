@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using Cirrious.CrossCore;
 using Cirrious.MvvmCross.ViewModels;
 using System.Windows.Input;
+using JustWunderMobile.Common.DAL.Contracts;
+using JustWunderMobile.Common.DAL.Entities;
 using JustWunderMobile.Common.DataModels;
+using JustWunderMobile.Common.Interfaces;
 using JustWunderMobile.Common.Resources;
+using JustWunderMobile.Common.Services;
+using JustWunderMobile.SAL.Interfaces;
 
 namespace JustWunderMobile.Common.ViewModels
 {
@@ -12,6 +18,8 @@ namespace JustWunderMobile.Common.ViewModels
         #region Fields
 
         private Random _random;
+        private readonly SyncService _syncService;
+        private readonly IReleasedJokeService<ReleaseJokeDataModel> _releasedJokeService;
 
         #region Commands
         private MvxCommand _refreshCommand;
@@ -26,7 +34,6 @@ namespace JustWunderMobile.Common.ViewModels
         #endregion
 
         #region Properties
-
 
         public override string PageName
         {
@@ -88,6 +95,8 @@ namespace JustWunderMobile.Common.ViewModels
             }
         }
 
+        public SyncService SyncService { get { return _syncService; } }
+        public IReleasedJokeService<ReleaseJokeDataModel> ReleasedJokeService { get { return _releasedJokeService; } }
 
         #region Commands
         public ICommand RefreshCommand
@@ -118,9 +127,11 @@ namespace JustWunderMobile.Common.ViewModels
 
         #endregion
 
-        public MainViewModel()
+        public MainViewModel(IReleasedJokeService<ReleaseJokeDataModel> releasedJokeService)
         {
-            LoadFakeData();
+            _syncService = new SyncService(Mvx.Resolve<IApiService>(), Mvx.Resolve<IRepository<ReleaseJoke>>(), Mvx.Resolve<IRepository<NewJoke>>());
+            _releasedJokeService = releasedJokeService;
+            //LoadFakeData();
         }
 
         #region Methods
@@ -135,7 +146,17 @@ namespace JustWunderMobile.Common.ViewModels
         }
         private void Refresh()
         {
+            SyncService.LoadNewJokesFromServer();
+            ShowJokes();
             System.Diagnostics.Debug.WriteLine("REFRESHING...");
+
+        }
+
+        private void ShowJokes()
+        {
+            NewJokes = ReleasedJokeService.GetLastJokes(10, 0).ToObservableCollection();
+            TopJokes = ReleasedJokeService.GetTopJokes(10, 0).ToObservableCollection();
+            FavoriteJokes = ReleasedJokeService.GetFavoriteJokes(10, 0).ToObservableCollection();
         }
 
         private void LoadFakeData()

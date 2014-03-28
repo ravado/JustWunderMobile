@@ -1,4 +1,6 @@
-﻿using JustWunderMobile.Common.Resources;
+﻿using Cirrious.CrossCore;
+using JustWunderMobile.Common.Interfaces;
+using JustWunderMobile.Common.Resources;
 
 namespace JustWunderMobile.Common.ViewModels
 {
@@ -9,7 +11,13 @@ namespace JustWunderMobile.Common.ViewModels
         #region Commands
         #endregion
 
+        private ISettingsStoredge _settingsStoredge;
         #endregion
+
+        public SettingsViewModel(ISettingsStoredge settingsStoredge)
+        {
+            _settingsStoredge = settingsStoredge;
+        }
 
         #region Properties
 

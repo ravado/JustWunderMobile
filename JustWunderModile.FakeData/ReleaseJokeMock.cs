@@ -13,7 +13,7 @@ namespace JustWunderMobile.FakeData
         {
             var jokes = new List<IApiReleaseJoke>()
             {
-                new ReleaseJoke()
+                new ReleaseJokeDto()
                 {
                     Id = 0,
                     Censorship = false,
@@ -22,7 +22,7 @@ namespace JustWunderMobile.FakeData
                     TextJoke = @"Заходил ко мне Тарас. Это раз. Сообщил, что встреча в три. Это два.",
                     UserEmail = "ravadog@gmail.com"
                 },
-                new ReleaseJoke()
+                new ReleaseJokeDto()
                 {
                     Id = 1,
                     Censorship = false,
@@ -31,7 +31,7 @@ namespace JustWunderMobile.FakeData
                     TextJoke = @"Дорогой дедушка Мороз. Пишет тебе мальчик Антон. Прошу, дочитай это письмо до конца. Это не спам, это реальная возможность заработать...",
                     UserEmail = "ravadog@gmail.com"
                 },
-                new ReleaseJoke()
+                new ReleaseJokeDto()
                 {
                     Id = 2,
                     Censorship = false,
@@ -40,7 +40,7 @@ namespace JustWunderMobile.FakeData
                     TextJoke = @"Медным тазом накрылась Дюймовочка и уснула. Звонкий храп раздался по округе.",
                     UserEmail = "ravadog@gmail.com"
                 },
-                new ReleaseJoke()
+                new ReleaseJokeDto()
                 {
                     Id = 3,
                     Censorship = false,
@@ -49,7 +49,7 @@ namespace JustWunderMobile.FakeData
                     TextJoke = @"Каждый день я покупаю водку. Я шопоголик?",
                     UserEmail = "ravadog@gmail.com"
                 },
-                new ReleaseJoke()
+                new ReleaseJokeDto()
                 {
                     Id = 4,
                     Censorship = false,
@@ -68,7 +68,7 @@ namespace JustWunderMobile.FakeData
         {
             var jokes = new List<IApiReleaseJoke>()
             {
-                new ReleaseJoke()
+                new ReleaseJokeDto()
                 {
                     Id = 10,
                     Censorship = false,
@@ -77,7 +77,7 @@ namespace JustWunderMobile.FakeData
                     TextJoke = @"Вчера в автобусе наркоман в сумку залез, я сначала не заметила, потом сумку открываю – сидит.",
                     UserEmail = "ravadog@gmail.com"
                 },
-                new ReleaseJoke()
+                new ReleaseJokeDto()
                 {
                     Id = 11,
                     Censorship = false,
@@ -86,7 +86,7 @@ namespace JustWunderMobile.FakeData
                     TextJoke = @"Если приложить раскаленную морскую ракушку к уху, можно услышать собственный крик.",
                     UserEmail = "ravadog@gmail.com"
                 },
-                new ReleaseJoke()
+                new ReleaseJokeDto()
                 {
                     Id = 12,
                     Censorship = false,
