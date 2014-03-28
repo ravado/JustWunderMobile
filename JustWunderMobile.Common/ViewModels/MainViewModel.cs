@@ -127,9 +127,9 @@ namespace JustWunderMobile.Common.ViewModels
 
         #endregion
 
-        public MainViewModel(IReleasedJokeService<ReleaseJokeDataModel> releasedJokeService)
+        public MainViewModel(SyncService syncService, IReleasedJokeService<ReleaseJokeDataModel> releasedJokeService)
         {
-            _syncService = new SyncService(Mvx.Resolve<IApiService>(), Mvx.Resolve<IRepository<ReleaseJoke>>(), Mvx.Resolve<IRepository<NewJoke>>());
+            _syncService = syncService;//new SyncService(Mvx.Resolve<IApiService>(), Mvx.Resolve<IRepository<ReleaseJoke>>(), Mvx.Resolve<IRepository<NewJoke>>());
             _releasedJokeService = releasedJokeService;
             //LoadFakeData();
         }
