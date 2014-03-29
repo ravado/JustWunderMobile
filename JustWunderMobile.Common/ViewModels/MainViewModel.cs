@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using Cirrious.CrossCore;
-using Cirrious.MvvmCross.ViewModels;
-using System.Windows.Input;
-using JustWunderMobile.Common.DAL.Contracts;
-using JustWunderMobile.Common.DAL.Entities;
+﻿using Cirrious.MvvmCross.ViewModels;
 using JustWunderMobile.Common.DataModels;
 using JustWunderMobile.Common.Interfaces;
 using JustWunderMobile.Common.Resources;
 using JustWunderMobile.Common.Services;
-using JustWunderMobile.SAL.Interfaces;
+using System;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace JustWunderMobile.Common.ViewModels
 {
@@ -162,46 +158,46 @@ namespace JustWunderMobile.Common.ViewModels
         private void LoadFakeData()
         {
             #region NewJokes
-            NewJokes.Add(new ReleaseJokeDataModel()
+            NewJokes.Add(new ReleaseJokeDataModel
             {
                 TextJoke = "Я родом из Орехово-Зуево. И я просто ненавижу русскую раскладку за то, что буквы З и Х расположены рядом.",
                 Rating = 1728
             });
-            NewJokes.Add(new ReleaseJokeDataModel()
+            NewJokes.Add(new ReleaseJokeDataModel
             {
                 TextJoke = "Когда-то давно я посадила в горшок орех из Рафаэлло. Прошло 11 лет, а я до сих пор надеюсь, что из него вырастет Рафаэлловое дерево :)",
                 Rating = 128
             });
-            NewJokes.Add(new ReleaseJokeDataModel()
+            NewJokes.Add(new ReleaseJokeDataModel
             {
                 TextJoke = "Это просто вопрос времени, когда к моему имени и фамилии добавят слово «синдром».",
                 Rating = 178
             });
-            NewJokes.Add(new ReleaseJokeDataModel()
+            NewJokes.Add(new ReleaseJokeDataModel
             {
                 TextJoke = "Отец так хотел, чтобы его сын стал физиком, что бил его не ремнем, а током.",
                 Rating = 1521
             });
-            NewJokes.Add(new ReleaseJokeDataModel()
+            NewJokes.Add(new ReleaseJokeDataModel
             {
                 TextJoke = "Скажи мне, сколько языков программирования ты знаешь, и я скажу, носишь ли ты сандали с носками.",
             });
-            NewJokes.Add(new ReleaseJokeDataModel()
+            NewJokes.Add(new ReleaseJokeDataModel
             {
                 TextJoke = "Ищу девушку с квартирой для очень серьёзных отношений, машина у меня уже есть от предыдущей жены."
             });
-            NewJokes.Add(new ReleaseJokeDataModel()
+            NewJokes.Add(new ReleaseJokeDataModel
             {
                 TextJoke = "Мальчик, которого воспитали бараны, без проблем адаптировался в современном обществе."
             });
-            NewJokes.Add(new ReleaseJokeDataModel()
+            NewJokes.Add(new ReleaseJokeDataModel
             {
                 TextJoke = "Если ты, когда-нибудь, лежа на девушке, заметишь, что глаза ее лихорадочно блестят, губы влажны и чувственны, а тело дрожит как осиновый лист на ветру - слазь с нее и беги... Это - малярия!"
             });
-            NewJokes.Add(new ReleaseJokeDataModel()
+            NewJokes.Add(new ReleaseJokeDataModel
             {
                 TextJoke = "Коллеги, сегодня я вас всех собрал, потому что вы - пазл."
-            }); NewJokes.Add(new ReleaseJokeDataModel()
+            }); NewJokes.Add(new ReleaseJokeDataModel
             {
                 TextJoke = "Маша любила петь... eё рекорд был 40 Петь в месяц."
             });
@@ -326,7 +322,7 @@ namespace JustWunderMobile.Common.ViewModels
         }
         private DateTime RandomDay()
         {
-            DateTime start = new DateTime(2010, 1, 1);
+            var start = new DateTime(2010, 1, 1);
             
             int range = (DateTime.Today - start).Days;
             var val = start.AddDays(_random.Next(range));

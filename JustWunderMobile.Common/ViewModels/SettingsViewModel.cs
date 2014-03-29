@@ -1,5 +1,4 @@
-﻿using Cirrious.CrossCore;
-using JustWunderMobile.Common.Interfaces;
+﻿using JustWunderMobile.Common.Interfaces;
 using JustWunderMobile.Common.Resources;
 
 namespace JustWunderMobile.Common.ViewModels

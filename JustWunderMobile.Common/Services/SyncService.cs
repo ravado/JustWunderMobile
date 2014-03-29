@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using JustWunderMobile.Common.DAL.Contracts;
+﻿using JustWunderMobile.Common.DAL.Contracts;
 using JustWunderMobile.Common.DAL.Entities;
 using JustWunderMobile.Common.Interfaces;
 using JustWunderMobile.Common.Mapping;
@@ -42,7 +40,7 @@ namespace JustWunderMobile.Common.Services
             var ratedJokes = ReleaseJokeRepository.GetAll().Where(j => j.Vote != 0).ToList();
 
             foreach (var releaseJoke in ratedJokes)
-                voteJokesContainer.Jokes.Add(new JokeVoteDto() {JokeId = releaseJoke.Id, Vote = releaseJoke.Vote});
+                voteJokesContainer.Jokes.Add(new JokeVoteDto {JokeId = releaseJoke.Id, Vote = releaseJoke.Vote});
 
             ApiService.VoteJokes(voteJokesContainer);
         }
@@ -53,7 +51,7 @@ namespace JustWunderMobile.Common.Services
 
             foreach (var newJoke in newJokes)
             {
-                ApiService.PostNewJoke(newJoke.GetDTO());
+                ApiService.PostNewJoke(newJoke.GetDto());
             }
         }
 

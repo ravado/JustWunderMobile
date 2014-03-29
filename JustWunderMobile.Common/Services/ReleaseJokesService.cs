@@ -3,9 +3,9 @@ using JustWunderMobile.Common.DAL.Entities;
 using JustWunderMobile.Common.DAL.Repositories;
 using JustWunderMobile.Common.DataModels;
 using JustWunderMobile.Common.Interfaces;
+using JustWunderMobile.Common.Mapping;
 using System.Collections.Generic;
 using System.Linq;
-using JustWunderMobile.Common.Mapping;
 
 namespace JustWunderMobile.Common.Services
 {

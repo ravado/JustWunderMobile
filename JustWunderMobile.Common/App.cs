@@ -1,9 +1,4 @@
-using Cirrious.CrossCore;
 using Cirrious.CrossCore.IoC;
-using JustWunderMobile.Common.DAL.Contracts;
-using JustWunderMobile.Common.DAL.Entities;
-using JustWunderMobile.Common.DAL.Repositories;
-using JustWunderMobile.Common.Interfaces;
 
 namespace JustWunderMobile.Common
 {

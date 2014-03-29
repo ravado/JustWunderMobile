@@ -16,14 +16,16 @@ namespace JustWunderMobile.Common.Mapping
         /// <returns>ReleaseJokeDataModel</returns>
         public static ReleaseJokeDataModel GetModel(this ReleaseJoke entity)
         {
-            var model = new ReleaseJokeDataModel();
-            model.Id = entity.Id;
-            model.PublishDate = entity.PublishDate;
-            model.Rating = entity.Rating;
-            model.TextJoke = entity.TextJoke;
-            model.UserEmail = entity.UserEmail;
-            model.Censorship = entity.Censorship;
-            model.Vote = entity.Vote;
+            var model = new ReleaseJokeDataModel
+            {
+                Id = entity.Id,
+                PublishDate = entity.PublishDate,
+                Rating = entity.Rating,
+                TextJoke = entity.TextJoke,
+                UserEmail = entity.UserEmail,
+                Censorship = entity.Censorship,
+                Vote = entity.Vote
+            };
 
             return model;
         }
@@ -55,13 +57,15 @@ namespace JustWunderMobile.Common.Mapping
         /// <returns>ReleaseJoke entity</returns>
         public static ReleaseJoke GetEntity(this SAL.Interfaces.IApiReleaseJoke dto)
         {
-            var entity = new ReleaseJoke();
-            entity.Id = dto.Id;
-            entity.PublishDate = dto.PublishDate;
-            entity.Rating = dto.Rating;
-            entity.TextJoke = dto.TextJoke;
-            entity.UserEmail = dto.UserEmail;
-            entity.Censorship = dto.Censorship;
+            var entity = new ReleaseJoke
+            {
+                Id = dto.Id,
+                PublishDate = dto.PublishDate,
+                Rating = dto.Rating,
+                TextJoke = dto.TextJoke,
+                UserEmail = dto.UserEmail,
+                Censorship = dto.Censorship
+            };
 
             return entity;
         }
@@ -71,15 +75,17 @@ namespace JustWunderMobile.Common.Mapping
         /// </summary>
         /// <param name="entity">ReleaseJoke entity</param>
         /// <returns>ReleaseJoke DTO</returns>
-        public static SAL.Interfaces.IApiReleaseJoke GetDTO(this ReleaseJoke entity)
+        public static SAL.Interfaces.IApiReleaseJoke GetDto(this ReleaseJoke entity)
         {
-            var dto = new SAL.DTO.ReleaseJokeDto();
-            dto.Id = entity.Id;
-            dto.PublishDate = entity.PublishDate;
-            dto.Rating = entity.Rating;
-            dto.TextJoke = entity.TextJoke;
-            dto.UserEmail = entity.UserEmail;
-            dto.Censorship = entity.Censorship;
+            var dto = new SAL.DTO.ReleaseJokeDto
+            {
+                Id = entity.Id,
+                PublishDate = entity.PublishDate,
+                Rating = entity.Rating,
+                TextJoke = entity.TextJoke,
+                UserEmail = entity.UserEmail,
+                Censorship = entity.Censorship
+            };
 
             return dto;
         }
@@ -95,12 +101,14 @@ namespace JustWunderMobile.Common.Mapping
         /// <returns>NewJokeDataModel</returns>
         public static NewJokeDataModel GetModel(this NewJoke entity)
         {
-            var model = new NewJokeDataModel();
-            model.Id = entity.Id;
-            model.IsSent = entity.IsSent;
-            model.TextJoke = entity.TextJoke;
-            model.UserEmail = entity.UserEmail;
-            model.DateAdded = entity.DateAdded;
+            var model = new NewJokeDataModel
+            {
+                Id = entity.Id,
+                IsSent = entity.IsSent,
+                TextJoke = entity.TextJoke,
+                UserEmail = entity.UserEmail,
+                DateAdded = entity.DateAdded
+            };
 
             return model;
         }
@@ -129,12 +137,14 @@ namespace JustWunderMobile.Common.Mapping
         /// </summary>
         /// <param name="entity">NewJoke entity</param>
         /// <returns>NewJoke DTO</returns>
-        public static SAL.Interfaces.IApiInboxJoke GetDTO(this NewJoke entity)
+        public static SAL.Interfaces.IApiInboxJoke GetDto(this NewJoke entity)
         {
-            var dto = new SAL.DTO.InboxJokeDto();
-            dto.Id = entity.Id;
-            dto.TextJoke = entity.TextJoke;
-            dto.UserEmail = entity.UserEmail;
+            var dto = new SAL.DTO.InboxJokeDto
+            {
+                Id = entity.Id,
+                TextJoke = entity.TextJoke,
+                UserEmail = entity.UserEmail
+            };
 
             return dto;
         }

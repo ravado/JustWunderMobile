@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Input;
-using Cirrious.MvvmCross.ViewModels;
+﻿using Cirrious.MvvmCross.ViewModels;
 using JustWunderMobile.Common.Resources;
+using System;
+using System.Windows.Input;
 
 namespace JustWunderMobile.Common.ViewModels
 {
