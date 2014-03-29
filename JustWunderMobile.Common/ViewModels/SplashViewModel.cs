@@ -1,4 +1,5 @@
 using Cirrious.MvvmCross.ViewModels;
+using JustWunderMobile.Common.Interfaces;
 using JustWunderMobile.Common.Resources;
 using System.Windows.Input;
 
@@ -38,10 +39,9 @@ namespace JustWunderMobile.Common.ViewModels
 
         #region Constructors
 
-        public SplashViewModel()
-        {
-            
-        }
+        public SplashViewModel(ISpinner spinner) : base(spinner)
+        { }
+
         #endregion
 
         #region Methods

@@ -12,6 +12,13 @@ namespace JustWunderMobile.FakeData
 
         public System.Collections.Generic.IEnumerable<IApiReleaseJoke> GetNewJokes(int lastJokeId)
         {
+            var some = "";
+            for (int i = 0; i < 1000000; i++)
+            {
+                some += i.ToString();
+                if (some.Length > 1000)
+                    some = "";
+            }
             return JokeMock.GetNewJokes();
         }
 
@@ -21,7 +28,6 @@ namespace JustWunderMobile.FakeData
 
             return rand;
         }
-
 
         public void VoteJokes(IApiJokeVoteContainer voteJokesContainer)
         {

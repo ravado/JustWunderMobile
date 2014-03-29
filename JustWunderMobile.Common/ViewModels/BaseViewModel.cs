@@ -1,4 +1,5 @@
 ﻿using Cirrious.MvvmCross.ViewModels;
+using JustWunderMobile.Common.Interfaces;
 using JustWunderMobile.Common.Resources;
 using System;
 using System.Windows.Input;
@@ -7,6 +8,7 @@ namespace JustWunderMobile.Common.ViewModels
 {
     public class BaseViewModel : MvxViewModel
     {
+        public ISpinner Spinner { get; protected set; }
 
         public string AppName
         {
@@ -36,6 +38,10 @@ namespace JustWunderMobile.Common.ViewModels
             }
         }
 
+        public BaseViewModel(ISpinner spinner)
+        {
+            Spinner = spinner;
+        }
 
         private void Close()
         {

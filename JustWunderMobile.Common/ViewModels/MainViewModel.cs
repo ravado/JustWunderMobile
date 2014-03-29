@@ -1,4 +1,5 @@
-﻿using Cirrious.MvvmCross.ViewModels;
+﻿using System.Threading.Tasks;
+using Cirrious.MvvmCross.ViewModels;
 using JustWunderMobile.Common.DataModels;
 using JustWunderMobile.Common.Interfaces;
 using JustWunderMobile.Common.Resources;
@@ -123,11 +124,21 @@ namespace JustWunderMobile.Common.ViewModels
 
         #endregion
 
-        public MainViewModel(SyncService syncService, IReleasedJokeService<ReleaseJokeDataModel> releasedJokeService)
+        public MainViewModel(SyncService syncService, IReleasedJokeService<ReleaseJokeDataModel> releasedJokeService, ISpinner spinner) : base(spinner)
         {
             _syncService = syncService;//new SyncService(Mvx.Resolve<IApiService>(), Mvx.Resolve<IRepository<ReleaseJoke>>(), Mvx.Resolve<IRepository<NewJoke>>());
             _releasedJokeService = releasedJokeService;
             //LoadFakeData();
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            if (SyncService.NeedSync() && SyncService.CanSync())
+            {
+                Spinner.SetProgressIndicator(true, "Loading...");
+                Task.Factory.StartNew(Refresh).ContinueWith(result => Spinner.SetProgressIndicator(false));
+            }
         }
 
         #region Methods
@@ -145,7 +156,6 @@ namespace JustWunderMobile.Common.ViewModels
             SyncService.LoadNewJokesFromServer();
             ShowJokes();
             System.Diagnostics.Debug.WriteLine("REFRESHING...");
-
         }
 
         private void ShowJokes()

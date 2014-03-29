@@ -44,6 +44,7 @@
     <Compile Include="DataModels\ReleaseJokeDataModel.cs" />
     <Compile Include="Extentions.cs" />
     <Compile Include="Interfaces\ISettingService.cs" />
+    <Compile Include="Interfaces\ISpinner.cs" />
     <Compile Include="Interfaces\ISyncService.cs" />
     <Compile Include="Mapping\MappingExtensions.cs" />
     <Compile Include="Interfaces\INewJokeService.cs" />
@@ -59,7 +60,6 @@
     <Compile Include="Services\SyncService.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\FirstViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SplashViewModel.cs" />

@@ -16,12 +16,24 @@ namespace JustWunderMobile.Common.Services
         protected IApiService ApiService { get; private set; }
         protected IRepository<ReleaseJoke> ReleaseJokeRepository { get; private set; }
         protected IRepository<NewJoke> NewJokeRepository { get; private set; }
+        protected ISettingService SettingService { get; private set; }
 
-        public SyncService(IApiService apiService, IRepository<ReleaseJoke> releaseJokeRepository, IRepository<NewJoke> newJokeRepository)
+        public SyncService(IApiService apiService, ISettingService settingService, IRepository<ReleaseJoke> releaseJokeRepository, IRepository<NewJoke> newJokeRepository)
         {
             ApiService = apiService;
             ReleaseJokeRepository = releaseJokeRepository;
             NewJokeRepository = newJokeRepository;
+            SettingService = settingService;
+        }
+
+        public bool CanSync()
+        {
+            return true;
+        }
+
+        public bool NeedSync()
+        {
+            return SettingService.SyncOnStart;
         }
 
         public void LoadNewJokesFromServer()

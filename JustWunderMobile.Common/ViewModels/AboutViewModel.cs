@@ -1,4 +1,5 @@
-﻿using JustWunderMobile.Common.Resources;
+﻿using JustWunderMobile.Common.Interfaces;
+using JustWunderMobile.Common.Resources;
 
 namespace JustWunderMobile.Common.ViewModels
 {
@@ -27,5 +28,8 @@ namespace JustWunderMobile.Common.ViewModels
 
         #endregion
 
+        public AboutViewModel(ISpinner spinner) : base(spinner)
+        {
+        }
     }
 }

@@ -38,6 +38,7 @@
                 <toolkit:ToggleSwitch
                     Content="Синхронизировать при старте"
                     FontSize="25"
+                    IsChecked="{Binding SyncOnStart, Mode=TwoWay}"
                     VerticalAlignment="Bottom"
                     Foreground="{StaticResource MainDarkColorBrush}"
                     Background="{StaticResource MainRedColorBrush}"/>

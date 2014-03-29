@@ -7,18 +7,27 @@ namespace JustWunderMobile.Common.ViewModels
     {
         #region Fields
 
+        private bool _syncOnStart;
+
         #region Commands
         #endregion
 
-        private ISettingService _settingsStoredge;
+        private ISettingService SettingService { get; set; }
+        
         #endregion
 
-        public SettingsViewModel(ISettingService settingsStoredge)
+        public SettingsViewModel(ISettingService settingsService, ISpinner spinner) : base(spinner)
         {
-            _settingsStoredge = settingsStoredge;
+            SettingService = settingsService;
         }
 
         #region Properties
+
+        public bool SyncOnStart
+        {
+            get { return SettingService.SyncOnStart; }
+            set { SettingService.SyncOnStart = value; RaisePropertyChanged(() => SyncOnStart); }
+        }
 
         public override string PageName
         {
