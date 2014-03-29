@@ -43,7 +43,7 @@
     <Compile Include="DataModels\NewJokeDataModel.cs" />
     <Compile Include="DataModels\ReleaseJokeDataModel.cs" />
     <Compile Include="Extentions.cs" />
-    <Compile Include="Interfaces\ISettingsStoredge.cs" />
+    <Compile Include="Interfaces\ISettingService.cs" />
     <Compile Include="Interfaces\ISyncService.cs" />
     <Compile Include="Mapping\MappingExtensions.cs" />
     <Compile Include="Interfaces\INewJokeService.cs" />

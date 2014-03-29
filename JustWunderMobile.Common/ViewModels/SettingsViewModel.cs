@@ -10,10 +10,10 @@ namespace JustWunderMobile.Common.ViewModels
         #region Commands
         #endregion
 
-        private ISettingsStoredge _settingsStoredge;
+        private ISettingService _settingsStoredge;
         #endregion
 
-        public SettingsViewModel(ISettingsStoredge settingsStoredge)
+        public SettingsViewModel(ISettingService settingsStoredge)
         {
             _settingsStoredge = settingsStoredge;
         }

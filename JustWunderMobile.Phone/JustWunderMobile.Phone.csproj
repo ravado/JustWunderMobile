@@ -98,7 +98,7 @@
     <Compile Include="Classes\Converters\LowercaseConverter.cs" />
     <Compile Include="Classes\Converters\RelativeTimeConverter.cs" />
     <Compile Include="Classes\Converters\UppercaseConverter.cs" />
-    <Compile Include="Classes\SettingsStoredge.cs" />
+    <Compile Include="Classes\SettingServise.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
