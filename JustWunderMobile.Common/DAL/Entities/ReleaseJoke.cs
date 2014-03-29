@@ -16,6 +16,7 @@ namespace JustWunderMobile.Common.DAL.Entities
         public string UserEmail { get; set; }
         public int Rating { get; set; }
         public bool Censorship { get; set; }
+        public bool Favorite { get; set; }
 
         /// <summary>
         /// Count of votes which user gave to the joke

@@ -21,6 +21,7 @@ namespace JustWunderMobile.Common.DAL.Repositories
         protected BaseRepository(ISQLiteConnectionFactory factory)
         {
             Store = factory.Create(DATABASE_NAME);
+            Store.CreateTable<T>();
         }
         #endregion
 

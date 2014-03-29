@@ -24,7 +24,8 @@ namespace JustWunderMobile.Common.Mapping
                 TextJoke = entity.TextJoke,
                 UserEmail = entity.UserEmail,
                 Censorship = entity.Censorship,
-                Vote = entity.Vote
+                Vote = entity.Vote,
+                Favorite = entity.Favorite
             };
 
             return model;
@@ -45,6 +46,7 @@ namespace JustWunderMobile.Common.Mapping
             entity.UserEmail = model.UserEmail;
             entity.Censorship = model.Censorship;
             entity.Vote = model.Vote;
+            entity.Favorite = model.Favorite;
 
             return entity;
         }
@@ -104,7 +106,7 @@ namespace JustWunderMobile.Common.Mapping
             var model = new NewJokeDataModel
             {
                 Id = entity.Id,
-                IsSent = entity.IsSent,
+                IsSent = entity.IsSend,
                 TextJoke = entity.TextJoke,
                 UserEmail = entity.UserEmail,
                 DateAdded = entity.DateAdded
@@ -125,7 +127,7 @@ namespace JustWunderMobile.Common.Mapping
             entity.DateAdded = model.DateAdded;
             entity.TextJoke = model.TextJoke;
             entity.UserEmail = model.UserEmail;
-            entity.IsSent = model.IsSent;
+            entity.IsSend = model.IsSent;
 
             return entity;
         }

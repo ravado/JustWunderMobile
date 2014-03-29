@@ -28,9 +28,10 @@ namespace JustWunderMobile.Common.Services
         {
             var lastId = GetReleasedJokeLastId();
             var newJokes = ApiService.GetNewJokes(lastId);
-            foreach (var newJoke in newJokes)
+            foreach (var joke in newJokes.Select(newJoke => newJoke.GetEntity()))
             {
-                ReleaseJokeRepository.Insert(newJoke.GetEntity());
+                joke.Favorite = Extentions.MakeRandom();
+                ReleaseJokeRepository.Insert(joke);
             }
         }
 
@@ -47,7 +48,7 @@ namespace JustWunderMobile.Common.Services
 
         private void PostNewJokeToServer()
         {
-            var newJokes = NewJokeRepository.GetAll().Where(j => j.IsSent == false);
+            var newJokes = NewJokeRepository.GetAll().Where(j => j.IsSend == false);
 
             foreach (var newJoke in newJokes)
             {

@@ -1,5 +1,4 @@
-﻿
-using Cirrious.MvvmCross.Plugins.Sqlite;
+﻿using Cirrious.MvvmCross.Plugins.Sqlite;
 using JustWunderMobile.Common.DAL.Entities;
 
 namespace JustWunderMobile.Common.DAL.Repositories
@@ -9,6 +8,7 @@ namespace JustWunderMobile.Common.DAL.Repositories
         public NewJokeRepository(ISQLiteConnectionFactory factory)
             : base(factory)
         {
+            
         }
     }
 }

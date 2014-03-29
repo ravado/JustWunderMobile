@@ -14,5 +14,6 @@ namespace JustWunderMobile.Common.DataModels
         public int Rating { get; set; }
         public bool Censorship { get; set; }
         public int Vote { get; set; }
+        public bool Favorite { get; set; }
     }
 }

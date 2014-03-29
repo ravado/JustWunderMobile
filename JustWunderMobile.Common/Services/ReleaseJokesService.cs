@@ -1,6 +1,5 @@
 ﻿using JustWunderMobile.Common.DAL.Contracts;
 using JustWunderMobile.Common.DAL.Entities;
-using JustWunderMobile.Common.DAL.Repositories;
 using JustWunderMobile.Common.DataModels;
 using JustWunderMobile.Common.Interfaces;
 using JustWunderMobile.Common.Mapping;
@@ -9,6 +8,9 @@ using System.Linq;
 
 namespace JustWunderMobile.Common.Services
 {
+    /// <summary>
+    /// Service contains all business logic for released jokes
+    /// </summary>
     public class ReleaseJokesService : IReleasedJokeService<ReleaseJokeDataModel>
     {
         #region Fields
@@ -39,19 +41,36 @@ namespace JustWunderMobile.Common.Services
         
         public IEnumerable<ReleaseJokeDataModel> GetTopJokes(int count, int offset)
         {
-            var top = ReleaseJokeRepository.GetAll().OrderBy(o => o.Rating).Skip(offset).Take(count).Select(o => o.GetModel());
+            var top = ReleaseJokeRepository.GetAll()
+                .OrderBy(o => o.Rating)
+                .Skip(offset)
+                .Take(count)
+                .Select(o => o.GetModel());
+
             return top;
         }
 
         public IEnumerable<ReleaseJokeDataModel> GetLastJokes(int count, int offset)
         {
-            var last = ReleaseJokeRepository.GetAll().OrderBy(o => o.PublishDate).Skip(offset).Take(count).Select(o => o.GetModel());
+            var last = ReleaseJokeRepository.GetAll()
+                .OrderBy(o => o.PublishDate)
+                .Skip(offset)
+                .Take(count)
+                .Select(o => o.GetModel());
+
             return last;
         }
 
         public IEnumerable<ReleaseJokeDataModel> GetFavoriteJokes(int count, int offset)
         {
-            return new List<ReleaseJokeDataModel>();
+            var favorite = ReleaseJokeRepository.GetAll()
+                .OrderBy(o => o.PublishDate)
+                .Where(o=>o.Favorite)
+                .Skip(offset)
+                .Take(count)
+                .Select(o => o.GetModel());
+
+            return favorite;
         }
 
         #endregion
