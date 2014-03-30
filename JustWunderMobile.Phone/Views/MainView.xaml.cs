@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using Cirrious.MvvmCross.WindowsPhone.Views;
 using System.Windows;
@@ -23,10 +24,11 @@ namespace JustWunderMobile.Phone.Views
             {
                 Dispatcher.BeginInvoke(() =>
                 {
-                    var toast = new ShellToast();
-                    toast.Title = "[title]";
-                    toast.Content = alertEventArgs.Message;
-                    toast.Show();
+//                    var toast = new ShellToast();
+//                    toast.Title = "[title]";
+//                    toast.Content = alertEventArgs.Message;
+//                    toast.Show();
+                    MessageBox.Show("Message", "Caption", MessageBoxButton.OK);
                 });
             }
         }
@@ -35,10 +37,34 @@ namespace JustWunderMobile.Phone.Views
         {
             NavigationService.RemoveBackEntry();
 
-            _viewModel = base.ViewModel as MainViewModel;
+            if (_viewModel != null)
+            {
+                _viewModel.NeedJokeDisplay = true;
+                _viewModel.ShowJokes();
+            }
 
             if (_viewModel != null)
+            {
+                _viewModel.OnMessageDisplay -= ViewModelOnOnMessageDisplay;
                 _viewModel.OnMessageDisplay += ViewModelOnOnMessageDisplay;
+            }
+        }
+
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            _viewModel.Spinner.SetProgressIndicator(false);
+            _viewModel.CancelRenderingJokes();
+            _viewModel.ClearAllJokes();
+            base.OnNavigatingFrom(e);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            if (_viewModel == null)
+                _viewModel = base.ViewModel as MainViewModel;
+
         }
     }
 }

@@ -17,6 +17,7 @@ namespace JustWunderMobile.Common.ViewModels
         private Random _random;
         private readonly SyncService _syncService;
         private readonly IReleasedJokeService<ReleaseJokeDataModel> _releasedJokeService;
+        private bool _needJokeDisplay = true;
 
         #region Commands
         private MvxCommand _refreshCommand;
@@ -120,6 +121,13 @@ namespace JustWunderMobile.Common.ViewModels
                 return _showAboutCommand;
             }
         }
+
+        public bool NeedJokeDisplay
+        {
+            get { return _needJokeDisplay; }
+            set { _needJokeDisplay = value; }
+        }
+
         #endregion
 
         #endregion
@@ -137,8 +145,6 @@ namespace JustWunderMobile.Common.ViewModels
             if (SyncService.NeedSync() && SyncService.CanSync())
             {
                 Refresh();
-                //Spinner.SetProgressIndicator(true, "Loading...");
-                //Task.Factory.StartNew(Refresh).ContinueWith(result => Spinner.SetProgressIndicator(false));
             }
         }
 
@@ -154,209 +160,55 @@ namespace JustWunderMobile.Common.ViewModels
         }
         private void Refresh()
         {
+            NeedJokeDisplay = true;
             Spinner.SetProgressIndicator(true, "Loading from server...");
             Task.Factory.StartNew(SyncService.LoadNewJokesFromServer)
                 .ContinueWith(result =>
                 {
-                    Spinner.SetProgressIndicator(true, "Rendering items...");
+                    Spinner.SetProgressIndicator(false);
                     ShowJokes();
                     throw new Exception("Fuck Off!");
                 }).ContinueWith(r =>
                 {
-                    Spinner.SetProgressIndicator(false);
-
                     if (r.Exception != null)
-                    {
                         ShowMessage(r.Exception.InnerException.Message);
-                    }
                 });
             
 
             System.Diagnostics.Debug.WriteLine("REFRESHING...");
         }
 
-        private void ShowJokes()
+        public void CancelRenderingJokes()
         {
-            NewJokes = ReleasedJokeService.GetLastJokes(10, 0).ToObservableCollection();
-            TopJokes = ReleasedJokeService.GetTopJokes(10, 0).ToObservableCollection();
-            FavoriteJokes = ReleasedJokeService.GetFavoriteJokes(10, 0).ToObservableCollection();
+            NeedJokeDisplay = false;
         }
 
-        private void LoadFakeData()
+        public void ClearAllJokes()
         {
-            #region NewJokes
-            NewJokes.Add(new ReleaseJokeDataModel
-            {
-                TextJoke = "Я родом из Орехово-Зуево. И я просто ненавижу русскую раскладку за то, что буквы З и Х расположены рядом.",
-                Rating = 1728
-            });
-            NewJokes.Add(new ReleaseJokeDataModel
-            {
-                TextJoke = "Когда-то давно я посадила в горшок орех из Рафаэлло. Прошло 11 лет, а я до сих пор надеюсь, что из него вырастет Рафаэлловое дерево :)",
-                Rating = 128
-            });
-            NewJokes.Add(new ReleaseJokeDataModel
-            {
-                TextJoke = "Это просто вопрос времени, когда к моему имени и фамилии добавят слово «синдром».",
-                Rating = 178
-            });
-            NewJokes.Add(new ReleaseJokeDataModel
-            {
-                TextJoke = "Отец так хотел, чтобы его сын стал физиком, что бил его не ремнем, а током.",
-                Rating = 1521
-            });
-            NewJokes.Add(new ReleaseJokeDataModel
-            {
-                TextJoke = "Скажи мне, сколько языков программирования ты знаешь, и я скажу, носишь ли ты сандали с носками.",
-            });
-            NewJokes.Add(new ReleaseJokeDataModel
-            {
-                TextJoke = "Ищу девушку с квартирой для очень серьёзных отношений, машина у меня уже есть от предыдущей жены."
-            });
-            NewJokes.Add(new ReleaseJokeDataModel
-            {
-                TextJoke = "Мальчик, которого воспитали бараны, без проблем адаптировался в современном обществе."
-            });
-            NewJokes.Add(new ReleaseJokeDataModel
-            {
-                TextJoke = "Если ты, когда-нибудь, лежа на девушке, заметишь, что глаза ее лихорадочно блестят, губы влажны и чувственны, а тело дрожит как осиновый лист на ветру - слазь с нее и беги... Это - малярия!"
-            });
-            NewJokes.Add(new ReleaseJokeDataModel
-            {
-                TextJoke = "Коллеги, сегодня я вас всех собрал, потому что вы - пазл."
-            }); NewJokes.Add(new ReleaseJokeDataModel
-            {
-                TextJoke = "Маша любила петь... eё рекорд был 40 Петь в месяц."
-            });
-            #endregion
-
-            #region TopJokes
-            TopJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Я родом из Орехово-Зуево. И я просто ненавижу русскую раскладку за то, что буквы З и Х расположены рядом."
-            });
-            TopJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Когда-то давно я посадила в горшок орех из Рафаэлло. Прошло 11 лет, а я до сих пор надеюсь, что из него вырастет Рафаэлловое дерево :)"
-            });
-            TopJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Это просто вопрос времени, когда к моему имени и фамилии добавят слово «синдром»."
-            });
-            TopJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Отец так хотел, чтобы его сын стал физиком, что бил его не ремнем, а током."
-            });
-            TopJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Скажи мне, сколько языков программирования ты знаешь, и я скажу, носишь ли ты сандали с носками."
-            });
-            TopJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Ищу девушку с квартирой для очень серьёзных отношений, машина у меня уже есть от предыдущей жены."
-            });
-            TopJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Мальчик, которого воспитали бараны, без проблем адаптировался в современном обществе."
-            });
-            TopJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Если ты, когда-нибудь, лежа на девушке, заметишь, что глаза ее лихорадочно блестят, губы влажны и чувственны, а тело дрожит как осиновый лист на ветру - слазь с нее и беги... Это - малярия!"
-            });
-            TopJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Коллеги, сегодня я вас всех собрал, потому что вы - пазл."
-            });
-            TopJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Маша любила петь... eё рекорд был 40 Петь в месяц."
-            });
-            #endregion
-
-            #region TopJokes
-            FavoriteJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Я родом из Орехово-Зуево. И я просто ненавижу русскую раскладку за то, что буквы З и Х расположены рядом."
-            });
-            FavoriteJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Когда-то давно я посадила в горшок орех из Рафаэлло. Прошло 11 лет, а я до сих пор надеюсь, что из него вырастет Рафаэлловое дерево :)"
-            });
-            FavoriteJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Это просто вопрос времени, когда к моему имени и фамилии добавят слово «синдром»."
-            });
-            FavoriteJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Отец так хотел, чтобы его сын стал физиком, что бил его не ремнем, а током."
-            });
-            FavoriteJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Скажи мне, сколько языков программирования ты знаешь, и я скажу, носишь ли ты сандали с носками."
-            });
-            FavoriteJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Ищу девушку с квартирой для очень серьёзных отношений, машина у меня уже есть от предыдущей жены."
-            });
-            FavoriteJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Мальчик, которого воспитали бараны, без проблем адаптировался в современном обществе."
-            });
-            FavoriteJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Если ты, когда-нибудь, лежа на девушке, заметишь, что глаза ее лихорадочно блестят, губы влажны и чувственны, а тело дрожит как осиновый лист на ветру - слазь с нее и беги... Это - малярия!"
-            });
-            FavoriteJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Коллеги, сегодня я вас всех собрал, потому что вы - пазл."
-            });
-            FavoriteJokes.Add(new ReleaseJokeDataModel()
-            {
-                TextJoke = "Маша любила петь... eё рекорд был 40 Петь в месяц."
-            });
-            #endregion
-
-            RandomizeValues();
+            NewJokes.Clear();
+            TopJokes.Clear();
+            FavoriteJokes.Clear();
         }
 
-        private void RandomizeValues()
+        public void ShowJokes()
         {
-            foreach (var newJoke in NewJokes)
+            Task.Factory.StartNew(() =>
             {
-                newJoke.Rating = GetRandom();
-                newJoke.PublishDate = RandomDay();
-            }
-            NewJokes[0].PublishDate = DateTime.Now.AddSeconds(-1.0);
-
-            foreach (var topJoke in TopJokes)
-            {
-                topJoke.Rating = GetRandom();
-                topJoke.PublishDate = RandomDay();
-            }
-            foreach (var favJoke in FavoriteJokes)
-            {
-                favJoke.Rating = GetRandom();
-                favJoke.PublishDate = RandomDay();
-            }
-        }
-
-        private int GetRandom()
-        {
-            if(_random == null)   
-                _random = new Random(2000);
-
-            return _random.Next(0, 5000);
-        }
-        private DateTime RandomDay()
-        {
-            var start = new DateTime(2010, 1, 1);
-            
-            int range = (DateTime.Today - start).Days;
-            var val = start.AddDays(_random.Next(range));
-            val = val.AddHours(_random.Next(24));
-            val = val.AddMinutes(_random.Next(60));
-            val = val.AddSeconds(_random.Next(60));
-            return val;
+                try
+                {
+                    if (NeedJokeDisplay)
+                    {
+                        Spinner.SetProgressIndicator(true, "Rendering items...");
+                        NewJokes = ReleasedJokeService.GetLastJokes(10, 0).ToObservableCollection();
+                        TopJokes = ReleasedJokeService.GetTopJokes(10, 0).ToObservableCollection();
+                        FavoriteJokes = ReleasedJokeService.GetFavoriteJokes(10, 0).ToObservableCollection();
+                    }
+                }
+                finally
+                {
+                    Spinner.SetProgressIndicator(false);
+                }
+            });
         }
 
         #endregion
