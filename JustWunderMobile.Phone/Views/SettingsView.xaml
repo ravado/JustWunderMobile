@@ -42,7 +42,7 @@
                     IsChecked="{Binding SyncOnStart, Mode=TwoWay}"
                     VerticalAlignment="Bottom"
                     Foreground="{StaticResource MainDarkColorBrush}"
-                    Background="{StaticResource MainRedColorBrush}"/>
+                    Background="White" BorderBrush="#FFC51313" Style="{StaticResource MainToggleSwitch}"/>
             </StackPanel>
         </Grid>
     </Grid>
