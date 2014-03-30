@@ -25,6 +25,14 @@ namespace JustWunderMobile.Common.ViewModels
             }
         }
 
+        public event EventHandler<AlertEventArgs> OnMessageDisplay;
+
+        public void ShowMessage(string message)
+        {
+            if(OnMessageDisplay != null) 
+                OnMessageDisplay(this, new AlertEventArgs(message));
+        }
+
         private ICommand _backCommand;
 
         // commands
@@ -47,5 +55,16 @@ namespace JustWunderMobile.Common.ViewModels
         {
             base.Close(this);
         }
+    }
+
+    public class AlertEventArgs : EventArgs
+    {
+        public string Message { get; private set; }
+
+        public AlertEventArgs(string message)
+        {
+            Message = message;
+        }
+        
     }
 }

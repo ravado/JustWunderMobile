@@ -136,8 +136,9 @@ namespace JustWunderMobile.Common.ViewModels
         {
             if (SyncService.NeedSync() && SyncService.CanSync())
             {
-                Spinner.SetProgressIndicator(true, "Loading...");
-                Task.Factory.StartNew(Refresh).ContinueWith(result => Spinner.SetProgressIndicator(false));
+                Refresh();
+                //Spinner.SetProgressIndicator(true, "Loading...");
+                //Task.Factory.StartNew(Refresh).ContinueWith(result => Spinner.SetProgressIndicator(false));
             }
         }
 
@@ -153,8 +154,24 @@ namespace JustWunderMobile.Common.ViewModels
         }
         private void Refresh()
         {
-            SyncService.LoadNewJokesFromServer();
-            ShowJokes();
+            Spinner.SetProgressIndicator(true, "Loading from server...");
+            Task.Factory.StartNew(SyncService.LoadNewJokesFromServer)
+                .ContinueWith(result =>
+                {
+                    Spinner.SetProgressIndicator(true, "Rendering items...");
+                    ShowJokes();
+                    throw new Exception("Fuck Off!");
+                }).ContinueWith(r =>
+                {
+                    Spinner.SetProgressIndicator(false);
+
+                    if (r.Exception != null)
+                    {
+                        ShowMessage(r.Exception.InnerException.Message);
+                    }
+                });
+            
+
             System.Diagnostics.Debug.WriteLine("REFRESHING...");
         }
 

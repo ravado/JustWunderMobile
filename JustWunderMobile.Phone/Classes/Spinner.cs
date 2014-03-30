@@ -1,8 +1,6 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Threading;
-using JustWunderMobile.Common.Interfaces;
+﻿using JustWunderMobile.Common.Interfaces;
 using Microsoft.Phone.Shell;
+using System.Windows;
 
 namespace JustWunderMobile.Phone.Classes
 {

@@ -65,8 +65,8 @@
             <Setter Property="HeaderTemplate">
                 <Setter.Value>
                     <DataTemplate>
-                        <Grid Background="Transparent" Margin="0">
-                            <TextBlock FontSize="60" Text="{Binding}" ></TextBlock>
+                        <Grid Background="Transparent" Margin="0" >
+                            <TextBlock FontSize="55" Text="{Binding}" Padding="0"></TextBlock>
                         </Grid>
                     </DataTemplate>
                 </Setter.Value>
@@ -74,8 +74,8 @@
             <Setter Property="TitleTemplate">
                 <Setter.Value>
                     <DataTemplate>
-                        <Grid Background="Transparent" Margin="0" Height="30" >
-                            <TextBlock FontSize="22" Foreground="{StaticResource SecondaryFontColorBrush}" Text="{Binding}"></TextBlock>
+                        <Grid Background="Transparent" Margin="0 10 0 0" Height="35">
+                            <TextBlock FontSize="20" Margin="0 5 0 0"  Foreground="{StaticResource SecondaryFontColorBrush}" Text="{Binding}"></TextBlock>
                         </Grid>
                     </DataTemplate>
                 </Setter.Value>
