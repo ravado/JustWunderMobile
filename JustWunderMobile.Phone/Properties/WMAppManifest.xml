@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{91302962-22fc-4d34-ba70-690e69397e46}" Title="Just Wunder" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="JustWunderMobile.Phone author" Description="The funniest jokes that you have ever heard" Publisher="JustWunderMobile.Phone" PublisherID="{e704de36-a30c-4241-bdcb-3480b6bd11cf}">
-    <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
+  <App xmlns="" ProductID="{91302962-22fc-4d34-ba70-690e69397e46}" Title="Just Wunder" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="JustWunderMobile.Phone author" Description="The funniest jokes you have ever heard" Publisher="JustWunderMobile.Phone" PublisherID="{e704de36-a30c-4241-bdcb-3480b6bd11cf}">
+    <IconPath IsRelative="true" IsResource="false">icon-159x159.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
       <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
@@ -16,11 +16,9 @@
     <Tokens>
       <PrimaryToken TokenID="JustWunderMobile.PhoneToken" TaskName="_default">
         <TemplateFlip>
-          <SmallImageURI IsRelative="true" IsResource="false">
-          </SmallImageURI>
+          <SmallImageURI IsRelative="true" IsResource="false">icon-159x159.png</SmallImageURI>
           <Count>0</Count>
-          <BackgroundImageURI IsRelative="true" IsResource="false">
-          </BackgroundImageURI>
+          <BackgroundImageURI IsRelative="true" IsResource="false">icon-336x336.png</BackgroundImageURI>
           <Title>
           </Title>
           <BackContent>
@@ -29,9 +27,13 @@
           </BackBackgroundImageURI>
           <BackTitle>
           </BackTitle>
+          <LargeBackgroundImageURI IsRelative="true" IsResource="false">icon-691x336.png</LargeBackgroundImageURI>
+          <LargeBackContent />
+          <LargeBackBackgroundImageURI IsRelative="true" IsResource="false">
+          </LargeBackBackgroundImageURI>
           <DeviceLockImageURI IsRelative="true" IsResource="false">
           </DeviceLockImageURI>
-          <HasLarge>false</HasLarge>
+          <HasLarge>True</HasLarge>
         </TemplateFlip>
       </PrimaryToken>
     </Tokens>
