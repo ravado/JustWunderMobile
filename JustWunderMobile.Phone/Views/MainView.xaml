@@ -18,7 +18,8 @@
     mc:Ignorable="d"
     Style="{StaticResource NavigationAnimation}"
     shell:SystemTray.IsVisible="True"
-    shell:SystemTray.Opacity="0">
+    shell:SystemTray.Opacity="0"
+    toolkit:TiltEffect.IsTiltEnabled="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" 

@@ -47,17 +47,17 @@
         </Grid>
     </Grid>
 
-    <phone:PhoneApplicationPage.ApplicationBar>
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar BackgroundColor="{StaticResource MainRedColor}">
             <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/back.png" Text="back"/>
         </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
 
     <!--Usage samples-->
-    <i:Interaction.Behaviors>
+    <!--<i:Interaction.Behaviors>
         <appBarUtils:AppBarItemCommand 
             Id="back" Text="{Binding MenuBackLabel}"
             IconUri="/Assets/AppBar/back.png"
             Command="{Binding BackCommand}"/>
-    </i:Interaction.Behaviors>
+    </i:Interaction.Behaviors>-->
 </views:MvxPhonePage>

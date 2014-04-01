@@ -14,6 +14,7 @@
         <converters:RelativeTimeConverter x:Key="RelativeTimeConverter"/>
         <converters:LowercaseConverter x:Key="LowercaseConverter"/>
         <converters:UppercaseConverter x:Key="UppercaseConverter"/>
+        <converters:FavoriteConverter x:Key="FavoriteConverter"/>
 
         <local:LocalizedStrings xmlns:local="clr-namespace:JustWunderMobile.Phone" x:Key="LocalizedStrings"/>
 
@@ -193,10 +194,10 @@
                         Grid.Column="1"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal"
-                        Background="Transparent">
+                        Background="Transparent" >
                         <Rectangle Width="24" Height="24" Fill="{StaticResource MainRedColorBrush}">
                             <Rectangle.OpacityMask>
-                                <ImageBrush ImageSource="/Assets/AppBar/outline_star-32.png"/>
+                                <ImageBrush ImageSource="{Binding Favorite, Converter={StaticResource FavoriteConverter}}"/>
                             </Rectangle.OpacityMask>
                         </Rectangle>
                         <TextBlock 
