@@ -265,7 +265,17 @@ namespace JustWunderMobile.Common.ViewModels
             {
                 updated.Favorite = isFavorite;
             }
-            NewJokes = NewJokes.ToObservableCollection();
+            NewJokesSelected.Clear();
+
+            //TODO: it`s a bad idea, but there is no ability to reset selected items on view for now
+            NewJokes = NewJokes.ToObservableCollection(); 
+
+            // update this items quietly without blocking UI
+            Task.Factory.StartNew(() => ReleasedJokeService.UpdateJokes(NewJokes))
+                .ContinueWith(result => {
+                    RefreshTopJokes();
+                    RefreshFavoriteJokes();
+                });
         }
         private void AddToFavorite()
         {
@@ -296,9 +306,9 @@ namespace JustWunderMobile.Common.ViewModels
                     if (NeedJokeDisplay)
                     {
                         Spinner.SetProgressIndicator(true, "Rendering items...");
-                        NewJokes = ReleasedJokeService.GetLastJokes(10, 0).ToObservableCollection();
-                        TopJokes = ReleasedJokeService.GetTopJokes(10, 0).ToObservableCollection();
-                        FavoriteJokes = ReleasedJokeService.GetFavoriteJokes(10, 0).ToObservableCollection();
+                        RefreshNewJokes();
+                        RefreshTopJokes();
+                        RefreshFavoriteJokes();
                     }
                 }
                 finally
@@ -306,6 +316,19 @@ namespace JustWunderMobile.Common.ViewModels
                     Spinner.SetProgressIndicator(false);
                 }
             });
+        }
+
+        private void RefreshNewJokes()
+        {
+            NewJokes = ReleasedJokeService.GetLastJokes(10, 0).ToObservableCollection();
+        }
+        private void RefreshTopJokes()
+        {
+            TopJokes = ReleasedJokeService.GetTopJokes(10, 0).ToObservableCollection();
+        }
+        private void RefreshFavoriteJokes()
+        {
+            FavoriteJokes = ReleasedJokeService.GetFavoriteJokes(10, 0).ToObservableCollection();
         }
         #endregion
 

@@ -50,7 +50,7 @@ namespace JustWunderMobile.Common.Services
         public IEnumerable<ReleaseJokeDataModel> GetTopJokes(int count, int offset)
         {
             var top = ReleaseJokeRepository.GetAll()
-                .OrderBy(o => o.Rating)
+                .OrderByDescending(o => o.Rating)
                 .Skip(offset)
                 .Take(count)
                 .Select(o => o.GetModel());
@@ -61,7 +61,7 @@ namespace JustWunderMobile.Common.Services
         public IEnumerable<ReleaseJokeDataModel> GetLastJokes(int count, int offset)
         {
             var last = ReleaseJokeRepository.GetAll()
-                .OrderBy(o => o.PublishDate)
+                .OrderByDescending(o => o.PublishDate)
                 .Skip(offset)
                 .Take(count)
                 .Select(o => o.GetModel());
@@ -72,7 +72,7 @@ namespace JustWunderMobile.Common.Services
         public IEnumerable<ReleaseJokeDataModel> GetFavoriteJokes(int count, int offset)
         {
             var favorite = ReleaseJokeRepository.GetAll()
-                .OrderBy(o => o.PublishDate)
+                .OrderByDescending(o => o.PublishDate)
                 .Where(o=>o.Favorite)
                 .Skip(offset)
                 .Take(count)

@@ -72,7 +72,7 @@ namespace JustWunderMobile.FakeData
                 {
                     Id = 10,
                     Censorship = false,
-                    PublishDate = DateTime.Now,
+                    PublishDate = new DateTime(2014, 3, 15),
                     Rating = 150,
                     TextJoke = @"Вчера в автобусе наркоман в сумку залез, я сначала не заметила, потом сумку открываю – сидит.",
                     UserEmail = "ravadog@gmail.com"
@@ -90,7 +90,7 @@ namespace JustWunderMobile.FakeData
                 {
                     Id = 12,
                     Censorship = false,
-                    PublishDate = DateTime.Now,
+                    PublishDate = new DateTime(2014, 4, 1),
                     Rating = 155,
                     TextJoke = @"Я такой милый, что Бемби по сравнению со мной — просто олень.",
                     UserEmail = "ravadog@gmail.com"

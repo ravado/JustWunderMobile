@@ -34,7 +34,7 @@ namespace JustWunderMobile.Common.DAL.Repositories
 
         public void Update(T entity)
         {
-            Store.Update(entity);
+            var result = Store.Update(entity);
         }
 
         public void Delete(T entity)

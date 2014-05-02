@@ -85,6 +85,9 @@ namespace JustWunderMobile.Phone.Views
             {
                 _viewModel.NewJokesSelected.Add(selected);
             }
+
+            
+                
         }
 
         private void MainPivot_OnSelectionChanged(object sender, SelectionChangedEventArgs e)

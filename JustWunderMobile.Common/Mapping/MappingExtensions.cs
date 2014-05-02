@@ -39,7 +39,7 @@ namespace JustWunderMobile.Common.Mapping
         public static ReleaseJoke GetEntity(this ReleaseJokeDataModel model)
         {
             var entity = new ReleaseJoke();
-            entity.Id = entity.Id;
+            entity.Id = model.Id;
             entity.PublishDate = model.PublishDate;
             entity.Rating = model.Rating;
             entity.TextJoke = model.TextJoke;
