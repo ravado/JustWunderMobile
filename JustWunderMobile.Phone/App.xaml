@@ -6,8 +6,7 @@
     xmlns:primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone"
     xmlns:converters="clr-namespace:JustWunderMobile.Phone.Classes.Converters"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" xmlns:toolkitPrimitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone.Controls.Toolkit"
-    x:Class="JustWunderMobile.Phone.App"
-    >
+    x:Class="JustWunderMobile.Phone.App">
 
     <!--Application Resources-->
     <Application.Resources>
@@ -16,7 +15,7 @@
         <converters:UppercaseConverter x:Key="UppercaseConverter"/>
         <converters:FavoriteConverter x:Key="FavoriteConverter"/>
         <converters:VisibilityConverter x:Key="VisibilityConverter"/>
-
+        
         <local:LocalizedStrings xmlns:local="clr-namespace:JustWunderMobile.Phone" x:Key="LocalizedStrings"/>
 
 

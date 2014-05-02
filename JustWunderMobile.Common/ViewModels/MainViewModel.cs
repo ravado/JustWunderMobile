@@ -29,38 +29,11 @@ namespace JustWunderMobile.Common.ViewModels
         private ObservableCollection<ReleaseJokeDataModel> _topJokes;
         private ObservableCollection<ReleaseJokeDataModel> _favoriteJokes;
 
+        private MainViewState _viewState;
+
         #endregion
 
         #region Properties
-
-        public override string PageName
-        {
-            get { return UILabels.MainPage_Name; }
-        }
-        public string TopJokesLabel
-        {
-            get { return UILabels.MainPage_TopJokes; }
-        }
-        public string NewJokesLabel
-        {
-            get { return UILabels.MainPage_NewJokes; }
-        }
-        public string FavoriteJokesLabel
-        {
-            get { return UILabels.MainPage_FavoriteJokes; }
-        }
-        public string MenuSettingsLabel
-        {
-            get { return UILabels.MainPage_Menu_Settings; }
-        }
-        public string MenuAboutLabel
-        {
-            get { return UILabels.MainPage_Menu_About; }
-        }
-        public string MenuRefreshLabel
-        {
-            get { return UILabels.MainPage_Menu_Refresh; }
-        }
 
         public ObservableCollection<ReleaseJokeDataModel> NewJokes
         {
@@ -93,8 +66,55 @@ namespace JustWunderMobile.Common.ViewModels
             }
         }
 
+        public MainViewState ViewState
+        {
+            get { return _viewState; }
+            set
+            {
+                _viewState = value;
+                RaisePropertyChanged(() => ViewState);
+            }
+        }
+
+        public bool NeedJokeDisplay
+        {
+            get { return _needJokeDisplay; }
+            set { _needJokeDisplay = value; }
+        }
+
         public SyncService SyncService { get { return _syncService; } }
         public IReleasedJokeService<ReleaseJokeDataModel> ReleasedJokeService { get { return _releasedJokeService; } }
+        
+        #region Labels
+        public override string PageName
+        {
+            get { return UILabels.MainPage_Name; }
+        }
+        public string TopJokesLabel
+        {
+            get { return UILabels.MainPage_TopJokes; }
+        }
+        public string NewJokesLabel
+        {
+            get { return UILabels.MainPage_NewJokes; }
+        }
+        public string FavoriteJokesLabel
+        {
+            get { return UILabels.MainPage_FavoriteJokes; }
+        }
+        public string MenuSettingsLabel
+        {
+            get { return UILabels.MainPage_Menu_Settings; }
+        }
+        public string MenuAboutLabel
+        {
+            get { return UILabels.MainPage_Menu_About; }
+        }
+        public string MenuRefreshLabel
+        {
+            get { return UILabels.MainPage_Menu_Refresh; }
+        }
+        #endregion
 
         #region Commands
         public ICommand RefreshCommand
@@ -121,21 +141,16 @@ namespace JustWunderMobile.Common.ViewModels
                 return _showAboutCommand;
             }
         }
-
-        public bool NeedJokeDisplay
-        {
-            get { return _needJokeDisplay; }
-            set { _needJokeDisplay = value; }
-        }
-
         #endregion
 
         #endregion
 
-        public MainViewModel(SyncService syncService, IReleasedJokeService<ReleaseJokeDataModel> releasedJokeService, ISpinner spinner) : base(spinner)
+        public MainViewModel(SyncService syncService, IReleasedJokeService<ReleaseJokeDataModel> releasedJokeService, ISpinner spinner)
+            : base(spinner)
         {
             _syncService = syncService;//new SyncService(Mvx.Resolve<IApiService>(), Mvx.Resolve<IRepository<ReleaseJoke>>(), Mvx.Resolve<IRepository<NewJoke>>());
             _releasedJokeService = releasedJokeService;
+            _viewState = MainViewState.NewJokes;
             //LoadFakeData();
             Initialize();
         }
@@ -173,7 +188,7 @@ namespace JustWunderMobile.Common.ViewModels
                     if (r.Exception != null)
                         ShowMessage(r.Exception.InnerException.Message);
                 });
-            
+
 
             System.Diagnostics.Debug.WriteLine("REFRESHING...");
         }

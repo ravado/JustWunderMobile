@@ -27,6 +27,7 @@
           d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml, Instance={x:Null}}">
 
         <phone:Pivot Name="MainPivot"
+                     SelectionChanged="MainPivot_OnSelectionChanged"
                      Style="{StaticResource MainPivot}"
                      Title="{Binding AppName}" DataContext="{Binding}" d:DataContext="{Binding}">
             <phone:PivotItem 
@@ -34,8 +35,10 @@
                 Style="{StaticResource MainPivotItem}">
                 <Grid>
                     <toolkit:LongListMultiSelector
+                        Name="NewJokesMultiSelector"
                         ItemContainerStyle="{StaticResource LongListMultiSelectorItemListStyle}"
                         ItemsSource="{Binding NewJokes}"
+                        SelectionChanged="NewJokesMultiSelector_OnSelectionChanged"
                         LayoutMode="List"
                         EnforceIsSelectionEnabled="True"
                         ItemTemplate="{StaticResource NewJokeItemTemplate}"
@@ -72,7 +75,7 @@
             </phone:PivotItem>
 
             <i:Interaction.Triggers>
-                <appBarUtils:SelectedPivotItemChangedTrigger>
+                <!--<appBarUtils:SelectedPivotItemChangedTrigger>
                     <appBarUtils:SelectedPivotItemChangedTrigger.SelectionMappings>
                         <appBarUtils:SelectionMapping SourceIndex="0" TargetIndex="0"/>
                     </appBarUtils:SelectedPivotItemChangedTrigger.SelectionMappings>
@@ -95,8 +98,49 @@
                                     Command="{Binding ShowAboutCommand}"/>
                             </appBarUtils:AppBar.MenuItems>
                         </appBarUtils:AppBar>
+                        <appBarUtils:AppBar Id="1" Opacity="1" BackgroundColor="{StaticResource MainRedColor}">
+                            <appBarUtils:AppBarButton 
+                                IconUri="/Assets/AppBar/refresh.png"
+                                Text="{Binding MenuRefreshLabel}"
+                                Command="{Binding RefreshCommand}" />
+
+                            <appBarUtils:AppBar.MenuItems>
+                                <appBarUtils:AppBarMenuItem 
+                                    Text="{Binding MenuAboutLabel}" 
+                                    Command="{Binding ShowAboutCommand}"/>
+                            </appBarUtils:AppBar.MenuItems>
+                        </appBarUtils:AppBar>
                     </appBarUtils:SwitchAppBarAction>
-                </appBarUtils:SelectedPivotItemChangedTrigger>
+                </appBarUtils:SelectedPivotItemChangedTrigger>-->
+
+                <appBarUtils:StateChangedTrigger State="{Binding ViewState}">
+                    <appBarUtils:SwitchAppBarAction>
+                        
+                        <!-- State: NewJokes -->
+                        <appBarUtils:AppBar Id="1" Opacity="1" BackgroundColor="{StaticResource MainRedColor}">
+                            <appBarUtils:AppBarButton 
+                                IconUri="/Assets/AppBar/refresh.png"
+                                Text="{Binding MenuRefreshLabel}"
+                                Command="{Binding RefreshCommand}"
+                                />
+                            <appBarUtils:AppBarButton 
+                                IconUri="/Assets/AppBar/feature.settings.png"
+                                Text="{Binding MenuSettingsLabel}"
+                                Command="{Binding ShowSettingsCommand}"/>
+
+                            <appBarUtils:AppBar.MenuItems>
+                                <appBarUtils:AppBarMenuItem 
+                                    Text="{Binding MenuAboutLabel}" 
+                                    Command="{Binding ShowAboutCommand}"/>
+                            </appBarUtils:AppBar.MenuItems>
+                        </appBarUtils:AppBar>
+                        
+                        <!-- State: NewJokesSelecting -->
+                        <appBarUtils:AppBar Id="2" Opacity="1" BackgroundColor="{StaticResource MainRedColor}">
+                            <appBarUtils:AppBarButton Text="sync"></appBarUtils:AppBarButton>
+                        </appBarUtils:AppBar>
+                    </appBarUtils:SwitchAppBarAction>
+                </appBarUtils:StateChangedTrigger>
             </i:Interaction.Triggers>
 
         </phone:Pivot>

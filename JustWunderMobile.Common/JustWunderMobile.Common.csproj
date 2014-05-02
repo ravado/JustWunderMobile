@@ -42,6 +42,7 @@
     <Compile Include="DAL\Repositories\ReleaseJokeRepository.cs" />
     <Compile Include="DataModels\NewJokeDataModel.cs" />
     <Compile Include="DataModels\ReleaseJokeDataModel.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="Extentions.cs" />
     <Compile Include="Interfaces\ISettingService.cs" />
     <Compile Include="Interfaces\ISpinner.cs" />

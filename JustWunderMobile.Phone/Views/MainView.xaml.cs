@@ -1,17 +1,17 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using Cirrious.MvvmCross.WindowsPhone.Views;
-using System.Windows;
-using System.Windows.Navigation;
+﻿using Cirrious.MvvmCross.WindowsPhone.Views;
+using JustWunderMobile.Common;
 using JustWunderMobile.Common.ViewModels;
-using Microsoft.Phone.Shell;
+using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace JustWunderMobile.Phone.Views
 {
     public partial class MainView : MvxPhonePage
     {
         private MainViewModel _viewModel;
+
         public MainView()
         {
             InitializeComponent();
@@ -65,6 +65,27 @@ namespace JustWunderMobile.Phone.Views
             if (_viewModel == null)
                 _viewModel = base.ViewModel as MainViewModel;
 
+        }
+
+        private void NewJokesMultiSelector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // update viewmodel state if now we selecting new jokes or not
+            if (NewJokesMultiSelector.SelectedItems.Count > 0)
+                _viewModel.ViewState = MainViewState.NewJokesSelecting;
+            else
+                _viewModel.ViewState = MainViewState.NewJokes;
+        }
+
+        private void MainPivot_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // update viemodel state depending on selected pivot item
+            switch (MainPivot.SelectedIndex)
+            {
+                case 0: _viewModel.ViewState = MainViewState.NewJokes; break;
+                case 1: _viewModel.ViewState = MainViewState.TopJokes; break;
+                case 2: _viewModel.ViewState = MainViewState.FavoriteJokes; break;
+                default: _viewModel.ViewState = MainViewState.NewJokes; break;
+            }
         }
     }
 }
