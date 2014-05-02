@@ -132,8 +132,17 @@
   <data name="MainPage_Menu_About" xml:space="preserve">
     <value>О программе</value>
   </data>
+  <data name="MainPage_Menu_AddFavorite" xml:space="preserve">
+    <value>Избранное</value>
+  </data>
+  <data name="MainPage_Menu_AddNewJoke" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
   <data name="MainPage_Menu_Refresh" xml:space="preserve">
     <value>Обновить</value>
+  </data>
+  <data name="MainPage_Menu_RemoveFavorite" xml:space="preserve">
+    <value>Удалить из избранного</value>
   </data>
   <data name="MainPage_Menu_Settings" xml:space="preserve">
     <value>Настройки</value>

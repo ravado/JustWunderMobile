@@ -13,12 +13,12 @@ namespace JustWunderMobile.Phone.Classes.Converters
         {
             if (value is bool)
             {
-                var v = (bool) value;
+                var v = (bool)value;
 
                 if (v)
                 {
                     return "/Assets/AppBar/outline_star-32_filled.png";
-                    
+
                 }
             }
 
@@ -27,7 +27,12 @@ namespace JustWunderMobile.Phone.Classes.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            throw new NotImplementedException();
+            if (value.ToString() == "/Assets/AppBar/outline_star-32_filled.png")
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

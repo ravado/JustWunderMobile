@@ -1,5 +1,9 @@
-﻿using Cirrious.MvvmCross.WindowsPhone.Views;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using Cirrious.MvvmCross.WindowsPhone.Views;
 using JustWunderMobile.Common;
+using JustWunderMobile.Common.DataModels;
 using JustWunderMobile.Common.ViewModels;
 using System;
 using System.Windows;
@@ -74,6 +78,13 @@ namespace JustWunderMobile.Phone.Views
                 _viewModel.ViewState = MainViewState.NewJokesSelecting;
             else
                 _viewModel.ViewState = MainViewState.NewJokes;
+
+            // there is no direct selected items binding ability, so...
+            _viewModel.NewJokesSelected.Clear();
+            foreach (var selected in NewJokesMultiSelector.SelectedItems.OfType<ReleaseJokeDataModel>())
+            {
+                _viewModel.NewJokesSelected.Add(selected);
+            }
         }
 
         private void MainPivot_OnSelectionChanged(object sender, SelectionChangedEventArgs e)

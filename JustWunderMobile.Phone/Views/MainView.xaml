@@ -124,20 +124,31 @@
                                 Command="{Binding RefreshCommand}"
                                 />
                             <appBarUtils:AppBarButton 
-                                IconUri="/Assets/AppBar/feature.settings.png"
-                                Text="{Binding MenuSettingsLabel}"
-                                Command="{Binding ShowSettingsCommand}"/>
+                                IconUri="/Assets/AppBar/new.png"
+                                Text="{Binding MenuAddNewJokeLabel}"
+                                Command="{Binding ShowNewJokeCommand}"/>
 
                             <appBarUtils:AppBar.MenuItems>
                                 <appBarUtils:AppBarMenuItem 
                                     Text="{Binding MenuAboutLabel}" 
                                     Command="{Binding ShowAboutCommand}"/>
+                                <appBarUtils:AppBarMenuItem 
+                                    Text="{Binding MenuSettingsLabel}" 
+                                    Command="{Binding ShowSettingsCommand}"/>
                             </appBarUtils:AppBar.MenuItems>
                         </appBarUtils:AppBar>
                         
                         <!-- State: NewJokesSelecting -->
                         <appBarUtils:AppBar Id="2" Opacity="1" BackgroundColor="{StaticResource MainRedColor}">
-                            <appBarUtils:AppBarButton Text="sync"></appBarUtils:AppBarButton>
+                            <appBarUtils:AppBarButton 
+                                IconUri="/Assets/AppBar/favs.png" 
+                                Text="{Binding MenuAddFavoriteLabel}"
+                                Command="{Binding AddToFavoriteCommand}" />
+                            <appBarUtils:AppBar.MenuItems>
+                                <appBarUtils:AppBarMenuItem 
+                                    Text="{Binding MenuRemoveFavoriteLabel}" 
+                                    Command="{Binding RemoveFromFavoriteCommand}"/>
+                            </appBarUtils:AppBar.MenuItems>
                         </appBarUtils:AppBar>
                     </appBarUtils:SwitchAppBarAction>
                 </appBarUtils:StateChangedTrigger>
@@ -148,8 +159,8 @@
     </Grid>
     <!--<phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar BackgroundColor="Teal">
-            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/refresh.png" Text="search" />
-            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/feature.settings.png" Text="location" />
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/favs.png" Text="search" />
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/new.png" Text="location" />
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="settings"/>
             </shell:ApplicationBar.MenuItems>

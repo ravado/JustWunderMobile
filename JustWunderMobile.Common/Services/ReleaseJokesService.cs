@@ -38,7 +38,15 @@ namespace JustWunderMobile.Common.Services
         #endregion
 
         #region Methods
-        
+
+        public void UpdateJokes(IEnumerable<ReleaseJokeDataModel> jokes)
+        {
+            foreach (var joke in jokes)
+            {
+                ReleaseJokeRepository.Update(joke.GetEntity());    
+            }
+        }
+
         public IEnumerable<ReleaseJokeDataModel> GetTopJokes(int count, int offset)
         {
             var top = ReleaseJokeRepository.GetAll()
