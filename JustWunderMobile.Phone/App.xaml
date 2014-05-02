@@ -15,6 +15,7 @@
         <converters:LowercaseConverter x:Key="LowercaseConverter"/>
         <converters:UppercaseConverter x:Key="UppercaseConverter"/>
         <converters:FavoriteConverter x:Key="FavoriteConverter"/>
+        <converters:VisibilityConverter x:Key="VisibilityConverter"/>
 
         <local:LocalizedStrings xmlns:local="clr-namespace:JustWunderMobile.Phone" x:Key="LocalizedStrings"/>
 
@@ -38,7 +39,7 @@
         <Style x:Key="SplashLogoStyle" TargetType="TextBlock">
             <Setter Property="FontFamily" Value=".\Assets\Fonts\BilboSwashCaps-Regular.ttf#Bilbo Swash Caps"/>
         </Style>
-        
+
         <!-- Grids -->
         <Style x:Key="MainGrid" TargetType="Grid">
             <Setter Property="Background" Value="{StaticResource MainWhiteColorBrush}"/>
@@ -49,7 +50,7 @@
             <Setter Property="Background" Value="{StaticResource MainRedColorBrush}" />
             <Setter Property="Height" Value="125"/>
             <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Stretch" />            
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
         </Style>
 
         <!-- Header Title -->
@@ -145,10 +146,10 @@
             </Setter>
         </Style>
 
-        
+
         <!-- Multiply Selectors Template -->
         <DataTemplate x:Key="NewJokeItemTemplate">
-            <Grid Margin="0 10">
+            <Grid Margin="0 10" >
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -156,7 +157,7 @@
                 <StackPanel 
                     Grid.Row="0"
                     Margin="0 0 25 0">
-                <TextBlock 
+                    <TextBlock 
                     TextWrapping="Wrap"
                     TextAlignment="Left"
                     Text="{Binding TextJoke}"
@@ -220,118 +221,344 @@
 
         <FontFamily x:Key="BilboSwash">/Assets/Fonts/BilboSwashCaps-Regular.ttf#Bilbo Swash Caps</FontFamily>
         <Style x:Key="MainToggleSwitchButton" TargetType="toolkitPrimitives:ToggleSwitchButton">
-        	<Setter Property="Background" Value="{StaticResource PhoneBackgroundBrush}"/>
-        	<Setter Property="IsTabStop" Value="False"/>
-        	<Setter Property="SwitchForeground" Value="{StaticResource PhoneAccentBrush}"/>
-        	<Setter Property="Template">
-        		<Setter.Value>
-        			<ControlTemplate TargetType="toolkitPrimitives:ToggleSwitchButton">
-        				<Border x:Name="Root" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CacheMode="BitmapCache" Opacity="{TemplateBinding Opacity}" Padding="{TemplateBinding Padding}">
-        					<VisualStateManager.VisualStateGroups>
-        						<VisualStateGroup x:Name="CommonStates">
-        							<VisualState x:Name="Normal"/>
-        							<VisualState x:Name="Disabled">
-        								<Storyboard>
-        									<ColorAnimation Duration="0" To="{StaticResource PhoneForegroundColor}" Storyboard.TargetProperty="(Grid.Background).(SolidColorBrush.Color)" Storyboard.TargetName="SwitchBottom"/>
-        									<DoubleAnimation Duration="0" To="0.3" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="Root"/>
-        								</Storyboard>
-        							</VisualState>
-        						</VisualStateGroup>
-        						<VisualStateGroup x:Name="CheckStates">
-        							<VisualStateGroup.Transitions>
-        								<VisualTransition GeneratedDuration="0:0:0.05" To="Unchecked"/>
-        								<VisualTransition GeneratedDuration="0:0:0.05" To="Checked"/>
-        							</VisualStateGroup.Transitions>
-        							<VisualState x:Name="Checked">
-        								<Storyboard>
-        									<DoubleAnimation Duration="0" To="69" Storyboard.TargetProperty="(TranslateTransform.X)" Storyboard.TargetName="BackgroundTranslation">
-        										<DoubleAnimation.EasingFunction>
-        											<ExponentialEase EasingMode="EaseOut" Exponent="15"/>
-        										</DoubleAnimation.EasingFunction>
-        									</DoubleAnimation>
-        									<DoubleAnimation Duration="0" To="69" Storyboard.TargetProperty="(TranslateTransform.X)" Storyboard.TargetName="ThumbTranslation">
-        										<DoubleAnimation.EasingFunction>
-        											<ExponentialEase EasingMode="EaseOut" Exponent="15"/>
-        										</DoubleAnimation.EasingFunction>
-        									</DoubleAnimation>
-        								</Storyboard>
-        							</VisualState>
-        							<VisualState x:Name="Dragging"/>
-        							<VisualState x:Name="Unchecked">
-        								<Storyboard>
-        									<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(TranslateTransform.X)" Storyboard.TargetName="BackgroundTranslation"/>
-        									<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(TranslateTransform.X)" Storyboard.TargetName="ThumbTranslation"/>
-        								</Storyboard>
-        							</VisualState>
-        						</VisualStateGroup>
-        					</VisualStateManager.VisualStateGroups>
-        					<Grid x:Name="SwitchRoot" Background="Transparent" Height="95" Width="136">
-        						<Grid x:Name="SwitchTrack" Width="89">
-        							<Grid x:Name="SwitchBottom" Background="{TemplateBinding SwitchForeground}" Height="34">
-        								<Rectangle x:Name="SwitchBackground" Fill="{TemplateBinding Background}" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="77">
-        									<Rectangle.RenderTransform>
-        										<TranslateTransform x:Name="BackgroundTranslation"/>
-        									</Rectangle.RenderTransform>
-        								</Rectangle>
-        								<Border BorderBrush="{StaticResource MainDarkColorBrush}" BorderThickness="3">
-        									<Border BorderBrush="{StaticResource MainWhiteColorBrush}" BorderThickness="4"/>
-        								</Border>
-        							</Grid>
-        							<Border x:Name="SwitchThumb" BorderThickness="4,0" HorizontalAlignment="Left" Height="38" Margin="-4,0" Width="28" BorderBrush="White">
-        								<Border.RenderTransform>
-        									<TranslateTransform x:Name="ThumbTranslation"/>
-        								</Border.RenderTransform>
-        								<Border x:Name="ThumbCenter" BorderThickness="2" Background="{StaticResource MainDarkColorBrush}" BorderBrush="{StaticResource MainDarkColorBrush}"/>
-        							</Border>
-        						</Grid>
-        					</Grid>
-        				</Border>
-        			</ControlTemplate>
-        		</Setter.Value>
-        	</Setter>
+            <Setter Property="Background" Value="{StaticResource PhoneBackgroundBrush}"/>
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="SwitchForeground" Value="{StaticResource PhoneAccentBrush}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="toolkitPrimitives:ToggleSwitchButton">
+                        <Border x:Name="Root" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CacheMode="BitmapCache" Opacity="{TemplateBinding Opacity}" Padding="{TemplateBinding Padding}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0" To="{StaticResource PhoneForegroundColor}" Storyboard.TargetProperty="(Grid.Background).(SolidColorBrush.Color)" Storyboard.TargetName="SwitchBottom"/>
+                                            <DoubleAnimation Duration="0" To="0.3" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="Root"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="CheckStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition GeneratedDuration="0:0:0.05" To="Unchecked"/>
+                                        <VisualTransition GeneratedDuration="0:0:0.05" To="Checked"/>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="69" Storyboard.TargetProperty="(TranslateTransform.X)" Storyboard.TargetName="BackgroundTranslation">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseOut" Exponent="15"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation Duration="0" To="69" Storyboard.TargetProperty="(TranslateTransform.X)" Storyboard.TargetName="ThumbTranslation">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseOut" Exponent="15"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Dragging"/>
+                                    <VisualState x:Name="Unchecked">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(TranslateTransform.X)" Storyboard.TargetName="BackgroundTranslation"/>
+                                            <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(TranslateTransform.X)" Storyboard.TargetName="ThumbTranslation"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid x:Name="SwitchRoot" Background="Transparent" Height="95" Width="136">
+                                <Grid x:Name="SwitchTrack" Width="89">
+                                    <Grid x:Name="SwitchBottom" Background="{TemplateBinding SwitchForeground}" Height="34">
+                                        <Rectangle x:Name="SwitchBackground" Fill="{TemplateBinding Background}" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="77">
+                                            <Rectangle.RenderTransform>
+                                                <TranslateTransform x:Name="BackgroundTranslation"/>
+                                            </Rectangle.RenderTransform>
+                                        </Rectangle>
+                                        <Border BorderBrush="{StaticResource MainDarkColorBrush}" BorderThickness="3">
+                                            <Border BorderBrush="{StaticResource MainWhiteColorBrush}" BorderThickness="4"/>
+                                        </Border>
+                                    </Grid>
+                                    <Border x:Name="SwitchThumb" BorderThickness="4,0" HorizontalAlignment="Left" Height="38" Margin="-4,0" Width="28" BorderBrush="White">
+                                        <Border.RenderTransform>
+                                            <TranslateTransform x:Name="ThumbTranslation"/>
+                                        </Border.RenderTransform>
+                                        <Border x:Name="ThumbCenter" BorderThickness="2" Background="{StaticResource MainDarkColorBrush}" BorderBrush="{StaticResource MainDarkColorBrush}"/>
+                                    </Border>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
-    	<Style x:Key="MainToggleSwitch" TargetType="toolkit:ToggleSwitch">
-    		<Setter Property="Background" Value="{StaticResource PhoneBackgroundBrush}"/>
-    		<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyLight}"/>
-    		<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeLarge}"/>
-    		<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
-    		<Setter Property="IsTabStop" Value="False"/>
-    		<Setter Property="HorizontalContentAlignment" Value="Left"/>
-    		<Setter Property="SwitchForeground" Value="{StaticResource PhoneAccentBrush}"/>
-    		<Setter Property="VerticalContentAlignment" Value="Top"/>
-    		<Setter Property="Template">
-    			<Setter.Value>
-    				<ControlTemplate TargetType="toolkit:ToggleSwitch">
-    					<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CacheMode="BitmapCache" Padding="{TemplateBinding Padding}">
-    						<VisualStateManager.VisualStateGroups>
-    							<VisualStateGroup x:Name="CommonStates">
-    								<VisualState x:Name="Normal"/>
-    								<VisualState x:Name="Disabled">
-    									<Storyboard>
-    										<DoubleAnimation Duration="0" To="0.3" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="Header"/>
-    										<DoubleAnimation Duration="0" To="0.3" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="Content"/>
-    									</Storyboard>
-    								</VisualState>
-    							</VisualStateGroup>
-    						</VisualStateManager.VisualStateGroups>
-    						<Grid Margin="12,26,12,21">
-    							<Grid.ColumnDefinitions>
-    								<ColumnDefinition Width="*"/>
-    								<ColumnDefinition Width="Auto"/>
-    							</Grid.ColumnDefinitions>
-    							<Grid.RowDefinitions>
-    								<RowDefinition Height="Auto"/>
-    								<RowDefinition Height="Auto"/>
-    							</Grid.RowDefinitions>
-    							<ContentControl x:Name="Header" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" Foreground="{StaticResource PhoneSubtleBrush}" FontSize="{StaticResource PhoneFontSizeNormal}" FontFamily="{StaticResource PhoneFontFamilyNormal}" HorizontalAlignment="Left" IsTabStop="False" Margin="-1,0,0,0" Opacity="{TemplateBinding Opacity}" VerticalAlignment="Bottom"/>
-    							<ContentControl x:Name="Content" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsTabStop="False" Margin="-1,6,0,-1" Opacity="{TemplateBinding Opacity}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.RowSpan="2"/>
-    							<toolkitPrimitives:ToggleSwitchButton x:Name="Switch" Background="{TemplateBinding Background}" Margin="344,-23,-24,-33" Opacity="{TemplateBinding Opacity}" Grid.RowSpan="2" SwitchForeground="{TemplateBinding SwitchForeground}" VerticalAlignment="Bottom" Style="{StaticResource MainToggleSwitchButton}" Grid.ColumnSpan="2"/>
-    						</Grid>
-    					</Border>
-    				</ControlTemplate>
-    			</Setter.Value>
-    		</Setter>
-    	</Style>
+        <Style x:Key="MainToggleSwitch" TargetType="toolkit:ToggleSwitch">
+            <Setter Property="Background" Value="{StaticResource PhoneBackgroundBrush}"/>
+            <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyLight}"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeLarge}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="SwitchForeground" Value="{StaticResource PhoneAccentBrush}"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="toolkit:ToggleSwitch">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CacheMode="BitmapCache" Padding="{TemplateBinding Padding}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="0.3" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="Header"/>
+                                            <DoubleAnimation Duration="0" To="0.3" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="Content"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid Margin="12,26,12,21">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <ContentControl x:Name="Header" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" Foreground="{StaticResource PhoneSubtleBrush}" FontSize="{StaticResource PhoneFontSizeNormal}" FontFamily="{StaticResource PhoneFontFamilyNormal}" HorizontalAlignment="Left" IsTabStop="False" Margin="-1,0,0,0" Opacity="{TemplateBinding Opacity}" VerticalAlignment="Bottom"/>
+                                <ContentControl x:Name="Content" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsTabStop="False" Margin="-1,6,0,-1" Opacity="{TemplateBinding Opacity}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.RowSpan="2"/>
+                                <toolkitPrimitives:ToggleSwitchButton x:Name="Switch" Background="{TemplateBinding Background}" Margin="344,-23,-24,-33" Opacity="{TemplateBinding Opacity}" Grid.RowSpan="2" SwitchForeground="{TemplateBinding SwitchForeground}" VerticalAlignment="Bottom" Style="{StaticResource MainToggleSwitchButton}" Grid.ColumnSpan="2"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="LongListMultiSelectorItemListStyle" TargetType="toolkit:LongListMultiSelectorItem">
+            <Setter Property="Background" Value="{StaticResource PhoneAccentBrush}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="toolkit:LongListMultiSelectorItem">
+                        <Grid MinHeight="52">
+                            <Grid.Resources>
+                                <ExponentialEase EasingMode="EaseIn" Exponent="8" x:Key="ExponentialEaseIn"/>
+                                <QuadraticEase EasingMode="EaseOut" x:Key="QuadraticEaseOut"/>
+                            </Grid.Resources>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="SelectionEnabledStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition x:Name="ClosedToExposed" 
+    										From="Closed" To="Exposed"
+    										GeneratedDuration="0:0:0.30">
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" 
+    												Storyboard.TargetName="OuterHintPanel">
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="0.0" EasingFunction="{StaticResource QuadraticEaseOut}"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.30" Value="1.0" EasingFunction="{StaticResource QuadraticEaseOut}"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualTransition>
+                                        <VisualTransition x:Name="ExposedToClosed" 
+    										From="Exposed" To="Closed"
+    										GeneratedDuration="0:0:0.30">
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" 
+    												Storyboard.TargetName="OuterHintPanel">
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="1.0" EasingFunction="{StaticResource QuadraticEaseOut}"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.30" Value="0.0" EasingFunction="{StaticResource QuadraticEaseOut}"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualTransition>
+                                        <VisualTransition x:Name="ExposedToOpened"
+    										From="Exposed" To="Opened"
+    										GeneratedDuration="0:0:0.30">
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" 
+    												Storyboard.TargetName="SelectBox">
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="-58" EasingFunction="{StaticResource ExponentialEaseIn}"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="0" EasingFunction="{StaticResource ExponentialEaseIn}"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" 
+    												Storyboard.TargetName="Presenter">
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="24" EasingFunction="{StaticResource ExponentialEaseIn}"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="86" EasingFunction="{StaticResource ExponentialEaseIn}"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" 
+    												Storyboard.TargetName="OuterHintPanel">
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="1.0" EasingFunction="{StaticResource QuadraticEaseOut}"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.30" Value="0.0" EasingFunction="{StaticResource QuadraticEaseOut}"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" 
+    												Storyboard.TargetName="SelectBox">
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.0" Value="Visible"/>
+                                                </ObjectAnimationUsingKeyFrames>-->
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsHitTestVisible)" 
+    												Storyboard.TargetName="OuterHintPanel">
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="False"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsHitTestVisible)" 
+    												Storyboard.TargetName="InnerHintPanel">
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="False"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualTransition>
+                                        <VisualTransition x:Name="ClosedToOpened"
+    										From="Closed" To="Opened"
+    										GeneratedDuration="0:0:0.15">
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" 
+    												Storyboard.TargetName="SelectBox">
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="-58" EasingFunction="{StaticResource ExponentialEaseIn}"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="0" EasingFunction="{StaticResource ExponentialEaseIn}"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" 
+    												Storyboard.TargetName="Presenter">
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="24" EasingFunction="{StaticResource ExponentialEaseIn}"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="86" EasingFunction="{StaticResource ExponentialEaseIn}"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" 
+    												Storyboard.TargetName="SelectBox">
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.0" Value="Visible"/>
+                                                </ObjectAnimationUsingKeyFrames>-->
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsHitTestVisible)" 
+    												Storyboard.TargetName="OuterHintPanel">
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="False"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsHitTestVisible)" 
+    												Storyboard.TargetName="InnerHintPanel">
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="False"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualTransition>
+                                        <VisualTransition x:Name="OpenedToClosed"
+    										From="Opened" To="Closed"
+    										GeneratedDuration="0:0:0.15">
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" 
+    												Storyboard.TargetName="SelectBox">
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="0" EasingFunction="{StaticResource ExponentialEaseIn}"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="-58" EasingFunction="{StaticResource ExponentialEaseIn}"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" 
+    												Storyboard.TargetName="Presenter">
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="86" EasingFunction="{StaticResource ExponentialEaseIn}"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="24" EasingFunction="{StaticResource ExponentialEaseIn}"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" 
+    												Storyboard.TargetName="SelectBox">
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.15" Value="Collapsed"/>
+                                                </ObjectAnimationUsingKeyFrames>-->
+                                            </Storyboard>
+                                        </VisualTransition>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="Closed"/>
+                                    <VisualState x:Name="Exposed">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.Opacity)" 
+    											Storyboard.TargetName="OuterHintPanel"
+    											Duration="0" To="1.0"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Opened">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" 
+    											Storyboard.TargetName="SelectBox"
+    											Duration="0" To="0"/>
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" 
+    											Storyboard.TargetName="Presenter"
+    											Duration="0" To="20"/>
+                                            <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" 
+    											Storyboard.TargetName="SelectBox">
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="Visible"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" 
+    											Storyboard.TargetName="OuterCover">
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="Visible"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.Opacity)" 
+    											Storyboard.TargetName="OuterHintPanel"
+    											Duration="0" To="0.0"/>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsHitTestVisible)" 
+    											Storyboard.TargetName="OuterHintPanel">
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="False"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsHitTestVisible)" 
+    											Storyboard.TargetName="InnerHintPanel">
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="False"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" HorizontalAlignment="Stretch" toolkitPrimitives:ClipToBounds.IsEnabled="True">
+                                    <ContentPresenter x:Name="Presenter">
+                                        <ContentPresenter.RenderTransform>
+                                            <CompositeTransform TranslateX="0"/>
+                                        </ContentPresenter.RenderTransform>
+                                    </ContentPresenter>
+                                </Grid>
+                                <Rectangle x:Name="InnerHintPanel" Grid.Column="0" Width="24"
+    								Height="{TemplateBinding HintPanelHeight}"
+    								HorizontalAlignment="Left"
+    								Fill="Transparent"
+    								StrokeThickness="0">
+                                    <Rectangle.RenderTransform>
+                                        <CompositeTransform TranslateX="24"/>
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
+                                <ContentControl x:Name="InfoPresenter" Grid.Column="1" 
+    								VerticalAlignment="Top"
+    								Content="{TemplateBinding ContentInfo}"
+    								ContentTemplate="{TemplateBinding ContentInfoTemplate}"/>
+                            </Grid>
+                            <Rectangle x:Name="OuterHintPanel" Width="240"
+    							HorizontalAlignment="Left"
+    							Height="{TemplateBinding HintPanelHeight}"
+    							Fill="{TemplateBinding Background}"
+    							StrokeThickness="0" Opacity="0.0"/>
+                            <Grid x:Name="OuterCover" IsHitTestVisible="True"
+    							Visibility="Collapsed" Background="Transparent">
+                                <Grid HorizontalAlignment="Left"
+                                      VerticalAlignment="Stretch" Margin="0 15"
+                                      Visibility="{Binding IsSelected,
+                                                RelativeSource={RelativeSource TemplatedParent},
+                                                Converter= {StaticResource VisibilityConverter}}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox Grid.Row="0" x:Name="SelectBox" VerticalAlignment="Top" Margin="12,-20,5,0" Visibility="Collapsed"
+    								IsChecked="{Binding IsSelected, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+                                        <CheckBox.RenderTransform>
+                                            <CompositeTransform TranslateX="-5"/>
+                                        </CheckBox.RenderTransform>
+                                    </CheckBox>
+                                    <Grid Grid.Row="1" Column="0" Width="8" Margin="2 0 0 0" VerticalAlignment="Stretch" 
+                                            Background="{StaticResource MainRedColorBrush}" />
+                                    <Path Grid.Column="1"  Grid.Row="1"
+                                          Data="M220,259.875 C239.875,280.125 239.833,280 239.833,280 L220,300"
+                                          Fill="{StaticResource MainRedColorBrush}"
+                                          HorizontalAlignment="Left"
+                                          Height="20" Margin="0"
+                                          Stretch="Fill" UseLayoutRounding="False"
+                                          VerticalAlignment="Center" Width="3"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

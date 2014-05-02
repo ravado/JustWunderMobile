@@ -95,6 +95,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Bootstrap\SqlitePluginBootstrap.cs" />
+    <Compile Include="Classes\Converters\VisibilityConverter.cs" />
     <Compile Include="Classes\Converters\FavoriteConverter.cs" />
     <Compile Include="Classes\Converters\LowercaseConverter.cs" />
     <Compile Include="Classes\Converters\RelativeTimeConverter.cs" />

@@ -34,9 +34,10 @@
                 Style="{StaticResource MainPivotItem}">
                 <Grid>
                     <toolkit:LongListMultiSelector
+                        ItemContainerStyle="{StaticResource LongListMultiSelectorItemListStyle}"
                         ItemsSource="{Binding NewJokes}"
                         LayoutMode="List"
-                        EnforceIsSelectionEnabled="False"
+                        EnforceIsSelectionEnabled="True"
                         ItemTemplate="{StaticResource NewJokeItemTemplate}"
                         ItemInfoTemplate="{StaticResource NewJokeItemInfoTemplate}"/>
                 </Grid>
@@ -46,12 +47,12 @@
                 Header="{Binding TopJokesLabel, Converter={StaticResource LowercaseConverter}}"
                 Style="{StaticResource MainPivotItem}"
                 >
-                <Grid Margin="10">
+                <Grid>
                     <toolkit:LongListMultiSelector
-                        Foreground="White"
+                        ItemContainerStyle="{StaticResource LongListMultiSelectorItemListStyle}"
                         ItemsSource="{Binding TopJokes}"
                         LayoutMode="List"
-                        EnforceIsSelectionEnabled="False"
+                        EnforceIsSelectionEnabled="True"
                         ItemTemplate="{StaticResource NewJokeItemTemplate}"
                         ItemInfoTemplate="{StaticResource NewJokeItemInfoTemplate}"/>
                 </Grid>
@@ -61,9 +62,10 @@
                 Style="{StaticResource MainPivotItem}" >
                 <Grid>
                     <toolkit:LongListMultiSelector
+                        ItemContainerStyle="{StaticResource LongListMultiSelectorItemListStyle}"
                         ItemsSource="{Binding FavoriteJokes}"
                         LayoutMode="List"
-                        EnforceIsSelectionEnabled="False"
+                        EnforceIsSelectionEnabled="True"
                         ItemTemplate="{StaticResource NewJokeItemTemplate}"
                         ItemInfoTemplate="{StaticResource NewJokeItemInfoTemplate}"/>
                 </Grid>
