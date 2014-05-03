@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Cirrious.MvvmCross.ViewModels;
+﻿using Cirrious.MvvmCross.ViewModels;
 using JustWunderMobile.Common.DataModels;
 using JustWunderMobile.Common.Interfaces;
 using JustWunderMobile.Common.Resources;
 using JustWunderMobile.Common.Services;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace JustWunderMobile.Common.ViewModels
@@ -163,6 +163,10 @@ namespace JustWunderMobile.Common.ViewModels
         public string MenuAddNewJokeLabel
         {
             get { return UILabels.MainPage_Menu_AddNewJoke; }
+        }
+        public string MenuRemoveFavoriteShortLabel
+        {
+            get { return UILabels.MainPage_Menu_RemoveFavoriteShort; }
         }
         #endregion
 

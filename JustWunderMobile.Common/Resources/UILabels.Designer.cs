@@ -142,6 +142,15 @@ namespace JustWunderMobile.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Удалить.
+        /// </summary>
+        public static string MainPage_Menu_RemoveFavoriteShort {
+            get {
+                return ResourceManager.GetString("MainPage_Menu_RemoveFavoriteShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Настройки.
         /// </summary>
         public static string MainPage_Menu_Settings {

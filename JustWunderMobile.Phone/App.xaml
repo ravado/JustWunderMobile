@@ -15,6 +15,7 @@
         <converters:UppercaseConverter x:Key="UppercaseConverter"/>
         <converters:FavoriteConverter x:Key="FavoriteConverter"/>
         <converters:VisibilityConverter x:Key="VisibilityConverter"/>
+        <converters:MainViewPivotLockConverter x:Key="MainViewPivotLockConverter"/>
         
         <local:LocalizedStrings xmlns:local="clr-namespace:JustWunderMobile.Phone" x:Key="LocalizedStrings"/>
 

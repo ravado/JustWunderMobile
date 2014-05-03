@@ -95,6 +95,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Bootstrap\SqlitePluginBootstrap.cs" />
+    <Compile Include="Classes\Converters\MainViewPivotLockConverter.cs" />
     <Compile Include="Classes\Converters\VisibilityConverter.cs" />
     <Compile Include="Classes\Converters\FavoriteConverter.cs" />
     <Compile Include="Classes\Converters\LowercaseConverter.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Classes\Converters\UppercaseConverter.cs" />
     <Compile Include="Classes\SettingServise.cs" />
     <Compile Include="Classes\Spinner.cs" />
+    <Compile Include="Controls\ExtendedPivot.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -163,6 +165,9 @@
     </Content>
     <Content Include="Assets\AppBar\outline_star-32.png" />
     <Content Include="Assets\AppBar\outline_star-32_filled.png" />
+    <Content Include="Assets\AppBar\stop.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Fonts\BilboSwashCaps-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -144,6 +144,9 @@
   <data name="MainPage_Menu_RemoveFavorite" xml:space="preserve">
     <value>Удалить из избранного</value>
   </data>
+  <data name="MainPage_Menu_RemoveFavoriteShort" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
   <data name="MainPage_Menu_Settings" xml:space="preserve">
     <value>Настройки</value>
   </data>

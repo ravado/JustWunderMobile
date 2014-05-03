@@ -10,6 +10,7 @@
     xmlns:views="clr-namespace:Cirrious.MvvmCross.WindowsPhone.Views;assembly=Cirrious.MvvmCross.WindowsPhone"
     xmlns:appBarUtils="clr-namespace:AppBarUtils;assembly=AppBarUtils"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:controls="clr-namespace:JustWunderMobile.Phone.Controls"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -25,7 +26,8 @@
           Style="{StaticResource MainGrid}"
           d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml, Instance={x:Null}}">
 
-        <phone:Pivot Name="MainPivot"
+        <controls:ExtendedPivot Name="MainPivot"
+                     BindableIsLocked="{Binding ViewState, Mode=TwoWay, Converter={StaticResource MainViewPivotLockConverter}}"
                      SelectionChanged="MainPivot_OnSelectionChanged"
                      Style="{StaticResource MainPivot}"
                      Title="{Binding AppName}" DataContext="{Binding}" d:DataContext="{Binding}">
@@ -158,25 +160,20 @@
                         <!-- State: FavoriteJokesSelecting -->
                         <appBarUtils:AppBar Id="6" Opacity="1" BackgroundColor="{StaticResource MainRedColor}">
                             <appBarUtils:AppBarButton 
-                                IconUri="/Assets/AppBar/favs.png" 
-                                Text="{Binding MenuAddFavoriteLabel}"
-                                Command="{Binding AddToFavoriteCommand}" />
-                            <appBarUtils:AppBar.MenuItems>
-                                <appBarUtils:AppBarMenuItem 
-                                    Text="{Binding MenuRemoveFavoriteLabel}" 
-                                    Command="{Binding RemoveFromFavoriteCommand}"/>
-                            </appBarUtils:AppBar.MenuItems>
+                                IconUri="/Assets/AppBar/stop.png" 
+                                Text="{Binding MenuRemoveFavoriteShortLabel}"
+                                Command="{Binding RemoveFromFavoriteCommand}" />
                         </appBarUtils:AppBar>
                     </appBarUtils:SwitchAppBarAction>
                 </appBarUtils:StateChangedTrigger>
             </i:Interaction.Triggers>
 
-        </phone:Pivot>
+        </controls:ExtendedPivot>
 
     </Grid>
     <!--<phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar BackgroundColor="Teal">
-            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/favs.png" Text="search" />
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/stop.png" Text="search" />
             <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/new.png" Text="location" />
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="settings"/>
