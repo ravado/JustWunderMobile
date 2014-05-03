@@ -17,7 +17,8 @@
     mc:Ignorable="d"
     Style="{StaticResource NavigationAnimation}"
     shell:SystemTray.IsVisible="True"
-    shell:SystemTray.Opacity="0">
+    shell:SystemTray.Opacity="0"
+    toolkit:TiltEffect.IsTiltEnabled="False">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Style="{StaticResource MainGrid}" d:DataContext="{d:DesignData /SampleData/SettingsViewModelSampleData.xaml, Instance={x:Null}}">
@@ -42,7 +43,13 @@
                     IsChecked="{Binding SyncOnStart, Mode=TwoWay}"
                     VerticalAlignment="Bottom"
                     Foreground="{StaticResource MainDarkColorBrush}"
-                    Background="White" BorderBrush="#FFC51313" Style="{StaticResource MainToggleSwitch}"/>
+                    Background="White"  Style="{StaticResource MainToggleSwitch}"/>
+                <Button Name="RemoveAllJokesButton"
+                        Click="RemoveAllJokesButton_OnClick"
+                    BorderThickness="2" 
+                    Margin="0 450" 
+                    Style="{StaticResource MainButtonStyle}"
+                    Content="Remove All Jokes"/>
             </StackPanel>
         </Grid>
     </Grid>

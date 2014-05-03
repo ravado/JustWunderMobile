@@ -81,6 +81,19 @@ namespace JustWunderMobile.Common.Services
             return favorite;
         }
 
+        public void RemoveJokes(IEnumerable<ReleaseJokeDataModel> jokesToRemove)
+        {
+            foreach (var joke in jokesToRemove)
+            {
+                ReleaseJokeRepository.Delete(joke.GetEntity());
+            }
+        }
+
+        public void RemoveAllJokes()
+        {
+            ReleaseJokeRepository.DeleteAll();
+        }
+
         #endregion
     }
 }

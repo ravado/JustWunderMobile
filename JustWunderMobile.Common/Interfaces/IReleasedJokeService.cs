@@ -9,6 +9,8 @@ namespace JustWunderMobile.Common.Interfaces
     public interface IReleasedJokeService<TModel>
     {
         void UpdateJokes(IEnumerable<TModel> jokes);
+        void RemoveJokes(IEnumerable<TModel> jokesToRemove);
+        void RemoveAllJokes();
         IEnumerable<TModel> GetTopJokes(int count, int offset);
         IEnumerable<TModel> GetLastJokes(int count, int offset);
         IEnumerable<TModel> GetFavoriteJokes(int count, int offset);

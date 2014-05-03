@@ -1,4 +1,8 @@
-﻿using JustWunderMobile.Common.Interfaces;
+﻿using System.Globalization;
+using System.Windows.Input;
+using Cirrious.MvvmCross.ViewModels;
+using JustWunderMobile.Common.DataModels;
+using JustWunderMobile.Common.Interfaces;
 using JustWunderMobile.Common.Resources;
 
 namespace JustWunderMobile.Common.ViewModels
@@ -8,16 +12,14 @@ namespace JustWunderMobile.Common.ViewModels
         #region Fields
 
         #region Commands
+
+        private ICommand _removeAllJokesCommand;
+        private IReleasedJokeService<ReleaseJokeDataModel> _releasedJokeService;
         #endregion
 
         private ISettingService SettingService { get; set; }
         
         #endregion
-
-        public SettingsViewModel(ISettingService settingsService, ISpinner spinner) : base(spinner)
-        {
-            SettingService = settingsService;
-        }
 
         #region Properties
 
@@ -36,10 +38,37 @@ namespace JustWunderMobile.Common.ViewModels
             get { return UILabels.SettingsPage_Menu_Back; }
         }
 
+        private IReleasedJokeService<ReleaseJokeDataModel> ReleasedJokeService { get { return _releasedJokeService; } }
+
         #region Commands
-        
+        public ICommand RemoveAllJokesCommand
+        {
+            get
+            {
+                _removeAllJokesCommand = _removeAllJokesCommand ?? new MvxCommand(RemoveAllJokes);
+                return _removeAllJokesCommand;
+            }
+        }
         #endregion
 
         #endregion
+       
+
+       
+
+        public SettingsViewModel(ISettingService settingsService, IReleasedJokeService<ReleaseJokeDataModel> releasedJokeService, ISpinner spinner) : base(spinner)
+        {
+            SettingService = settingsService;
+            _releasedJokeService = releasedJokeService;
+        }
+
+        #region Methods
+        private void RemoveAllJokes()
+        {
+            ReleasedJokeService.RemoveAllJokes();
+        }
+        #endregion
+
+       
     }
 }
