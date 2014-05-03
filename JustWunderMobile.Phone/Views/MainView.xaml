@@ -7,7 +7,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-    xmlns:ec="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
     xmlns:views="clr-namespace:Cirrious.MvvmCross.WindowsPhone.Views;assembly=Cirrious.MvvmCross.WindowsPhone"
     xmlns:appBarUtils="clr-namespace:AppBarUtils;assembly=AppBarUtils"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
@@ -34,8 +33,7 @@
                 Header="{Binding NewJokesLabel, Converter={StaticResource LowercaseConverter}}" 
                 Style="{StaticResource MainPivotItem}">
                 <Grid>
-                    <toolkit:LongListMultiSelector
-                        Name="NewJokesMultiSelector"
+                    <toolkit:LongListMultiSelector Name="NewJokesMultiSelector"
                         ItemContainerStyle="{StaticResource LongListMultiSelectorItemListStyle}"
                         ItemsSource="{Binding NewJokes}"
                         SelectionChanged="NewJokesMultiSelector_OnSelectionChanged"
@@ -51,10 +49,11 @@
                 Style="{StaticResource MainPivotItem}"
                 >
                 <Grid>
-                    <toolkit:LongListMultiSelector
+                    <toolkit:LongListMultiSelector Name="TopJokesMultiSelector"
                         ItemContainerStyle="{StaticResource LongListMultiSelectorItemListStyle}"
                         ItemsSource="{Binding TopJokes}"
                         LayoutMode="List"
+                        SelectionChanged="TopJokesMultiSelector_OnSelectionChanged"
                         EnforceIsSelectionEnabled="True"
                         ItemTemplate="{StaticResource NewJokeItemTemplate}"
                         ItemInfoTemplate="{StaticResource NewJokeItemInfoTemplate}"/>
@@ -64,9 +63,10 @@
                 Header="{Binding FavoriteJokesLabel, Converter={StaticResource LowercaseConverter}}"
                 Style="{StaticResource MainPivotItem}" >
                 <Grid>
-                    <toolkit:LongListMultiSelector
+                    <toolkit:LongListMultiSelector Name="FavoriteJokesMultiSelector"
                         ItemContainerStyle="{StaticResource LongListMultiSelectorItemListStyle}"
                         ItemsSource="{Binding FavoriteJokes}"
+                        SelectionChanged="FavoriteJokesMultiSelector_OnSelectionChanged"
                         LayoutMode="List"
                         EnforceIsSelectionEnabled="True"
                         ItemTemplate="{StaticResource NewJokeItemTemplate}"
@@ -75,44 +75,6 @@
             </phone:PivotItem>
 
             <i:Interaction.Triggers>
-                <!--<appBarUtils:SelectedPivotItemChangedTrigger>
-                    <appBarUtils:SelectedPivotItemChangedTrigger.SelectionMappings>
-                        <appBarUtils:SelectionMapping SourceIndex="0" TargetIndex="0"/>
-                    </appBarUtils:SelectedPivotItemChangedTrigger.SelectionMappings>
-
-                    <appBarUtils:SwitchAppBarAction>
-                        <appBarUtils:AppBar Id="0" Opacity="1" BackgroundColor="{StaticResource MainRedColor}">
-                            <appBarUtils:AppBarButton 
-                                IconUri="/Assets/AppBar/refresh.png"
-                                Text="{Binding MenuRefreshLabel}"
-                                Command="{Binding RefreshCommand}"
-                                />
-                            <appBarUtils:AppBarButton 
-                                IconUri="/Assets/AppBar/feature.settings.png"
-                                Text="{Binding MenuSettingsLabel}"
-                                Command="{Binding ShowSettingsCommand}"/>
-
-                            <appBarUtils:AppBar.MenuItems>
-                                <appBarUtils:AppBarMenuItem 
-                                    Text="{Binding MenuAboutLabel}" 
-                                    Command="{Binding ShowAboutCommand}"/>
-                            </appBarUtils:AppBar.MenuItems>
-                        </appBarUtils:AppBar>
-                        <appBarUtils:AppBar Id="1" Opacity="1" BackgroundColor="{StaticResource MainRedColor}">
-                            <appBarUtils:AppBarButton 
-                                IconUri="/Assets/AppBar/refresh.png"
-                                Text="{Binding MenuRefreshLabel}"
-                                Command="{Binding RefreshCommand}" />
-
-                            <appBarUtils:AppBar.MenuItems>
-                                <appBarUtils:AppBarMenuItem 
-                                    Text="{Binding MenuAboutLabel}" 
-                                    Command="{Binding ShowAboutCommand}"/>
-                            </appBarUtils:AppBar.MenuItems>
-                        </appBarUtils:AppBar>
-                    </appBarUtils:SwitchAppBarAction>
-                </appBarUtils:SelectedPivotItemChangedTrigger>-->
-
                 <appBarUtils:StateChangedTrigger State="{Binding ViewState}">
                     <appBarUtils:SwitchAppBarAction>
                         
@@ -123,10 +85,10 @@
                                 Text="{Binding MenuRefreshLabel}"
                                 Command="{Binding RefreshCommand}"
                                 />
-                            <appBarUtils:AppBarButton 
+                            <!--<appBarUtils:AppBarButton 
                                 IconUri="/Assets/AppBar/new.png"
                                 Text="{Binding MenuAddNewJokeLabel}"
-                                Command="{Binding ShowNewJokeCommand}"/>
+                                Command="{Binding ShowNewJokeCommand}"/>-->
 
                             <appBarUtils:AppBar.MenuItems>
                                 <appBarUtils:AppBarMenuItem 
@@ -140,6 +102,61 @@
                         
                         <!-- State: NewJokesSelecting -->
                         <appBarUtils:AppBar Id="2" Opacity="1" BackgroundColor="{StaticResource MainRedColor}">
+                            <appBarUtils:AppBarButton 
+                                IconUri="/Assets/AppBar/favs.png" 
+                                Text="{Binding MenuAddFavoriteLabel}"
+                                Command="{Binding AddToFavoriteCommand}" />
+                            <appBarUtils:AppBar.MenuItems>
+                                <appBarUtils:AppBarMenuItem 
+                                    Text="{Binding MenuRemoveFavoriteLabel}" 
+                                    Command="{Binding RemoveFromFavoriteCommand}"/>
+                            </appBarUtils:AppBar.MenuItems>
+                        </appBarUtils:AppBar>
+
+                        <!-- State: TopJokes -->
+                        <appBarUtils:AppBar Id="3" Opacity="1" BackgroundColor="{StaticResource MainRedColor}">
+                            <appBarUtils:AppBarButton 
+                                IconUri="/Assets/AppBar/refresh.png"
+                                Text="{Binding MenuRefreshLabel}"
+                                Command="{Binding RefreshCommand}"
+                                />
+                            <appBarUtils:AppBar.MenuItems>
+                                <appBarUtils:AppBarMenuItem 
+                                    Text="{Binding MenuAboutLabel}" 
+                                    Command="{Binding ShowAboutCommand}"/>
+                                <appBarUtils:AppBarMenuItem 
+                                    Text="{Binding MenuSettingsLabel}" 
+                                    Command="{Binding ShowSettingsCommand}"/>
+                            </appBarUtils:AppBar.MenuItems>
+                        </appBarUtils:AppBar>
+
+                        <!-- State: TopJokesSelecting -->
+                        <appBarUtils:AppBar Id="4" Opacity="1" BackgroundColor="{StaticResource MainRedColor}">
+                            <appBarUtils:AppBarButton 
+                                IconUri="/Assets/AppBar/favs.png" 
+                                Text="{Binding MenuAddFavoriteLabel}"
+                                Command="{Binding AddToFavoriteCommand}" />
+                            <appBarUtils:AppBar.MenuItems>
+                                <appBarUtils:AppBarMenuItem 
+                                    Text="{Binding MenuRemoveFavoriteLabel}" 
+                                    Command="{Binding RemoveFromFavoriteCommand}"/>
+                            </appBarUtils:AppBar.MenuItems>
+                        </appBarUtils:AppBar>
+
+                        <!-- State: FavoriteJokes -->
+                        <appBarUtils:AppBar Id="5" Opacity="1" Mode="Minimized" BackgroundColor="{StaticResource MainRedColor}">
+                           <appBarUtils:AppBar.MenuItems>
+                                <appBarUtils:AppBarMenuItem 
+                                    Text="{Binding MenuAboutLabel}" 
+                                    Command="{Binding ShowAboutCommand}"/>
+                                <appBarUtils:AppBarMenuItem 
+                                    Text="{Binding MenuSettingsLabel}" 
+                                    Command="{Binding ShowSettingsCommand}"/>
+                            </appBarUtils:AppBar.MenuItems>
+                        </appBarUtils:AppBar>
+
+                        <!-- State: FavoriteJokesSelecting -->
+                        <appBarUtils:AppBar Id="6" Opacity="1" BackgroundColor="{StaticResource MainRedColor}">
                             <appBarUtils:AppBarButton 
                                 IconUri="/Assets/AppBar/favs.png" 
                                 Text="{Binding MenuAddFavoriteLabel}"

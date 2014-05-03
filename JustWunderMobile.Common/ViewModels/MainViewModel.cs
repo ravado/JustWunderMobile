@@ -248,7 +248,6 @@ namespace JustWunderMobile.Common.ViewModels
                 {
                     Spinner.SetProgressIndicator(false);
                     ShowJokes();
-                    throw new Exception("Fuck Off!");
                 }).ContinueWith(r =>
                 {
                     if (r.Exception != null)
@@ -259,7 +258,29 @@ namespace JustWunderMobile.Common.ViewModels
             System.Diagnostics.Debug.WriteLine("REFRESHING...");
         }
 
+        //TODO: not elegant method, has to be refactored
         private void UpdateFavoriteStatus(bool isFavorite)
+        {
+            var jokesToUpdate = new List<ReleaseJokeDataModel>();
+            switch (ViewState)
+            {
+                case MainViewState.NewJokesSelecting: jokesToUpdate = UpdateFavoriteInNewJokes(isFavorite).ToList(); break;
+                case MainViewState.TopJokesSelecting: jokesToUpdate = UpdateFavoriteInTopJokes(isFavorite).ToList(); break;
+                case MainViewState.FavoriteJokesSelecting: jokesToUpdate = UpdateFavoriteInFavoriteJokes(isFavorite).ToList(); break;
+            }
+
+            // update this items quietly without blocking UI
+            Task.Factory.StartNew(() => ReleasedJokeService.UpdateJokes(jokesToUpdate))
+                .ContinueWith(result =>
+                {
+                    RefreshTopJokes();
+                    RefreshFavoriteJokes();
+                    RefreshNewJokes();
+                });
+        }
+
+        #region Brutforce Methods :(
+        private IEnumerable<ReleaseJokeDataModel> UpdateFavoriteInNewJokes(bool isFavorite)
         {
             foreach (var updated in NewJokes.Intersect(NewJokesSelected))
             {
@@ -268,15 +289,35 @@ namespace JustWunderMobile.Common.ViewModels
             NewJokesSelected.Clear();
 
             //TODO: it`s a bad idea, but there is no ability to reset selected items on view for now
-            NewJokes = NewJokes.ToObservableCollection(); 
-
-            // update this items quietly without blocking UI
-            Task.Factory.StartNew(() => ReleasedJokeService.UpdateJokes(NewJokes))
-                .ContinueWith(result => {
-                    RefreshTopJokes();
-                    RefreshFavoriteJokes();
-                });
+            NewJokes = NewJokes.ToObservableCollection();
+            return NewJokes;
         }
+        private IEnumerable<ReleaseJokeDataModel> UpdateFavoriteInTopJokes(bool isFavorite)
+        {
+            foreach (var updated in TopJokes.Intersect(TopJokesSelected))
+            {
+                updated.Favorite = isFavorite;
+            }
+            TopJokesSelected.Clear();
+
+            //TODO: it`s a bad idea, but there is no ability to reset selected items on view for now
+            TopJokes = TopJokes.ToObservableCollection();
+            return TopJokes;
+        }
+        private IEnumerable<ReleaseJokeDataModel> UpdateFavoriteInFavoriteJokes(bool isFavorite)
+        {
+            foreach (var updated in FavoriteJokes.Intersect(FavoriteJokesSelected))
+            {
+                updated.Favorite = isFavorite;
+            }
+            FavoriteJokesSelected.Clear();
+
+            //TODO: it`s a bad idea, but there is no ability to reset selected items on view for now
+            FavoriteJokes = FavoriteJokes.ToObservableCollection();
+            return FavoriteJokes;
+        }
+        #endregion
+
         private void AddToFavorite()
         {
             UpdateFavoriteStatus(true);
