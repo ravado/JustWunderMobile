@@ -54,7 +54,10 @@ namespace JustWunderMobile.Common.DAL.Repositories
 
         public void DeleteAll()
         {
-            Store.DropTable<T>();
+            foreach (var value in Store.Table<T>())
+            {
+                Store.Delete(value);
+            }
         }
 
         #endregion
