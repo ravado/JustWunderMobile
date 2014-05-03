@@ -7,8 +7,6 @@ namespace JustWunderMobile.Common.ViewModels
     {
         #region Fields
 
-        private bool _syncOnStart;
-
         #region Commands
         #endregion
 
