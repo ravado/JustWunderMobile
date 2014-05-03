@@ -223,7 +223,7 @@
         <Style x:Key="MainToggleSwitchButton" TargetType="toolkitPrimitives:ToggleSwitchButton">
             <Setter Property="Background" Value="{StaticResource PhoneBackgroundBrush}"/>
             <Setter Property="IsTabStop" Value="False"/>
-            <Setter Property="SwitchForeground" Value="{StaticResource PhoneAccentBrush}"/>
+            <Setter Property="SwitchForeground" Value="{StaticResource MainRedColorBrush}"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="toolkitPrimitives:ToggleSwitchButton">
@@ -255,6 +255,9 @@
                                                     <ExponentialEase EasingMode="EaseOut" Exponent="15"/>
                                                 </DoubleAnimation.EasingFunction>
                                             </DoubleAnimation>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Background)" Storyboard.TargetName="border">
+                                            	<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource MainRedColorBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
                                     <VisualState x:Name="Dragging"/>
@@ -265,6 +268,19 @@
                                         </Storyboard>
                                     </VisualState>
                                 </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                	<VisualState x:Name="Unfocused"/>
+                                	<VisualState x:Name="Focused">
+                                		<Storyboard>
+                                			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Background)" Storyboard.TargetName="border1">
+                                				<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource MainRedColorBrush}"/>
+                                			</ObjectAnimationUsingKeyFrames>
+                                			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Background)" Storyboard.TargetName="border">
+                                				<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource MainRedColorBrush}"/>
+                                			</ObjectAnimationUsingKeyFrames>
+                                		</Storyboard>
+                                	</VisualState>
+                                </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
                             <Grid x:Name="SwitchRoot" Background="Transparent" Height="95" Width="136">
                                 <Grid x:Name="SwitchTrack" Width="89">
@@ -274,8 +290,8 @@
                                                 <TranslateTransform x:Name="BackgroundTranslation"/>
                                             </Rectangle.RenderTransform>
                                         </Rectangle>
-                                        <Border BorderBrush="{StaticResource MainDarkColorBrush}" BorderThickness="3">
-                                            <Border BorderBrush="{StaticResource MainWhiteColorBrush}" BorderThickness="4"/>
+                                        <Border x:Name="border" BorderBrush="{StaticResource MainDarkColorBrush}" BorderThickness="3">
+                                            <Border x:Name="border1" BorderBrush="{StaticResource MainWhiteColorBrush}" BorderThickness="4"/>
                                         </Border>
                                     </Grid>
                                     <Border x:Name="SwitchThumb" BorderThickness="4,0" HorizontalAlignment="Left" Height="38" Margin="-4,0" Width="28" BorderBrush="White">
@@ -298,7 +314,7 @@
             <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
             <Setter Property="IsTabStop" Value="False"/>
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
-            <Setter Property="SwitchForeground" Value="{StaticResource PhoneAccentBrush}"/>
+            <Setter Property="SwitchForeground" Value="{StaticResource MainRedColorBrush}"/>
             <Setter Property="VerticalContentAlignment" Value="Top"/>
             <Setter Property="Template">
                 <Setter.Value>
