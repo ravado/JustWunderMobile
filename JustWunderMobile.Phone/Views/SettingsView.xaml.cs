@@ -1,12 +1,11 @@
-﻿using System;
+﻿using JustWunderMobile.Common.ViewModels;
+using System;
 using System.Windows;
 using System.Windows.Navigation;
-using Cirrious.MvvmCross.WindowsPhone.Views;
-using JustWunderMobile.Common.ViewModels;
 
 namespace JustWunderMobile.Phone.Views
 {
-    public partial class SettingsView : MvxPhonePage
+    public partial class SettingsView
     {
         private SettingsViewModel _viewModel;
         public SettingsView()
@@ -28,7 +27,7 @@ namespace JustWunderMobile.Phone.Views
         {
             if (e != EventArgs.Empty)
             {
-                Dispatcher.BeginInvoke(() => MessageBox.Show("Message", "Caption", MessageBoxButton.OK));
+                Dispatcher.BeginInvoke(() => MessageBox.Show(e.Message, "Attention", MessageBoxButton.OK));
             }
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -36,7 +35,7 @@ namespace JustWunderMobile.Phone.Views
             base.OnNavigatedTo(e);
 
             if (_viewModel == null)
-                _viewModel = base.ViewModel as SettingsViewModel;
+                _viewModel = ViewModel as SettingsViewModel;
 
         }
         private void RemoveAllJokesButton_OnClick(object sender, RoutedEventArgs e)

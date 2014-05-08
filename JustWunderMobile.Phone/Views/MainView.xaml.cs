@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using Cirrious.MvvmCross.WindowsPhone.Views;
+﻿using System.Diagnostics;
 using JustWunderMobile.Common;
 using JustWunderMobile.Common.DataModels;
 using JustWunderMobile.Common.ViewModels;
 using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -13,7 +11,7 @@ using Microsoft.Phone.Controls;
 
 namespace JustWunderMobile.Phone.Views
 {
-    public partial class MainView : MvxPhonePage
+    public partial class MainView
     {
         private MainViewModel _viewModel;
 
@@ -27,14 +25,7 @@ namespace JustWunderMobile.Phone.Views
         {
             if (alertEventArgs != EventArgs.Empty)
             {
-                Dispatcher.BeginInvoke(() =>
-                {
-//                    var toast = new ShellToast();
-//                    toast.Title = "[title]";
-//                    toast.Content = alertEventArgs.Message;
-//                    toast.Show();
-                    MessageBox.Show("Message", "Caption", MessageBoxButton.OK);
-                });
+                Dispatcher.BeginInvoke(() => MessageBox.Show(alertEventArgs.Message, "Attention", MessageBoxButton.OK));
             }
         }
 
@@ -58,8 +49,6 @@ namespace JustWunderMobile.Phone.Views
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             _viewModel.Spinner.SetProgressIndicator(false);
-            _viewModel.CancelRenderingJokes();
-            _viewModel.ClearAllJokes();
             base.OnNavigatingFrom(e);
         }
 
@@ -68,9 +57,10 @@ namespace JustWunderMobile.Phone.Views
             base.OnNavigatedTo(e);
 
             if (_viewModel == null)
-                _viewModel = base.ViewModel as MainViewModel;
+                _viewModel = ViewModel as MainViewModel;
 
         }
+
         private void MainPivot_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // update viemodel state depending on selected pivot item
