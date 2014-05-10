@@ -147,7 +147,6 @@ namespace JustWunderMobile.Phone.Views
                 Dispatcher.BeginInvoke(() => _viewModel.LoadTopJokes(page));
             }
         }
-
         private void FavoriteJokesMultiSelector_OnItemRealized(object sender, ItemRealizationEventArgs e)
         {
             var currentContent = (e.Container.Content as ReleaseJokeDataModel);
@@ -196,5 +195,10 @@ namespace JustWunderMobile.Phone.Views
             return itemInList.Equals(FavoriteJokesMultiSelector.ItemsSource[FavoriteJokesMultiSelector.ItemsSource.Count - OFFSET_KNOB]);
         }
         #endregion
+
+        private void NewJokesMultiSelector_OnItemUnrealized(object sender, ItemRealizationEventArgs e)
+        {
+            Debug.WriteLine("Unrealized");
+        }
     }
 }

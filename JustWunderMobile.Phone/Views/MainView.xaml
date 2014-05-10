@@ -43,6 +43,7 @@
                         ItemsSource="{Binding NewJokes}"
                         SelectionChanged="NewJokesMultiSelector_OnSelectionChanged"
                         ItemRealized="NewJokesMultiSelector_OnItemRealized"
+                                                   ItemUnrealized="NewJokesMultiSelector_OnItemUnrealized"
                         LayoutMode="List"
                         EnforceIsSelectionEnabled="True"
                         ItemTemplate="{StaticResource NewJokeItemTemplate}"

@@ -16,10 +16,10 @@ namespace JustWunderMobile.Common.ViewModels
     {
         #region Fields
 
-        private Random _random;
         private readonly SyncService _syncService;
         private readonly IReleasedJokeService<ReleaseJokeDataModel> _releasedJokeService;
         private bool _needJokeDisplay = true;
+        private MainViewState _viewState;
 
         #region Commands
         private MvxCommand _refreshCommand;
@@ -35,9 +35,6 @@ namespace JustWunderMobile.Common.ViewModels
         private ObservableCollection<ReleaseJokeDataModel> _topJokesSelected;
         private ObservableCollection<ReleaseJokeDataModel> _favoriteJokes;
         private ObservableCollection<ReleaseJokeDataModel> _favoriteJokesSelected;
-
-        private MainViewState _viewState;
-
         #endregion
 
         #region Properties
@@ -47,9 +44,6 @@ namespace JustWunderMobile.Common.ViewModels
         protected bool IsAllTopJokesLoaded { get; set; }
         protected bool IsAllFavoriteJokesLoaded { get; set; }
         #endregion
-
-        public int ItemsPerPage { get; set; }
-
 
         public ObservableCollection<ReleaseJokeDataModel> NewJokes
         {
@@ -121,15 +115,17 @@ namespace JustWunderMobile.Common.ViewModels
                 RaisePropertyChanged(() => ViewState);
             }
         }
-
+        public int ItemsPerPage { get; set; }
         public bool NeedJokeDisplay
         {
             get { return _needJokeDisplay; }
             set { _needJokeDisplay = value; }
         }
 
+        #region Services
         public SyncService SyncService { get { return _syncService; } }
         public IReleasedJokeService<ReleaseJokeDataModel> ReleasedJokeService { get { return _releasedJokeService; } }
+        #endregion
 
         #region Labels
         public override string PageName
@@ -234,7 +230,6 @@ namespace JustWunderMobile.Common.ViewModels
             _releasedJokeService = releasedJokeService;
             _viewState = MainViewState.NewJokes;
             ItemsPerPage = 10;
-            //LoadFakeData();
             Initialize();
         }
 
@@ -275,7 +270,7 @@ namespace JustWunderMobile.Common.ViewModels
             System.Diagnostics.Debug.WriteLine("REFRESHING...");
         }
 
-        //TODO: not elegant method, has to be refactored
+        //TODO: not elegant method, has to be refactored can`t remove selected state for items in list, thats why hard reset all items and taking them from storedge (bad)
         private void UpdateFavoriteStatus(bool isFavorite)
         {
             var jokesToUpdate = new List<ReleaseJokeDataModel>();
