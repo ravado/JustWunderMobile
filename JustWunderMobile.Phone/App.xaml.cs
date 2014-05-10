@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Resources;
 using System.Windows;
 using System.Windows.Markup;
+using System.Windows.Media;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
@@ -56,6 +57,7 @@ namespace JustWunderMobile.Phone
             }
             var setup = new Setup(RootFrame);
             setup.Initialize();
+            RootFrame.Background = new SolidColorBrush(Colors.White);
         }
 
         // Code to execute when the application is launching (eg, from Start)
