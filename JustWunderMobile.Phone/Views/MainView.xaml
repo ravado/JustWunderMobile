@@ -25,8 +25,11 @@
     <Grid x:Name="LayoutRoot" 
           Style="{StaticResource MainGrid}"
           d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml, Instance={x:Null}}">
-
-        <controls:ExtendedPivot Name="MainPivot"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+        </Grid.RowDefinitions>
+        <controls:ExtendedPivot Grid.Row="0" Name="MainPivot"
                      BindableIsLocked="{Binding ViewState, Mode=TwoWay, Converter={StaticResource MainViewPivotLockConverter}}"
                      SelectionChanged="MainPivot_OnSelectionChanged"
                      Style="{StaticResource MainPivot}"
@@ -39,6 +42,7 @@
                         ItemContainerStyle="{StaticResource LongListMultiSelectorItemListStyle}"
                         ItemsSource="{Binding NewJokes}"
                         SelectionChanged="NewJokesMultiSelector_OnSelectionChanged"
+                        ItemRealized="NewJokesMultiSelector_OnItemRealized"
                         LayoutMode="List"
                         EnforceIsSelectionEnabled="True"
                         ItemTemplate="{StaticResource NewJokeItemTemplate}"
@@ -56,6 +60,7 @@
                         ItemsSource="{Binding TopJokes}"
                         LayoutMode="List"
                         SelectionChanged="TopJokesMultiSelector_OnSelectionChanged"
+                        ItemRealized="TopJokesMultiSelector_OnItemRealized"
                         EnforceIsSelectionEnabled="True"
                         ItemTemplate="{StaticResource NewJokeItemTemplate}"
                         ItemInfoTemplate="{StaticResource NewJokeItemInfoTemplate}"/>
@@ -69,6 +74,7 @@
                         ItemContainerStyle="{StaticResource LongListMultiSelectorItemListStyle}"
                         ItemsSource="{Binding FavoriteJokes}"
                         SelectionChanged="FavoriteJokesMultiSelector_OnSelectionChanged"
+                        ItemRealized="FavoriteJokesMultiSelector_OnItemRealized"
                         LayoutMode="List"
                         EnforceIsSelectionEnabled="True"
                         ItemTemplate="{StaticResource NewJokeItemTemplate}"
@@ -169,7 +175,34 @@
             </i:Interaction.Triggers>
 
         </controls:ExtendedPivot>
+        
+        <!-- Developer Needs Only-->
+        <StackPanel Grid.Row="1" Background="SteelBlue">
+            <Grid  Margin="5" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0"
+                       Text="New:"/>
+            <TextBlock Grid.Column="1" FontWeight="Bold"
+                       Text="{Binding Path=NewJokes.Count}"/>
+            
+            <TextBlock Grid.Column="2"
+                       Text="Top:"/>
+            <TextBlock Grid.Column="3" FontWeight="Bold"
+                       Text="{Binding Path=TopJokes.Count}"/>
 
+            <TextBlock Grid.Column="4"
+                       Text="Favorite:"/>
+            <TextBlock Grid.Column="5" FontWeight="Bold"
+                       Text="{Binding Path=FavoriteJokes.Count}"/>
+        </Grid>
+        </StackPanel>
     </Grid>
     <!--<phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar BackgroundColor="Teal">

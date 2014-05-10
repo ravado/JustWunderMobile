@@ -95,5 +95,24 @@ namespace JustWunderMobile.Common.Services
         }
 
         #endregion
+
+
+        public int GetTopJokesCount()
+        {
+            //TODO: Read about IEnumerable data materialization
+            return ReleaseJokeRepository.GetAll().Count();
+        }
+
+        public int GetLastJokesCount()
+        {
+            //TODO: Read about IEnumerable data materialization
+            return ReleaseJokeRepository.GetAll().Count();
+        }
+
+        public int GetFavoriteJokesCount()
+        {
+            //TODO: Read about IEnumerable data materialization
+            return ReleaseJokeRepository.GetAll().Count(o => o.Favorite);
+        }
     }
 }

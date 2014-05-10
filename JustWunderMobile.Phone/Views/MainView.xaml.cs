@@ -14,11 +14,13 @@ namespace JustWunderMobile.Phone.Views
     public partial class MainView
     {
         private MainViewModel _viewModel;
+        private const int OFFSET_KNOB = 5;
+        private bool _isInitialized;
 
         public MainView()
         {
             InitializeComponent();
-            Loaded  += OnLoaded;
+            Loaded += OnLoaded;
         }
 
         private void ViewModelOnOnMessageDisplay(object sender, AlertEventArgs alertEventArgs)
@@ -33,10 +35,11 @@ namespace JustWunderMobile.Phone.Views
         {
             NavigationService.RemoveBackEntry();
 
-            if (_viewModel != null)
+            if (_viewModel != null && !_isInitialized)
             {
                 _viewModel.NeedJokeDisplay = true;
                 _viewModel.ShowJokes();
+                _isInitialized = true;
             }
 
             if (_viewModel != null)
@@ -77,8 +80,8 @@ namespace JustWunderMobile.Phone.Views
         private void NewJokesMultiSelector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // update viewmodel state if now we selecting new jokes or not
-            _viewModel.ViewState = NewJokesMultiSelector.SelectedItems.Count > 0 
-                    ? MainViewState.NewJokesSelecting 
+            _viewModel.ViewState = NewJokesMultiSelector.SelectedItems.Count > 0
+                    ? MainViewState.NewJokesSelecting
                     : MainViewState.NewJokes;
 
             // there is no direct selected items binding ability, so...
@@ -115,6 +118,82 @@ namespace JustWunderMobile.Phone.Views
             {
                 _viewModel.FavoriteJokesSelected.Add(selected);
             }
+        }
+        #endregion
+
+        private void NewJokesMultiSelector_OnItemRealized(object sender, ItemRealizationEventArgs e)
+        {
+            var currentContent = (e.Container.Content as ReleaseJokeDataModel);
+            if (!CanLoadMoreNewJokes() || currentContent == null) return;
+            if (e.ItemKind != LongListSelectorItemKind.Item) return;
+
+            if (IsNewJokesBufferZoneNear(currentContent))
+            {
+                Debug.WriteLine("Loading new...");
+                var page = _viewModel.GetNewJokesCurrentPage() + 1;
+                Dispatcher.BeginInvoke(() => _viewModel.LoadNewJokes(page));
+            }
+        }
+        private void TopJokesMultiSelector_OnItemRealized(object sender, ItemRealizationEventArgs e)
+        {
+            var currentContent = (e.Container.Content as ReleaseJokeDataModel);
+            if (!CanLoadMoreTopJokes() || currentContent == null) return;
+            if (e.ItemKind != LongListSelectorItemKind.Item) return;
+
+            if (IsTopJokesBufferZoneNear(currentContent))
+            {
+                Debug.WriteLine("Loading new...");
+                var page = _viewModel.GetTopJokesCurrentPage() + 1;
+                Dispatcher.BeginInvoke(() => _viewModel.LoadTopJokes(page));
+            }
+        }
+
+        private void FavoriteJokesMultiSelector_OnItemRealized(object sender, ItemRealizationEventArgs e)
+        {
+            var currentContent = (e.Container.Content as ReleaseJokeDataModel);
+            if (!CanLoadMoreFavoriteJokes() || currentContent == null) return;
+            if (e.ItemKind != LongListSelectorItemKind.Item) return;
+
+            if (IsFavoriteJokesBufferZoneNear(currentContent))
+            {
+                Debug.WriteLine("Loading new...");
+                var page = _viewModel.GetFavoriteJokesCurrentPage() + 1;
+                Dispatcher.BeginInvoke(() => _viewModel.LoadFavoriteJokes(page));
+            }
+        }
+
+        #region Helpers
+        private bool CanLoadMoreNewJokes()
+        {
+            return !_viewModel.IsLoading
+                   && NewJokesMultiSelector.ItemsSource != null
+                   && NewJokesMultiSelector.ItemsSource.Count >= OFFSET_KNOB;
+        }
+        private bool IsNewJokesBufferZoneNear(ReleaseJokeDataModel itemInList)
+        {
+            return itemInList.Equals(NewJokesMultiSelector.ItemsSource[NewJokesMultiSelector.ItemsSource.Count - OFFSET_KNOB]);
+        }
+
+        private bool CanLoadMoreTopJokes()
+        {
+            return !_viewModel.IsLoading
+                   && TopJokesMultiSelector.ItemsSource != null
+                   && TopJokesMultiSelector.ItemsSource.Count >= OFFSET_KNOB;
+        }
+        private bool IsTopJokesBufferZoneNear(ReleaseJokeDataModel itemInList)
+        {
+            return itemInList.Equals(TopJokesMultiSelector.ItemsSource[TopJokesMultiSelector.ItemsSource.Count - OFFSET_KNOB]);
+        }
+
+        private bool CanLoadMoreFavoriteJokes()
+        {
+            return !_viewModel.IsLoading
+                   && FavoriteJokesMultiSelector.ItemsSource != null
+                   && FavoriteJokesMultiSelector.ItemsSource.Count >= OFFSET_KNOB;
+        }
+        private bool IsFavoriteJokesBufferZoneNear(ReleaseJokeDataModel itemInList)
+        {
+            return itemInList.Equals(FavoriteJokesMultiSelector.ItemsSource[FavoriteJokesMultiSelector.ItemsSource.Count - OFFSET_KNOB]);
         }
         #endregion
     }

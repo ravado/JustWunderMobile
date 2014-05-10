@@ -12,7 +12,10 @@ namespace JustWunderMobile.Common.Interfaces
         void RemoveJokes(IEnumerable<TModel> jokesToRemove);
         void RemoveAllJokes();
         IEnumerable<TModel> GetTopJokes(int count, int offset);
+        int GetTopJokesCount();
         IEnumerable<TModel> GetLastJokes(int count, int offset);
+        int GetLastJokesCount();
         IEnumerable<TModel> GetFavoriteJokes(int count, int offset);
+        int GetFavoriteJokesCount();
     }
 }

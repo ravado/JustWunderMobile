@@ -42,6 +42,15 @@ namespace JustWunderMobile.Common.ViewModels
 
         #region Properties
 
+        #region Protected
+        protected bool IsAllNewJokesLoaded { get; set; }
+        protected bool IsAllTopJokesLoaded { get; set; }
+        protected bool IsAllFavoriteJokesLoaded { get; set; }
+        #endregion
+
+        public int ItemsPerPage { get; set; }
+
+
         public ObservableCollection<ReleaseJokeDataModel> NewJokes
         {
             get { return _newJokes ?? (_newJokes = new ObservableCollection<ReleaseJokeDataModel>()); }
@@ -121,7 +130,7 @@ namespace JustWunderMobile.Common.ViewModels
 
         public SyncService SyncService { get { return _syncService; } }
         public IReleasedJokeService<ReleaseJokeDataModel> ReleasedJokeService { get { return _releasedJokeService; } }
-        
+
         #region Labels
         public override string PageName
         {
@@ -211,6 +220,9 @@ namespace JustWunderMobile.Common.ViewModels
                 return _removeFromFavoriteCommand;
             }
         }
+
+        public bool IsLoading { get; set; }
+
         #endregion
 
         #endregion
@@ -221,6 +233,7 @@ namespace JustWunderMobile.Common.ViewModels
             _syncService = syncService;//new SyncService(Mvx.Resolve<IApiService>(), Mvx.Resolve<IRepository<ReleaseJoke>>(), Mvx.Resolve<IRepository<NewJoke>>());
             _releasedJokeService = releasedJokeService;
             _viewState = MainViewState.NewJokes;
+            ItemsPerPage = 10;
             //LoadFakeData();
             Initialize();
         }
@@ -365,18 +378,88 @@ namespace JustWunderMobile.Common.ViewModels
 
         private void RefreshNewJokes()
         {
-            NewJokes = ReleasedJokeService.GetLastJokes(10, 0).ToObservableCollection();
+            IsAllNewJokesLoaded = false;
+            NewJokes = ReleasedJokeService.GetLastJokes(ItemsPerPage, 0).ToObservableCollection();
+        }
+
+        public void LoadNewJokes(int page)
+        {
+            if (page < 0 || IsAllNewJokesLoaded || NewJokes == null) return;
+
+
+            foreach (var newJoke in ReleasedJokeService.GetLastJokes(ItemsPerPage, ItemsPerPage * page))
+            {
+                NewJokes.Add(newJoke);
+            }
+
+            IsAllNewJokesLoaded = NewJokes.Count == ReleasedJokeService.GetLastJokesCount();
+
         }
         private void RefreshTopJokes()
         {
-            TopJokes = ReleasedJokeService.GetTopJokes(10, 0).ToObservableCollection();
+            IsAllTopJokesLoaded = false;
+            TopJokes = ReleasedJokeService.GetTopJokes(ItemsPerPage, 0).ToObservableCollection();
         }
         private void RefreshFavoriteJokes()
         {
-            FavoriteJokes = ReleasedJokeService.GetFavoriteJokes(10, 0).ToObservableCollection();
+            IsAllFavoriteJokesLoaded = false;
+            FavoriteJokes = ReleasedJokeService.GetFavoriteJokes(ItemsPerPage, 0).ToObservableCollection();
         }
         #endregion
 
         #endregion
+
+        public int GetNewJokesCurrentPage()
+        {
+            if (ItemsPerPage == 0 || NewJokes == null) return 0;
+
+            var pages = (NewJokes.Count / ItemsPerPage);
+
+            return (int)Math.Ceiling(pages) - 1;
+        }
+
+        public void LoadTopJokes(int page)
+        {
+            if (page < 0 || IsAllTopJokesLoaded || NewJokes == null) return;
+
+
+            foreach (var topJoke in ReleasedJokeService.GetTopJokes(ItemsPerPage, ItemsPerPage * page))
+            {
+                TopJokes.Add(topJoke);
+            }
+
+            IsAllTopJokesLoaded = TopJokes.Count == ReleasedJokeService.GetTopJokesCount();
+        }
+
+        public void LoadFavoriteJokes(int page)
+        {
+            if (page < 0 || IsAllFavoriteJokesLoaded || NewJokes == null) return;
+
+
+            foreach (var favoriteJoke in ReleasedJokeService.GetFavoriteJokes(ItemsPerPage, ItemsPerPage * page))
+            {
+                FavoriteJokes.Add(favoriteJoke);
+            }
+
+            IsAllFavoriteJokesLoaded = FavoriteJokes.Count == ReleasedJokeService.GetFavoriteJokesCount();
+        }
+
+        public int GetTopJokesCurrentPage()
+        {
+            if (ItemsPerPage == 0 || TopJokes == null) return 0;
+
+            var pages = (TopJokes.Count / ItemsPerPage);
+
+            return (int)Math.Ceiling(pages) - 1;
+        }
+
+        public int GetFavoriteJokesCurrentPage()
+        {
+            if (ItemsPerPage == 0 || FavoriteJokes == null) return 0;
+
+            var pages = (FavoriteJokes.Count / ItemsPerPage);
+
+            return (int)Math.Ceiling(pages) - 1;
+        }
     }
 }
