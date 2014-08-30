@@ -1,4 +1,5 @@
-﻿using Cirrious.MvvmCross.ViewModels;
+﻿using System.Diagnostics;
+using Cirrious.MvvmCross.ViewModels;
 using JustWunderMobile.Common.DataModels;
 using JustWunderMobile.Common.Interfaces;
 using JustWunderMobile.Common.Resources;
@@ -226,11 +227,13 @@ namespace JustWunderMobile.Common.ViewModels
         public MainViewModel(SyncService syncService, IReleasedJokeService<ReleaseJokeDataModel> releasedJokeService, ISpinner spinner)
             : base(spinner)
         {
+            Debug.WriteLine("Main View Model Constructor");
             _syncService = syncService;//new SyncService(Mvx.Resolve<IApiService>(), Mvx.Resolve<IRepository<ReleaseJoke>>(), Mvx.Resolve<IRepository<NewJoke>>());
             _releasedJokeService = releasedJokeService;
             _viewState = MainViewState.NewJokes;
             ItemsPerPage = 10;
-            Initialize();
+            //Initialize();
+            Debug.WriteLine("Main View Model Constructor Initialized");
         }
 
         private void Initialize()

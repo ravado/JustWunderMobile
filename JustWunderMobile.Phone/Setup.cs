@@ -19,7 +19,8 @@ namespace JustWunderMobile.Phone
 
         protected override IMvxApplication CreateApp()
         {
-            Mvx.RegisterType<IApiService, FakeApiService>();
+            //Mvx.RegisterType<IApiService, FakeApiService>();
+            Mvx.RegisterSingleton<IApiService>(new FakeApiService());
             Mvx.RegisterSingleton<ISettingService>(new SettingServise());
             Mvx.RegisterSingleton<ISpinner>(new Spinner());
             Mvx.RegisterType<SyncService, SyncService>();

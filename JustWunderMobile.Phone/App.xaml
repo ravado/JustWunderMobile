@@ -173,7 +173,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel
+                    <!--<StackPanel
                         Grid.Column="0"
                         Orientation="Horizontal"
                         Background="Transparent">
@@ -208,7 +208,7 @@
                             VerticalAlignment="Center"
                             Foreground="{StaticResource MainRedColorBrush}"
                             Text="{Binding Rating}"/>
-                    </StackPanel>
+                    </StackPanel>-->
                 </Grid>
             </Grid>
         </DataTemplate>

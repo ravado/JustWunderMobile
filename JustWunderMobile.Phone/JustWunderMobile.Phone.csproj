@@ -171,6 +171,8 @@
     <Content Include="Assets\Fonts\BilboSwashCaps-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="JustWunderMobile.Phone_2014_05_19_20_37_20.sap" />
+    <None Include="JustWunderMobile.Phone_2014_05_19_20_43_02.sap" />
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
@@ -249,6 +251,9 @@
     <Reference Include="Cirrious.MvvmCross.WindowsPhone, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\wp8\Cirrious.MvvmCross.WindowsPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="Coding4Fun.Toolkit.Controls">
+      <HintPath>..\packages\Coding4Fun.Toolkit.Controls.2.0.7\lib\windowsphone8\Coding4Fun.Toolkit.Controls.dll</HintPath>
     </Reference>
     <Reference Include="Community.CsharpSqlite.WP7">
       <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Sqlite.3.1.1\lib\wp8\Community.CsharpSqlite.WP7.dll</HintPath>
